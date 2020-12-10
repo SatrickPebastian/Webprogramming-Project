@@ -1,0 +1,25 @@
+body {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+}
+
+.navbarRightIcon {
+    font-size: 20px;
+}
+
+
+#arrowIcon {
+    position: relative;
+    bottom: 1px;
+}
+
+#navbar ul li {
+    font-family: 'Cabin', sans-serif;
+}
+
+ul li a:hover {
+    transition: all 500ms;
+}
+
+
