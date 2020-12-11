@@ -76,7 +76,11 @@
     margin-left: .75rem;
   }
 
-  .rounded-circle {
-    border-radius: 50%;
+  .marketing-circles {
+    border-style:solid;
+    border-color:black;
+    border-radius:50%;
+    fill:black;
+    
   }
   

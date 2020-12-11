@@ -1,10 +1,14 @@
+/* Google Font: Cabin, 400 */
+@import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 
+p, h2 {
+   font-family:'Cabin', 'sans-serif';
+}
 
 .navbarRightIcon {
     font-size: 20px;
     color:white;
 }
-
 
 #arrowIcon {
     position: relative;
@@ -18,5 +22,6 @@
 ul li a:hover {
     transition: all 500ms;
 }
+
 
 
