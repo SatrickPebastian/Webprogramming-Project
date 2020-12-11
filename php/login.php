@@ -34,7 +34,7 @@
             }
 
 
-            $sql = "SELECT * FROM fpuser where username='$sUsername' and password='$sPassword'";
+            $sql = "SELECT * FROM user where username='$sUsername' and password='$sPassword'";
 
             $result = $fpconnection->query($sql);
 
