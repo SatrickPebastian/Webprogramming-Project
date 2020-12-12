@@ -1,3 +1,27 @@
-#filter {
-    width:300px;
+.artikelItems {
+    margin-top:30px;
+    
+}
+
+.card:hover {
+    animation-name: getBigger;
+    animation-duration: 1000ms;
+
+}
+
+.artikelItems:hover {
+    transform: scale(1.02);
+    box-shadow: 4px 10px 8px #C0C0C0;
+    transition: transform 0.1s linear 0s;
+}
+
+.artikelItems:not(:hover) {
+    transform: scale(0.98039215686274509803921568627451);
+    box-shadow:none;
+    transition: transform 0.1s linear 0s;
+}
+
+.artikelItems {
+    border-color:gray;
+    border-width:1.5px;
 }
