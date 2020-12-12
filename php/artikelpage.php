@@ -56,7 +56,7 @@
             <a class="nav-link" href="ueberuns.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="php/artikelpage.php">Shop</a>
+            <a class="nav-link" href="artikelpage.php">Shop</a>
           </li>
           
         </ul>
