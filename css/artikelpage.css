@@ -10,13 +10,13 @@
 }
 
 .artikelItems:hover {
-    transform: scale(1.02);
+    transform: scale(1.03);
     box-shadow: 4px 10px 8px #C0C0C0;
     transition: transform 0.1s linear 0s;
 }
 
 .artikelItems:not(:hover) {
-    transform: scale(0.98039215686274509803921568627451);
+    transform: scale(0.97087378640776699029126213592233);
     box-shadow:none;
     transition: transform 0.1s linear 0s;
 }
