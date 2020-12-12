@@ -1,12 +1,5 @@
 .artikelItems {
     margin-top:30px;
-    
-}
-
-.card:hover {
-    animation-name: getBigger;
-    animation-duration: 1000ms;
-
 }
 
 .artikelItems:hover {

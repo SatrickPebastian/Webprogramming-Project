@@ -1,3 +1,17 @@
+<?php
+  error_reporting(-1);
+  ini_set('display_errors', 'On');
+
+  $dsn = "mysql:host=localhost;dbname=webshopdb;charset=utf8";
+  $db = new PDO($dsn, 'root', '');
+
+
+  $sql ="SELECT id, title, descr, imageLink, price FROM artikel";
+  $result = $db->query($sql);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,17 +24,17 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <!-- Fontawesome -->
-    <link href="fontawesome/css/font-awesome.css" rel="stylesheet">
-    <link href="fontawesome/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
+    <link href="../fontawesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
 
     <!-- CSS Files -->
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/karussell.css" rel="stylesheet">
-    <link href="css/artikelpage.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/karussell.css" rel="stylesheet">
+    <link href="../css/artikelpage.css" rel="stylesheet">
 
 </head>
 <body>
@@ -28,7 +42,7 @@
   <!-- Navigationsleiste -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
+      <a class="navbar-brand" href="../index.html"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -42,7 +56,7 @@
             <a class="nav-link" href="ueberuns.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="artikelpage.html">Shop</a>
+            <a class="nav-link" href="php/artikelpage.php">Shop</a>
           </li>
           
         </ul>
@@ -71,7 +85,7 @@
     </header>
 
 
-    <main>
+  <main>
       <!-- Grid -->
 
       <div id="accordion">
@@ -121,8 +135,6 @@
                   
                   <!-- Hier Preis Range-Input hinzufügen -->
 
-
-
                 </div>
               </div>
             </div>
@@ -131,66 +143,23 @@
       </div>
 
 
-        <div class="container">
-          <div class="row">
-            <div class="col">
-              <div class="card-deck">
 
-                <div class="card artikelItems">
-                  <img src="images/games/assassinscreedvalhalla/titel.jpg" class="card-img-top" alt="valhalla" height="350" width="auto">
-                  <div class="card-body">
-                    
-                    <h5 class="card-title">Assassin's Creed Valhalla</h5>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted"><b>49,99€</b></small>
-                    <button class="btn btn-info btn-sm" type="button" style="float:right;">In Warenkorb</button>
-                  </div>
-                </div>
-             
-
-                <div class="card artikelItems">
-                  <img src="images/games/apexlegends/Apex_legends_cover.jpg" class="card-img-top" height="350" width="auto">
-                  <div class="card-body">
-                    <h5 class="card-title">Apex Legends</h5>
-                    
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted"><b>9,99€</b></small>
-                    <button class="btn btn-info btn-sm" type="button" style="float:right;">In Warenkorb</button>
-                  </div>
-                </div>
-
-                <div class="card artikelItems">
-                  <img src="images/games/needforspeedheat/titel.jpg" class="card-img-top" alt="NFSHeat" height="350" width="auto">
-                  <div class="card-body">
-                    <h5 class="card-title">Need for Speed: Heat</h5>
-                
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted"><b>34,99€</b></small>
-                    <button class="btn btn-info btn-sm" type="button" style="float:right;">In Warenkorb</button>
-                  </div>
-                </div>
-
-                <div class="card artikelItems">
-                  <img src="images/games/fifa21/titel.jpeg" alt="fifa21" height="350" width="auto">
-                  <div class="card-body">
-                    
-                    <h5 class="card-title">FIFA 21</h5>
-                  </div>
-                  <div class="card-footer">
-                    <small class="text-muted"><b>29,99€</b></small>
-                    <button class="btn btn-info btn-sm" type="button" style="float:right;">In Warenkorb</button>
-                  </div>
-                </div>
-
-              </div>
+      
+      <section class="container" id="products">
+        <div class="row">
+          <?php while($row = $result->fetch()):?>
+            <div class="col-3">
+              <?php include 'articleCard.php'?>
             </div>
-            </div>
-          </div>
+          <?php endwhile;?>
         </div>
-    </main>
+        </section>
+
+
+      </div>
+    </div>
+  </div>
+</main>
 
 </body>
 </html>
