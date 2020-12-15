@@ -59,7 +59,7 @@
             }
     
             
-            $sql= "INSERT INTO user(firstname, lastname, username, email, stadt, plz, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
+            $sql= "INSERT INTO user(id, firstname, lastname, username, email, stadt, plz, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
             
             echo $sql;
 
@@ -75,7 +75,7 @@
             echo "FEHLER beim verbinden der Datenbank";
         }
 
-        //header("Location: friends_overview.php");
+        header("Location: ../login.html");
         
 
 

@@ -24,7 +24,7 @@
 
     if($bUsernameAndPassword){
         try{
-            $fpconnection = mysqli_connect("127.0.0.1", "root", "", "fportal");
+            $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
 
             if(!$fpconnection){
                 echo "Fehler: konnte nicht mit MariaDB verbinden." .PHP_EOL;
@@ -36,7 +36,7 @@
 
             $sql = "SELECT * FROM user where username='$sUsername' and password='$sPassword'";
 
-            $result = $fpconnection->query($sql);
+            $result = $wbsconnection->query($sql);
 
             if($result->num_rows > 0){
                 $bLoginSuccess = true;
@@ -54,7 +54,12 @@
                 echo "0 Treffer!";
             }
 
-            mysqli_close($fpconnection);
+            /*while($row = $result->fetch_assoc())
+            {
+                echo "id: " . $row["id"]. " - Name" . $row["firstname"]." " . $row["lastname"]."<br>";
+            }*/
+
+            mysqli_close($wbsconnection);
         
 
         }catch(Exception $e){
@@ -62,10 +67,10 @@
         }
     }
 
-    if($bLoginSuccess){
-        header("Location: startpage.php");
+    /*if($bLoginSuccess){
+        header("Location: ../startpage.hmtl");
     }else{
         header("Location: ../login.html");
-    }
+    }*/
 
 ?>
