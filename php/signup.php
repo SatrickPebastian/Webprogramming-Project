@@ -1,9 +1,11 @@
 <?php
-    session_start();
+    
+    /*session_start();
 
     if($_SESSION['login']!=111){
         header("Location: ../login.html");
-    }
+    }*/
+    
 
     $sFirstname="";
     $sLastname="";
@@ -13,31 +15,31 @@
     $sPLZ="";
     $sCity="";
     $sCountry="";
-    $iSessionUserId = $_SESSION['id'];
+    //$iSessionUserId = $_SESSION['id'];
 
-    if(isset($_POST['txt_Vorname'])){
-        $sFirstname=$_POST['txt_Vorname'];
+    if(isset($_POST['txt_vorname'])){
+        $sFirstname=$_POST['txt_vorname'];
     }
-    if(isset($_POST['txt_Nachname'])){
-        $sLastname=$_POST['txt_Nachname'];
+    if(isset($_POST['txt_nachname'])){
+        $sLastname=$_POST['txt_nachname'];
     }
-    if(isset($_POST['txt_Username'])){
-        $sUsername=$_POST['txt_Username'];
+    if(isset($_POST['txt_username'])){
+        $sUsername=$_POST['txt_username'];
     }
-    if(isset($_POST['txt_Email'])){
-        $sEmail=$_POST['txt_Email'];
+    if(isset($_POST['txt_email'])){
+        $sEmail=$_POST['txt_email'];
     }
-    if(isset($_POST['txt_Straße'])){
-        $sStreet=$_POST['txt_Straße'];
+    if(isset($_POST['txt_stadt'])){
+        $sStadt=$_POST['txt_stadt'];
     }
     if(isset($_POST['txt_plz'])){
         $sPLZ=$_POST['txt_plz'];
     }
-    if(isset($_POST['txt_Stadt'])){
-        $sCity=$_POST['txt_Stadt'];
+    if(isset($_POST['txt_straße'])){
+        $sStreet=$_POST['txt_straße'];
     }
-    if(isset($_POST['select_Land'])){
-        $sCountry=$_POST['select_Land'];
+    if(isset($_POST['select_land'])){
+        $sCountry=$_POST['select_land'];
     }
     //if(isset($_POST['checkboxes_studiengang'])){
         //$sStudyCourse=$_POST['checkboxes_studiengang'];
@@ -57,7 +59,7 @@
             }
     
             
-            $sql= "INSERT INTO user(uid, firstname, lastname, username, email, street, plz, city, country) VALUES ($iSessionUserId, '$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sCity')";
+            $sql= "INSERT INTO user(firstname, lastname, username, email, stadt, plz, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
             
             echo $sql;
 
