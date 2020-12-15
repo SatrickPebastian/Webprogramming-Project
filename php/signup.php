@@ -30,14 +30,14 @@
     if(isset($_POST['txt_Straße'])){
         $sStreet=$_POST['txt_Straße'];
     }
-    if(isset($_POST['txt_PLZ'])){
-        $sPLZ=$_POST['txt_PLZ'];
+    if(isset($_POST['txt_plz'])){
+        $sPLZ=$_POST['txt_plz'];
     }
     if(isset($_POST['txt_Stadt'])){
         $sCity=$_POST['txt_Stadt'];
     }
-    if(isset($_POST['txt_Land'])){
-        $sCountry=$_POST['txt_Land'];
+    if(isset($_POST['select_Land'])){
+        $sCountry=$_POST['select_Land'];
     }
     //if(isset($_POST['checkboxes_studiengang'])){
         //$sStudyCourse=$_POST['checkboxes_studiengang'];
