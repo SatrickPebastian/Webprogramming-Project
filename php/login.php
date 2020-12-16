@@ -26,7 +26,7 @@
         try{
             $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
 
-            if(!$fpconnection){
+            if(!$wbsconnection){
                 echo "Fehler: konnte nicht mit MariaDB verbinden." .PHP_EOL;
                 echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
                 echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
@@ -67,10 +67,10 @@
         }
     }
 
-    /*if($bLoginSuccess){
-        header("Location: ../startpage.hmtl");
+    if($bLoginSuccess){
+        header("Location: ../startpage.html");
     }else{
         header("Location: ../login.html");
-    }*/
+    }
 
 ?>
