@@ -15,10 +15,28 @@
 
         //ArtikelID aus dem Form holen
         $articleId = $_POST['id'];
-        //Userdaten in Datenbank einfügen
-        $sql = "INSERT INTO warenkorb (user, artikel, anzahl) VALUES ('2', '$articleId', '1');";
 
-        $webshopcon->query($sql);
+        $sql = "SELECT anzahl, artikel FROM warenkorb WHERE artikel = '$articleId';";
+        $result = $webshopcon->query($sql);
+        $row = $result->fetch_assoc();
+
+        if($row == null){
+            
+            //Userdaten erstmalig in Datenbank übergeben
+            $sql = "INSERT INTO warenkorb (user, artikel, anzahl) VALUES ('2', '$articleId', '1');";
+            $webshopcon->query($sql);
+        } else {
+            
+            //Erhöhe Anzahl um eins, wenn Produkt bereits im Warenkorb liegt.
+            $aktuelleAnzahl = $row['anzahl'];
+            $neueAnzahl = $aktuelleAnzahl + 1;
+            
+            $sql = "UPDATE warenkorb SET anzahl = '$neueAnzahl' WHERE artikel = '$articleId';";
+            $webshopcon->query($sql);
+        }
+
+        
+        
         
         mysqli_close($webshopcon);
 
