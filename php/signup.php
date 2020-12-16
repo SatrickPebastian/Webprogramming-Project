@@ -47,6 +47,19 @@
     //if(isset($_POST['radios_semester'])){
         //$sSemester=$_POST['radios_semester'];
     //}
+    function hashPassword() {
+        $passwort ="";
+        $pool  = "abcdefghijklmnopqrstuvwxyz";
+        $pool .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $pool .= "0123456789";
+        srand ((double)microtime()*1000000);
+        for ($index = 0; $index < 8; $index++) { 
+         $passwort .= substr($pool,(rand()%(strlen ($pool))), 1);
+        }
+        return $passwort;
+       }
+
+       
 
         try{
             $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
@@ -59,7 +72,7 @@
             }
     
             
-            $sql= "INSERT INTO user(id, firstname, lastname, username, email, stadt, plz, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
+            $sql= "INSERT INTO user(firstname, lastname, username, email, street, plz, stadt, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
             
             echo $sql;
 
