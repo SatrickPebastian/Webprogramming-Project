@@ -1,10 +1,3 @@
-<?
-session_start();
-
-    if($_SESSION['login']!=111){
-        header("Location: ../login.html");
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,21 +10,20 @@ session_start();
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <!-- Fontawesome -->
-    <link href="fontawesome/css/font-awesome.css" rel="stylesheet">
-    <link href="fontawesome/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
+    <link href="../fontawesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    <script src="../https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
 
     <!-- CSS Files -->
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/karussell.css" rel="stylesheet">
-    <link href="scss/custom.scss" rel="stylesheet">
-    
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/karussell.css" rel="stylesheet">
+    <link href="../css/artikelpage.css" rel="stylesheet">
+
 </head>
 <body>
-
     <!-- Navigationsleiste -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -76,47 +68,5 @@ session_start();
       </div>
     </nav>
     </header>
-
-    <main>
-
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4">E-Mail</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="max.mustermann@email.com">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputPassword4">Passwort</label>
-                <input type="password" class="form-control" id="inputPassword4" placeholder="Passwort">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputAddress">Addresse</label>
-              <input type="text" class="form-control" id="inputAddress" placeholder="Musterstraße 1">
-            </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">Stadt</label>
-                <input type="text" class="form-control" id="inputCity">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputState">State</label>
-                <select id="inputState" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Bearbeiten</button>
-          </form>
-        </div>
-      </div>
-
-        
-
-    </main>
-    
 </body>
 </html>
