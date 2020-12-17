@@ -31,9 +31,9 @@ session_start();
        <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
    
        <!-- CSS Files -->
-       <link href="css/main.css" rel="stylesheet">
-       <link href="css/karussell.css" rel="stylesheet">
-       <link href="scss/custom.scss" rel="stylesheet">
+       <link href="../css/main.css" rel="stylesheet">
+       <link href="../css/karussell.css" rel="stylesheet">
+       
        
        
 </head>
@@ -42,7 +42,7 @@ session_start();
      <!-- Navigationsleiste -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
+      <a class="navbar-brand" href="../index.html"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,13 +50,13 @@ session_start();
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="startpage.html">Home</a>
+            <a class="nav-link" href="../startpage.html">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="ueberuns.html">About</a>
+            <a class="nav-link" href="../ueberuns.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="php/artikelpage.php">Shop</a>
+            <a class="nav-link" href="artikelpage.php">Shop</a>
           </li>
           
         </ul>
@@ -67,17 +67,17 @@ session_start();
               <a class="dropdown-item" href="#">Mein Profil</a>
               <a class="dropdown-item" href="#">Meine Bestellungen</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="logout.html">Logout</a>
+              <a class="dropdown-item" href="../logout.html">Logout</a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="warenkorb.html"><svg id="navbarCart" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" class="svg-inline--fa fa-shopping-cart fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"></path></svg></a>
+            <a class="nav-link" href="warenkorb.php"><svg id="navbarCart" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" class="svg-inline--fa fa-shopping-cart fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"></path></svg></a>
           </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0" action="signup.html">
+        <form class="form-inline my-2 my-lg-0" action="signup.php">
           <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign Up</button>
         </form>
-        <form class="form-inline my-2 my-lg-0" action="login.html">
+        <form class="form-inline my-2 my-lg-0" action="login.php">
           <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="margin:10px;">Login</button>
         </form>
       </div>
@@ -100,50 +100,65 @@ session_start();
                         <tr>
                             <th scope="col"> </th>
                             <th scope="col">Produkt</th>
-                            <th scope="col">Verfügbar</th>
                             <th scope="col" class="text-center">Menge</th>
                             <th scope="col" class="text-right">Preis</th>
                             <th> </th>
                         </tr>
                     </thead>
                     <tbody>
+
+                      <?php
+                        //Verbindung herstellen
+                        $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+                        if(!$webshopcon){
+                            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+                            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+                            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+                            exit;
+                        }
+
+                        //Tabellen Joinen und abfragen
+                        $sql = "SELECT imageLink, title, price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+                        $result = $webshopcon->query($sql);
+
+                      ?>
+                      <?php while($row = $result->fetch_assoc()):?>
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Dada</td>
-                            <td>auf Lager</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">124,90 €</td>
+                            <td><img src="<?= $row['imageLink']?>" width="50" height="auto"></td>
+                            <td><?= $row['title']?></td>
+                            <td><?= $row['anzahl']?></td>
+                            <td class="text-right"><?= $row['price']?>€</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
+                      <?php endwhile;?>
+
+
+
+                        
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Toto</td>
-                            <td>auf Lager</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">33,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Gesamtsumme</td>
+                            <?php 
+                              //hole preis und anzahl aus gejointer tabelle
+                              $sql = "SELECT price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+                              $result = $webshopcon->query($sql);
+                              $gesamtSumme = 0;
+
+                              //berechne preis gesamtpreis
+                              while($row = $result->fetch_assoc()){
+                                $gesamtSumme += ($row['price'] * $row['anzahl']);
+                              }
+                            ?>
+                            <td class="text-right"><?= $gesamtSumme ?>€</td>
                         </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Titi</td>
-                            <td>auf Lager</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">70,00 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
+                        <!-- <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td>Zwischensumme</td>
-                            <td class="text-right">255,90 €</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                         
                             <td>Versandkosten</td>
                             <td class="text-right">6,90 €</td>
                         </tr>
@@ -151,10 +166,10 @@ session_start();
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            
                             <td><strong>Gesamtsumme</strong></td>
                             <td class="text-right"><strong>346,90 €</strong></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
