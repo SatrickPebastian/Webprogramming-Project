@@ -68,7 +68,7 @@
     }
 
     if($bLoginSuccess){
-        header("Location: ../startpage.html");
+        header("Location: startpage.php");
     }else{
         header("Location: ../login.html");
     }
