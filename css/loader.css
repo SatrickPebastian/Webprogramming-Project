@@ -10,21 +10,12 @@
     visibility:hidden;
     background-color:black;
     opacity:30%;
-    animation-name: trans-opacity;
-    animation-duration: 0.5s;
 }
 
-@keyframes trans-opacity {
-    0%{
-        opacity:0%;
-    }
-    100%{
-        opacity:100%;
-    }
-}
+
 
 .cssload-spin-box {
-	position: absolute;
+	position: fixed;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);

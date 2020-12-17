@@ -26,7 +26,7 @@
     <!-- Fontawesome -->
     <link href="../fontawesome/css/font-awesome.css" rel="stylesheet">
     <link href="../fontawesome/css/font-awesome.min.css" rel="stylesheet">
-    <script src="../https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
+    
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
