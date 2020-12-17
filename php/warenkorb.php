@@ -118,7 +118,7 @@
                       ?>
                       <?php while($row = $result->fetch_assoc()):?>
                         <tr>
-                            <td><img src="<?= $row['imageLink']?>" width="50" height="50"></td>
+                            <td><img src="<?= $row['imageLink']?>" width="50" height="auto"></td>
                             <td><?= $row['title']?></td>
                             <td><?= $row['anzahl']?></td>
                             <td class="text-right"><?= $row['price']?>€</td>
