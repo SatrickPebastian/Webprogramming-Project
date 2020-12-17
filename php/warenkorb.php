@@ -1,3 +1,10 @@
+<?
+session_start();
+
+    if($_SESSION['login']!=111){
+        header("Location: ../login.html");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
