@@ -33,6 +33,61 @@ session_start();
        <!-- CSS Files -->
        <link href="../css/main.css" rel="stylesheet">
        <link href="../css/karussell.css" rel="stylesheet">
+
+       <?php
+           //Verbindung herstellen
+          $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+                        if(!$webshopcon){
+                            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+                            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+                            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+                            exit;
+                        }
+
+                        //Tabellen Joinen und abfragen
+                        
+                              //hole preis und anzahl aus gejointer tabelle
+                              $sql = "SELECT price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+                              $result = $webshopcon->query($sql);
+                              $gesamtSumme = 0;
+
+                              //berechne preis gesamtpreis
+                              while($row = $result->fetch_assoc()){
+                                $gesamtSumme += ($row['price'] * $row['anzahl']);
+                              }
+                           
+
+                      ?>
+
+
+      <script type="text/javascript">
+
+        //Berechnen der Liefergebühren und dynamisch in HTML platzieren.
+        function calcLiefergebuehren(){
+          
+          if(document.getElementById('checkboxStandard').checked){
+            document.getElementById('liefergebuehren').innerHTML = '0.00€';
+          }else if(document.getElementById('checkboxExpress').checked){
+            document.getElementById('liefergebuehren').innerHTML = '4.90€';
+          }
+
+        }
+
+        function calcEntireSum(){
+          
+
+          if(document.getElementById('checkboxStandard').checked){
+            document.getElementById('entireSum').innerHTML = '<?= $gesamtSumme?>' + '€';
+          }else if(document.getElementById('checkboxExpress').checked){
+            var summeAndLieferung = <?= $gesamtSumme?> + 4.9;
+            var summeGerundet = Number((summeAndLieferung).toFixed(2));
+            document.getElementById('entireSum').innerHTML = '' + summeGerundet + '€';
+          }
+
+        }
+
+      </script>
        
        
        
@@ -106,8 +161,7 @@ session_start();
                         </tr>
                     </thead>
                     <tbody>
-
-                      <?php
+                    <?php
                         //Verbindung herstellen
                         $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
                         
@@ -123,11 +177,12 @@ session_start();
                         $result = $webshopcon->query($sql);
 
                       ?>
+
                       <?php while($row = $result->fetch_assoc()):?>
                         <tr>
                             <td><img src="<?= $row['imageLink']?>" width="50" height="auto"></td>
-                            <td><?= $row['title']?></td>
-                            <td><?= $row['anzahl']?></td>
+                            <td class="text-left"><?= $row['title']?></td>
+                            <td class="text-center"><?= $row['anzahl']?></td>
                             <td class="text-right"><?= $row['price']?>€</td>
                             <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
                         </tr>
@@ -137,11 +192,22 @@ session_start();
 
                         
                         <tr>
+                            
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td>Gesamtsumme</td>
+                            <td class="text-center">Zwischensumme</td>
                             <?php 
+
+                            
+                            //Verbindung herstellen
+                            $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                                        
+                                        if(!$webshopcon){
+                                            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+                                            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+                                            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+                                            exit;
+                                        }
                               //hole preis und anzahl aus gejointer tabelle
                               $sql = "SELECT price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
                               $result = $webshopcon->query($sql);
@@ -153,7 +219,33 @@ session_start();
                               }
                             ?>
                             <td class="text-right"><?= $gesamtSumme ?>€</td>
+                            <td></td>
                         </tr>
+
+                        <tr>
+                          <td>
+                            <form>
+                            <input id="checkboxStandard" type="radio" name="checkboxVersand" checked onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;Standardversand</input> 
+                            <br>
+                            <input id="checkboxExpress" type="radio" name="checkboxVersand" onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;Expressversand</input>
+                            </form>
+                          </td>
+                          <td></td>
+                          <td class="text-center">Liefergebühren</td>
+                          <td class="text-right" id="liefergebuehren">
+                              0.00€
+                          </td>
+                          <td></td>
+                        </tr>
+
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td class="text-center"><b>Gesamtsumme</b></td>
+                          <td class="text-right"><b id="entireSum"><?= $gesamtSumme ?>€</b></td>
+                          <td></td>
+                        </tr>
+                        
                         <!-- <tr>
                             <td></td>
                             <td></td>
@@ -177,10 +269,10 @@ session_start();
         <div class="col mb-2">
             <div class="row">
                 <div class="col-sm-12  col-md-6">
-                  <a class="btn btn-block btn-light" href="php/artikelpage.php">Weitershoppen</a>
+                  <a class="btn btn-block btn-light" href="artikelpage.php">Weiter einkaufen</a>
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Zur Kasse</button>
+                    <button class="btn btn-lg btn-block btn-success text-uppercase">Kostenpflichtig bestellen</button>
                 </div>
             </div>
         </div>
