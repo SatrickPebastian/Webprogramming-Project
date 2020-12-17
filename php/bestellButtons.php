@@ -1,5 +1,4 @@
 
-
 <link href="loader.css" rel="stylesheet">
 
 <script type="text/javascript">
@@ -17,10 +16,23 @@
         setTimeout(function(){
                 
                 overlay.style.visibility = origOverlay;
-        }, 2000);
-        
-            
+        }, 2000); 
     }
+
+    //Validierung bevor die Daten versendet werden.
+    function checkVersand(){
+        var checkStand = document.getElementById('checkboxStandard');
+        var checkExp = document.getElementById('checkboxExpress');
+        if(checkStand.checked != true && checkExp.checked != true){
+            alert("Bitte eine Versandoption auswählen");
+            return false;
+        } else {
+            activeLoader();
+            return true;
+        }
+    }
+
+    
 </script>
 
 <div class="col mb-2">
@@ -29,7 +41,13 @@
           <a class="btn btn-block btn-light" href="artikelpage.php">Weiter einkaufen</a>
         </div>
         <div class="col-sm-12 col-md-6 text-right">
-            <button class="btn btn-lg btn-block btn-success text-uppercase" onclick="activateLoader();">Kostenpflichtig bestellen</button>
+            <form method="post" action="bestellen.php" onsubmit="return checkVersand();">
+                <button class="btn btn-lg btn-block btn-success text-uppercase">Kostenpflichtig bestellen</button>
+                <input type="hidden" name="cartId" id="cartId">
+            </form>
+                
+            
+            
         </div>
     </div>
 </div>

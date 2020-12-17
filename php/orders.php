@@ -22,6 +22,8 @@
     <link href="../css/karussell.css" rel="stylesheet">
     <link href="../css/artikelpage.css" rel="stylesheet">
 
+    
+
 </head>
 <body>
     <!-- Navigationsleiste -->
@@ -68,5 +70,65 @@
       </div>
     </nav>
     </header>
+
+<main>
+
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Meine Bestellungen</h1>
+     </div>
+</section>
+
+<br>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Produkte</th>
+      <th scope="col">Preis</th>
+      <th scope="col">Zeitpunkt</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  <?php
+    //Verbindung herstellen
+    $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+    if(!$webshopcon){
+        echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+        echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+        echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+        exit;
+    }
+
+    $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme FROM bestellungen;";
+    $result = $webshopcon->query($sql);
+
+    $rowCounter = 1;
+    while($row = $result->fetch_assoc()):
+  ?>
+
+    <tr>  
+      <th scope="row"><?= $rowCounter?></th>
+      <td><?= $row['artikelnamen']?></td>
+      <td><?= $row['gesamteSumme']?>€</td>
+      <td><?= $row['date']?></td>
+      <td><button id="again" class="btn btn-sm btn-success"><i class="fa fa-redo"></i></button></td>
+    </tr>
+      <?php $rowCounter++; ?>
+    <?php endwhile; mysqli_close($webshopcon);?> 
+  </tbody>
+</table>
+</div>
+
+
+
+</main>
+
+
+
 </body>
+
 </html>

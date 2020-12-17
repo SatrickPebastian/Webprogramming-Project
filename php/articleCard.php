@@ -1,4 +1,5 @@
 
+<link href="../css/artikelpage.css" rel="stylesheet">
 
 <script>
     $( function( )

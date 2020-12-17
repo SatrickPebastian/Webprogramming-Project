@@ -79,10 +79,12 @@ session_start();
 
           if(document.getElementById('checkboxStandard').checked){
             document.getElementById('entireSum').innerHTML = '<?= $gesamtSumme?>' + '€';
+            document.getElementById('cartId').value = '<?= $gesamtSumme?>';
           }else if(document.getElementById('checkboxExpress').checked){
             var summeAndLieferung = <?= $gesamtSumme?> + 4.9;
             var summeGerundet = Number((summeAndLieferung).toFixed(2));
             document.getElementById('entireSum').innerHTML = '' + summeGerundet + '€';
+            document.getElementById('cartId').value = summeGerundet;
           }
 
         }
@@ -148,6 +150,7 @@ session_start();
         <h1 class="jumbotron-heading">Warenkorb</h1>
      </div>
 </section>
+<br>
 
 <div class="container mb-4">
     <div class="row">
@@ -218,19 +221,25 @@ session_start();
 
         <?php
           if($countRows>0){
-            include '../bestellButtons.html';
+            include 'bestellButtons.php';
           }
         ?>
 
+        <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
         <div class="cssload-spin-box" id="loader"></div>
         <div id="hidePage">
           
         </div>
-
-       
     
     </div> 
+    
     </div>
+
+    <?php
+          if($countRows==0){
+            echo '<h2 class="text-center">Aktuell sind keine Produkte im Warenkorb hinterlegt.';
+          }
+        ?>
     </main>
 </body>
 </html>
