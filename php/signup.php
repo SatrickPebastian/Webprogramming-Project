@@ -57,87 +57,73 @@
          $passwort .= substr($pool,(rand()%(strlen ($pool))), 1);
         }
         return $passwort;
-       }
+    }
 
        
 
-        try{
-            $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
-        
-            if(!$wbsconnection){
-                echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
-                echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
-                echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
-                exit;
-            }
+    try{
+        $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
     
-            
-            $sql= "INSERT INTO user(firstname, lastname, username, email, street, plz, stadt, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
-            
-            echo $sql;
-
-            if($wbsconnection->query($sql) === TRUE){
-                echo "Super! Registrierung erfolgreich!";
-            }else{
-                echo "Fehler beim Registrieren!: " . $wbsconnection->error;
-            }
-    
-            mysqli_close($wbsconnection);
-    
-        }catch(Exception $e){
-            echo "FEHLER beim verbinden der Datenbank";
+        if(!$wbsconnection){
+            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+            exit;
         }
 
-        header("Location: ../login.html");
         
+        $sql= "INSERT INTO user(firstname, lastname, username, email, street, plz, stadt, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
+        
+        echo $sql;
+
+        if($wbsconnection->query($sql) === TRUE){
+            echo "Super! Registrierung erfolgreich!";
+        }else{
+            echo "Fehler beim Registrieren!: " . $wbsconnection->error;
+        }
+
+        mysqli_close($wbsconnection);
+
+    }catch(Exception $e){
+        echo "FEHLER beim verbinden der Datenbank";
+    }
+
+    header("Location: ../login.html");
+    
+
+    include_once 'phpmailer/PHPMailerAutoload.php';
+    $oMailer = new PHPMailer;
+    $oMailer->CharSet = 'UTF-8';
+
+    $oMailer->isSMTP();
+    $oMailer->Host = 'smtp.example.com';
+    $oMailer->SMTPAuth = true;
+    $oMailer->Username = 'Svenja_Ines.Bystrzinski@student.reutlingen-university.de';
+    //$oMailer->Username = 'phprocks@example.com';
+    $oMailer->Password = 'foobar';
+    $oMailer->SMTPSecure = 'tls';
+    $oMailer->Port = 587;
+
+    $oMailer->From = 'Svenja_Ines.Bystrzinski@student.reutlingen-university.de';
+    //$oMailer->From = 'phprocks@example.com';
+    $oMailer->FromName = 'Gameshark-Team';
+    //$oMailer->FromName = 'PHProcks!';
+    $oMailer->addAddress( email, firstname + lastname );
+    //$oMailer->addAddress( 'max.mustermann@example.com', 'Max Mustermann' );
+
+    $oMailer->isHTML( true );
+    $oMailer->Subject = 'Regestrierungsbestätigung Gameshark';
+    $oMailer->Body = '<h1>Willkommen bei Gameshark' + firstname + lastname +'!</h1><h2>Wir freuen uns, Ihnen mitteilen zu dürfen, dass Sie nun offiziell Kunde bei uns sind! <br> Mit freundlichen Güßen <br> Ihr Gameshark-Team</h2>';
+    $oMailer->AltBody = strip_tags( $oMailer->Body );
 
 
+    if ( !$oMailer->send() ) {
 
+    echo 'Something\'s went wrong!';
+    exit;
 
-                        /*$sFirstname="";
-                        $sLastname="";
-                        $sUsername="";
-                        $sEmail="";
-                        $sStreet="";
-                        $sPLZ="";
-                        $sCity="";
-                        $sCountry="";
+    }
 
-                        $iUserId = 0;
-
-                        if(isset($_GET['uid'])){
-                            $iUserId=$_GET['uid'];
-                        }
-                        if($iUserId!=0){
-                            try{
-                                $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "fportal");
-                                
-                                if(!$wbsconnection){
-                                    echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
-                                    echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
-                                    echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
-                                    exit;
-                                }
-
-                                $sql= "SELECT * FROM webshopdb WHERE id=$iUserId";
-                                $result=$wbsconnection->query($sql);
-
-                                while($row = $result->fetch_assoc()){
-                                    $sFirstname= $row["firstname"];
-                                    $sLastname=$row["lastname"];
-                                    $sUsername=$row["username"];
-                                    $sEmail=$row["email"];
-                                    $sStreet=$row["street"];
-                                    $sPLZ=$row["plz"];
-                                    $sCity=$row["city"];
-                                    $sCountry=$row["country"];
-                                }
-
-                                mysqli_close($wbsconnection);
-
-                            }catch(Exception $e){
-                                echo "FEHLER beim verbinden der Datenbank";
-                            }
-                        }*/
-                    ?>
+    echo 'Yes! First Mail with PHPMailer sent successfully!';
+?>
  
