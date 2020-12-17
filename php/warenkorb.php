@@ -33,6 +33,7 @@ session_start();
        <!-- CSS Files -->
        <link href="../css/main.css" rel="stylesheet">
        <link href="../css/karussell.css" rel="stylesheet">
+       <link href="../css/loader.css" rel="stylesheet">
 
        <?php
            //Verbindung herstellen
@@ -95,6 +96,8 @@ session_start();
 
      <!-- Navigationsleiste -->
   <header>
+
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="../index.html"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -138,7 +141,8 @@ session_start();
     </nav>
     </header>
 
-    <main>
+<main>
+
   <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">Warenkorb</h1>
@@ -218,10 +222,15 @@ session_start();
           }
         ?>
 
+        <div class="cssload-spin-box" id="loader"></div>
+        <div id="hidePage">
+          
+        </div>
 
        
+    
+    </div> 
     </div>
-</div> 
     </main>
 </body>
 </html>
