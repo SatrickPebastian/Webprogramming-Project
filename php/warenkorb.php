@@ -24,9 +24,9 @@
        <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
    
        <!-- CSS Files -->
-       <link href="css/main.css" rel="stylesheet">
-       <link href="css/karussell.css" rel="stylesheet">
-       <link href="scss/custom.scss" rel="stylesheet">
+       <link href="../css/main.css" rel="stylesheet">
+       <link href="../css/karussell.css" rel="stylesheet">
+       
        
        
 </head>
@@ -35,7 +35,7 @@
      <!-- Navigationsleiste -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
+      <a class="navbar-brand" href="index.html"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -100,47 +100,58 @@
                     </thead>
                     <tbody>
 
-                      
+                      <?php
+                        //Verbindung herstellen
+                        $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+                        if(!$webshopcon){
+                            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+                            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+                            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+                            exit;
+                        }
+
+                        //Tabellen Joinen und abfragen
+                        $sql = "SELECT imageLink, title, price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+                        $result = $webshopcon->query($sql);
+
+                      ?>
+                      <?php while($row = $result->fetch_assoc()):?>
+                        <tr>
+                            <td><img src="<?= $row['imageLink']?>" width="50" height="50"></td>
+                            <td><?= $row['title']?></td>
+                            <td><?= $row['anzahl']?></td>
+                            <td class="text-right"><?= $row['price']?>€</td>
+                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                        </tr>
+                      <?php endwhile;?>
 
 
 
+                        
                         <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Dada</td>
-                            <td>auf Lager</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">124,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>Gesamtsumme</td>
+                            <?php 
+                              //hole preis und anzahl aus gejointer tabelle
+                              $sql = "SELECT price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+                              $result = $webshopcon->query($sql);
+                              $gesamtSumme = 0;
+
+                              //berechne preis gesamtpreis
+                              while($row = $result->fetch_assoc()){
+                                $gesamtSumme += ($row['price'] * $row['anzahl']);
+                              }
+                            ?>
+                            <td class="text-right"><?= $gesamtSumme ?>€</td>
                         </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Toto</td>
-                            <td>auf Lager</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">33,90 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
-                            <td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-                            <td>Product Name Titi</td>
-                            <td>auf Lager</td>
-                            <td><input class="form-control" type="text" value="1" /></td>
-                            <td class="text-right">70,00 €</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                        <tr>
+                        <!-- <tr>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td>Zwischensumme</td>
-                            <td class="text-right">255,90 €</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                         
                             <td>Versandkosten</td>
                             <td class="text-right">6,90 €</td>
                         </tr>
@@ -148,10 +159,10 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
+                            
                             <td><strong>Gesamtsumme</strong></td>
                             <td class="text-right"><strong>346,90 €</strong></td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
