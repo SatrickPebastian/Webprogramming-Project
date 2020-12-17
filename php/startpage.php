@@ -18,9 +18,9 @@
      <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
  
      <!-- CSS Files -->
-     <link href="css/main.css" rel="stylesheet">
-     <link href="css/karussell.css" rel="stylesheet">
-     <link href="scss/custom.scss" rel="stylesheet">
+     <link href="../css/main.css" rel="stylesheet">
+     <link href="../css/karussell.css" rel="stylesheet">
+  
 
 </head>
 <body>

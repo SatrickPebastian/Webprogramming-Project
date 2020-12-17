@@ -57,7 +57,7 @@ session_start();
                                 $gesamtSumme += ($row['price'] * $row['anzahl']);
                               }
                            
-
+                              mysqli_close($webshopcon);
                       ?>
 
 
@@ -75,7 +75,6 @@ session_start();
         }
 
         function calcEntireSum(){
-          
 
           if(document.getElementById('checkboxStandard').checked){
             document.getElementById('entireSum').innerHTML = '<?= $gesamtSumme?>' + '€';
@@ -173,109 +172,54 @@ session_start();
                         }
 
                         //Tabellen Joinen und abfragen
-                        $sql = "SELECT imageLink, title, price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+                        $sql = "SELECT imageLink, title, price, anzahl, artikel FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
                         $result = $webshopcon->query($sql);
-
+                        $countRows = 0;
                       ?>
 
                       <?php while($row = $result->fetch_assoc()):?>
+                        <!-- Counter wird benötigt um zu prüfen ob Produktdaten vorhanden sind. Wenn nicht: Preistabelle wird nicht erscheinen. -->
+                        <?php $countRows++;?>
                         <tr>
                             <td><img src="<?= $row['imageLink']?>" width="50" height="auto"></td>
                             <td class="text-left"><?= $row['title']?></td>
                             <td class="text-center"><?= $row['anzahl']?></td>
                             <td class="text-right"><?= $row['price']?>€</td>
-                            <td class="text-right"><button class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> </button> </td>
-                        </tr>
-                      <?php endwhile;?>
+                            <td class="text-right">
+                              <form method="post" action="deleteFromCart.php">
+                                <button id="delete" class="btn btn-sm btn-danger" type="submit" onclick="alert('<?= $row['title']?> wurde aus dem Warenkorb entfernt.');">
+                                <i class="fa fa-trash"></i> 
+                                </button>
+                                <input type="hidden" name="deleteArticle" value="<?= $row['artikel']?>">
+                              </form> 
+                            </td>
+                          </tr>
+                      <?php endwhile;
+                        mysqli_close($webshopcon);
+                      ?>
 
 
 
+                        <?php 
+                          if($countRows > 0){
+                            include 'feeCalc.php';
+                          }
                         
-                        <tr>
-                            
-                            <td></td>
-                            <td></td>
-                            <td class="text-center">Zwischensumme</td>
-                            <?php 
-
-                            
-                            //Verbindung herstellen
-                            $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
-                                        
-                                        if(!$webshopcon){
-                                            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
-                                            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
-                                            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
-                                            exit;
-                                        }
-                              //hole preis und anzahl aus gejointer tabelle
-                              $sql = "SELECT price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
-                              $result = $webshopcon->query($sql);
-                              $gesamtSumme = 0;
-
-                              //berechne preis gesamtpreis
-                              while($row = $result->fetch_assoc()){
-                                $gesamtSumme += ($row['price'] * $row['anzahl']);
-                              }
-                            ?>
-                            <td class="text-right"><?= $gesamtSumme ?>€</td>
-                            <td></td>
-                        </tr>
-
-                        <tr>
-                          <td>
-                            <form>
-                            <input id="checkboxStandard" type="radio" name="checkboxVersand" checked onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;Standardversand</input> 
-                            <br>
-                            <input id="checkboxExpress" type="radio" name="checkboxVersand" onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;Expressversand</input>
-                            </form>
-                          </td>
-                          <td></td>
-                          <td class="text-center">Liefergebühren</td>
-                          <td class="text-right" id="liefergebuehren">
-                              0.00€
-                          </td>
-                          <td></td>
-                        </tr>
-
-                        <tr>
-                          <td></td>
-                          <td></td>
-                          <td class="text-center"><b>Gesamtsumme</b></td>
-                          <td class="text-right"><b id="entireSum"><?= $gesamtSumme ?>€</b></td>
-                          <td></td>
-                        </tr>
+                        ?>
                         
-                        <!-- <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                         
-                            <td>Versandkosten</td>
-                            <td class="text-right">6,90 €</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            
-                            <td><strong>Gesamtsumme</strong></td>
-                            <td class="text-right"><strong>346,90 €</strong></td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="col mb-2">
-            <div class="row">
-                <div class="col-sm-12  col-md-6">
-                  <a class="btn btn-block btn-light" href="artikelpage.php">Weiter einkaufen</a>
-                </div>
-                <div class="col-sm-12 col-md-6 text-right">
-                    <button class="btn btn-lg btn-block btn-success text-uppercase">Kostenpflichtig bestellen</button>
-                </div>
-            </div>
-        </div>
+
+        <?php
+          if($countRows>0){
+            include '../bestellButtons.html';
+          }
+        ?>
+
+
+       
     </div>
 </div> 
     </main>

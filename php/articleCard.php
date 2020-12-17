@@ -11,6 +11,7 @@
         <h5 class="card-title"><?= $row['title']?></h5>
     </div>
     <div class="card-footer">
+    
     <small class="text-muted"><b><?= $row['price']?>€</b></small>
     <form method="post" action="addToCart.php">
     <button class="btn btn-info btn-sm" style="float:right;" type="submit" name="warenkorbButton" onclick="alert('Produkt wurde in den Warenkorb hinzugefügt.');">In Warenkorb</button>
