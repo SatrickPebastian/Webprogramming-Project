@@ -103,7 +103,8 @@
         exit;
     }
 
-    $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme FROM bestellungen;";
+    //Absteigende Ordnung, damit die neuesten Bestellungen als erstes gelistet werden.
+    $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme FROM bestellungen ORDER BY id DESC;";
     $result = $webshopcon->query($sql);
 
     $rowCounter = 1;

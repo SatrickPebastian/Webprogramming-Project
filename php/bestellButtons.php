@@ -31,6 +31,7 @@
             alert("Bitte eine Versandoption auswählen");
             return false;
         } else {
+            activateLoader();
             return true;
             
         }

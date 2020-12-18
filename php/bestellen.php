@@ -1,6 +1,10 @@
 <?php
     try {
 
+        //Bewirkt Zeitverzögerung der Form-Submission. Dadurch wird der Loader auf der warenkorb.php Seite sichtbar.
+        //Ohne diese Zeile würde der Loader sichtbar werden aber durch die Form-Submission direkt unterbrochen.
+        sleep(2);
+        
         //Verbindung herstellen
         $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
         
