@@ -33,7 +33,6 @@
         } else {
             activateLoader();
             return true;
-            
         }
     }
 
