@@ -2,6 +2,7 @@
     margin-top:30px;
 }
 
+
 .artikelItems:hover {
     transform: scale(1.03);
     box-shadow: 4px 10px 8px #C0C0C0;
@@ -17,4 +18,7 @@
 .artikelItems {
     border-color:gray;
     border-width:1.5px;
+    
+    box-shadow:10px 10px 8px #C0C0C0;
 }
+

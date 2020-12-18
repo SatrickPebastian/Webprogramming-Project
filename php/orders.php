@@ -1,31 +1,15 @@
-<?php
-  error_reporting(-1);
-  ini_set('display_errors', 'On');
-
-  $dsn = "mysql:host=localhost;dbname=webshopdb;charset=utf8";
-  $db = new PDO($dsn, 'root', '');
-
-
-  $sql ="SELECT id, title, descr, imageLink, price FROM artikel";
-  $result = $db->query($sql);
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-      <!-- Bootstrap v4 -->
+    <!-- Bootstrap v4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <!-- Fontawesome -->
-    <link href="../fontawesome/css/font-awesome.css" rel="stylesheet">
-    <link href="../fontawesome/css/font-awesome.min.css" rel="stylesheet">
     
 
     <!-- Google Fonts -->
@@ -35,13 +19,15 @@
     <link href="../css/main.css" rel="stylesheet">
     <link href="../css/karussell.css" rel="stylesheet">
     <link href="../css/artikelpage.css" rel="stylesheet">
-    <link href="../css/loader.css" rel="stylesheet">
+
+    <!-- neuestes fontawesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
     
 
 </head>
 <body>
-
-  <!-- Navigationsleiste -->
+    <!-- Navigationsleiste -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="../index.html"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
@@ -86,91 +72,72 @@
     </nav>
     </header>
 
+<main>
 
-  <main>
-      <!-- Grid -->
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading">Meine Bestellungen</h1>
+     </div>
+</section>
 
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header headingOne" style="text-align:center">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Filter
-              </button>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="checkboxes"><b>Genre</b></label>
-                    <div class="col-md-4">
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Action
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Open-World
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Autorennen
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Ego-Shooter
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  
-                  <!-- Hier Preis Range-Input hinzufügen -->
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      
-      <section class="container" id="products">
-        <div class="row">
-          <?php while($row = $result->fetch()):?>
-            <div class="col-3">
-              <?php include 'articleCard.php'?>
-            </div>
-          <?php endwhile;?>
-        </div>
-        </section>
-
-
-      </div>
-    </div>
-    
-  </div>
-
-  <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
-  <div class="cssload-spin-box" id="loader2"></div>
-  <div id="hidePage2" class="hidePage"></div>
+<br>
+<div class="container">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Produkte</th>
+      <th scope="col">Preis</th>
+      <th scope="col">Zeitpunkt</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
   
+  <?php
+    //Verbindung herstellen
+    $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+    if(!$webshopcon){
+        echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+        echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+        echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+        exit;
+    }
+
+    //Absteigende Ordnung, damit die neuesten Bestellungen als erstes gelistet werden.
+    $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme FROM bestellungen ORDER BY id DESC;";
+    $result = $webshopcon->query($sql);
+
+    $rowCounter = 1;
+    while($row = $result->fetch_assoc()):
+  ?>
+
+    <tr>  
+      <th scope="row"><?= $rowCounter?></th>
+      <td><?= $row['artikelnamen']?></td>
+      <td><?= $row['gesamteSumme']?>€</td>
+      <td><?= $row['date']?></td>
+      <td><button id="again" class="btn btn-sm btn-light"><i class="fas fa-redo"></i></button></td>
+    </tr>
+      <?php $rowCounter++; ?>
+    <?php endwhile; mysqli_close($webshopcon);?> 
+  </tbody>
+</table>
+
+<div class="row">
+      <div class="col">
+        <button class="btn btn-danger text-center" style="margin-bottom:50px;">Bestellverlauf löschen</button>
+      </div>
+</div>
+</div>
+
+
 
 </main>
-            <br>
-            <br>
-            
+
+
+
 </body>
+
 </html>
