@@ -22,9 +22,10 @@
         return $passwort;
     }
 
-    $password_hash = hashPassword();
+    $password_hash = /* hier vielleicht echo */ hashPassword();
+    
     //hier muss statt testpasswort hashPassword() durchgeführt werden um das zufällige Passwort zu bekommen
-    $sPassword = hash('sha215', $password_hash);
+    $sPassword = hash('sha512', $password_hash);
 
     if(isset($_POST['txt_vorname'])){
         $sFirstname=$_POST['txt_vorname'];
