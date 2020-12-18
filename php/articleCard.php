@@ -40,7 +40,14 @@
         
         <form method="post" action="addToCart.php">
         <small class="text-muted"><b><?= $row['price']?>€</b></small>
-        <button class="btn btn-info btn-sm" style="float:right;" type="submit" name="warenkorbButton" onclick="activateLoader();">In Warenkorb</button>
+        <?php 
+
+        //Zeigt Warenkorb-Button nur an, wenn eingeloggt wurde.
+        if(isset($_SESSION['login'])== 111){
+            echo '<button class="btn btn-info btn-sm" style="float:right;" type="submit" name="warenkorbButton" onclick="activateLoader();">In Warenkorb</button>';
+        } 
+        ?>
+
         <input type="hidden" name="id" value="<?= $row['id']?>">
         <button class="btn btn-light btn-sm" type="button" style="float:right;" data-toggle="popover" data-content="<?= $row['descr']?>" data-container="body" data-placement="top">Details</button>
         </form>

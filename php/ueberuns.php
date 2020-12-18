@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+ 
  <!DOCTYPE html>
  <html lang="en">
  <head>
@@ -5,36 +9,35 @@
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>About</title>
 
-     <!-- Bootstrap v4 -->
+      <!-- Bootstrap v4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
     <!-- Fontawesome -->
-    <link href="fontawesome/css/font-awesome.css" rel="stylesheet">
-    <link href="fontawesome/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
+    <link href="../fontawesome/css/font-awesome.css" rel="stylesheet">
+    <link href="../fontawesome/css/font-awesome.min.css" rel="stylesheet">
+    
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
 
     <!-- CSS Files -->
-    <link href="css/main.css" rel="stylesheet">
-    <link href="css/karussell.css" rel="stylesheet">
-    <link href="scss/custom.scss" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link href="css/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/artikelpage.css">
+    <link href="../css/main.css" rel="stylesheet">
+    <link href="../css/karussell.css" rel="stylesheet">
+    <link href="../css/artikelpage.css" rel="stylesheet">
+    <link href="../css/loader.css" rel="stylesheet">
+    
+    
+    
+    
+
  </head>
  <body>
 
      <!-- Navigationsleiste -->
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="index.html"><img src="images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
+      <a class="navbar-brand" href="../index.php"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -42,43 +45,53 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="php/startpage.php">Home</a>
+            <a class="nav-link" href="startpage.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="ueberuns.html">About</a>
+            <a class="nav-link" href="ueberuns.php">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="php/artikelpage.php">Shop</a>
+            <a class="nav-link" href="artikelpage.php">Shop</a>
           </li>
           
         </ul>
-        <ul class="navbar-nav mr-2">
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg id="navbarDrop" aria-hidden="true" focusable="false" data-prefix="far" data-icon="caret-square-down" class="svg-inline--fa fa-caret-square-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M125.1 208h197.8c10.7 0 16.1 13 8.5 20.5l-98.9 98.3c-4.7 4.7-12.2 4.7-16.9 0l-98.9-98.3c-7.7-7.5-2.3-20.5 8.4-20.5zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-48 346V86c0-3.3-2.7-6-6-6H54c-3.3 0-6 2.7-6 6v340c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"></path></svg></a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="php/profil.php">Mein Profil</a>
-              <a class="dropdown-item" href="php/orders.php">Meine Bestellungen</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="logout.php">Logout</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="php/warenkorb.php"><svg id="navbarCart" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" class="svg-inline--fa fa-shopping-cart fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"></path></svg></a>
-          </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0" action="signup.html">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign Up</button>
-        </form>
-        <form class="form-inline my-2 my-lg-0" action="login.html">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="margin:10px;">Login</button>
-        </form>
+
+       <!-- Dynamische navbar anzeige, jenachdem ob man eingeloggt ist oder nicht -->
+       <?php
+          if(isset($_SESSION['login'])==111){
+            echo '<ul class="navbar-nav mr-2">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><svg id="navbarDrop" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"></path></svg></a>
+              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="profil.php">Mein Profil</a>
+                <a class="dropdown-item" href="orders.php">Meine Bestellungen</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="warenkorb.php"><svg id="navbarCart" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" class="svg-inline--fa fa-shopping-cart fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"></path></svg></a>
+            </li>
+          </ul>';
+          } else {
+            echo '<form class="form-inline my-2 my-lg-0" action="../signup.html">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Sign Up</button>
+          </form>
+          <form class="form-inline my-2 my-lg-0" action="../login.html">
+            <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="margin:10px;">Login</button>
+          </form>';
+          }
+
+        ?>
+
       </div>
     </nav>
     </header>
 
     <main>
       <div class="card bg-dark text-white">
-        <img class="card-img" src="images/aboutus/purple_smoke.jpg" height="450" alt="Card image">
+        <img class="card-img" src="../images/aboutus/purple_smoke.jpg" height="450" alt="Card image">
+
         <div class="card-img-overlay">
           <div class="row">
             <div class="col-lg-12">
@@ -173,7 +186,7 @@
 <div class="row" style="margin-left: 100px;">
   <div class="col-lg-4">
       <div class="card" style="width:200px;">
-        <img class="card-img-top" src="images/aboutus/Sabrina (2).jpg" alt="Card image">
+        <img class="card-img-top" src="../images/aboutus/Sabrina (2).jpg" alt="Card image">
         <div class="card-body">
           <h4 class="card-title">Sabrina<br> Klett</h4>
           <p class="card-text">Blablablabla</p>
@@ -194,7 +207,7 @@
 
        <div class="col-lg-4">
       <div class="card" style="width:200px">
-        <img class="card-img-top" src="images/aboutus/Sabrina.jpg" alt="Card image">
+        <img class="card-img-top" src="../images/aboutus/Sabrina.jpg" alt="Card image">
         <div class="card-body">
           <h4 class="card-title">Svenja Bystrzinski</h4>
           <p class="card-text">Blablablabla</p>

@@ -1,4 +1,9 @@
+
+
 <?php
+    
+
+
     try {
 
         //Bewirkt Zeitverzögerung der Form-Submission. Dadurch wird der Loader auf der warenkorb.php Seite sichtbar.

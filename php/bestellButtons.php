@@ -24,16 +24,19 @@
 
     //Validierung bevor die Daten versendet werden.
     function checkVersand(){
+
+        var warenkorbBtn = document.getElementById('warenkorbBtn');
+        
         
         var checkStand = document.getElementById('checkboxStandard');
         var checkExp = document.getElementById('checkboxExpress');
         if(checkStand.checked != true && checkExp.checked != true){
             alert("Bitte eine Versandoption auswählen");
             return false;
-        } else {
+        } else{
             activateLoader();
             return true;
-        }
+        } 
     }
 
     
