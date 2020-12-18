@@ -1,5 +1,6 @@
 <?php 
 
+    sleep(1);
     session_start();
 
     if($_SESSION['login']!= 111){

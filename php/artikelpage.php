@@ -35,6 +35,8 @@
     <link href="../css/main.css" rel="stylesheet">
     <link href="../css/karussell.css" rel="stylesheet">
     <link href="../css/artikelpage.css" rel="stylesheet">
+    <link href="../css/loader.css" rel="stylesheet">
+    
 
 </head>
 <body>
@@ -158,7 +160,14 @@
 
       </div>
     </div>
+    
   </div>
+
+  <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
+  <div class="cssload-spin-box" id="loader2"></div>
+  <div id="hidePage2" class="hidePage"></div>
+  
+
 </main>
             <br>
             <br>

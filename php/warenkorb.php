@@ -59,7 +59,7 @@ session_start();
                               }
                            
                               mysqli_close($webshopcon);
-                      ?>
+        ?>
 
 
       <script type="text/javascript">
@@ -227,7 +227,7 @@ session_start();
 
         <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
         <div class="cssload-spin-box" id="loader"></div>
-        <div id="hidePage">
+        <div id="hidePage" class="hidePage">
           
         </div>
     
