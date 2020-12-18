@@ -3,6 +3,7 @@
 
 <script type="text/javascript">
     function activateLoader(){
+
         var loader = document.getElementById('loader');
         var overlay = document.getElementById('hidePage');
         var origOverlay = overlay.style.visibility;
@@ -17,18 +18,21 @@
                 
                 overlay.style.visibility = origOverlay;
         }, 2000); 
+
+        
     }
 
     //Validierung bevor die Daten versendet werden.
     function checkVersand(){
+        
         var checkStand = document.getElementById('checkboxStandard');
         var checkExp = document.getElementById('checkboxExpress');
         if(checkStand.checked != true && checkExp.checked != true){
             alert("Bitte eine Versandoption auswählen");
             return false;
         } else {
-            activeLoader();
             return true;
+            
         }
     }
 
