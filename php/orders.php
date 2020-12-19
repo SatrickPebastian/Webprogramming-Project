@@ -37,7 +37,7 @@
 
     <script type="text/javascript">
       function areYouSure(){
-        if(confirm("Sind Sie sicher, dass sie ihre gesamte Bestellhistorie löschen möchten?")){
+        if(confirm("Sind Sie sicher, dass Sie ihre gesamte Bestellhistorie löschen möchten?")){
           return true;
         }else {
           return false;
@@ -61,6 +61,15 @@
                 overlay.style.visibility = origOverlay;
         }, 2000); 
 
+      }
+
+      function buyAgainCheck(){
+        if(confirm("Sind Sie sicher, dass Sie diese Bestellung erneut durchführen möchten?")){
+          if(confirm("Möchten Sie "))
+          return true;
+        }else {
+          return false;
+        }
       }
 
     </script>
@@ -125,8 +134,9 @@
       <th scope="col"></th>
       <th scope="col">Produkte</th>
       <th scope="col">Preis</th>
+      <th scope="col">Versandart</th>
       <th scope="col">Zeitpunkt</th>
-      <th scope="col"></th>
+      <th scope="col" class="text-center">Buy again</th>
     </tr>
   </thead>
   <tbody>
@@ -142,8 +152,9 @@
         exit;
     }
 
+    $userId = $_SESSION['id'];
     //Absteigende Ordnung, damit die neuesten Bestellungen als erstes gelistet werden.
-    $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme FROM bestellungen ORDER BY id DESC;";
+    $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme, versandOption FROM bestellungen WHERE userid = '$userId' ORDER BY id DESC;";
     $result = $webshopcon->query($sql);
 
     $rowCounter = 1;
@@ -154,21 +165,32 @@
       <th scope="row"><?= $rowCounter?></th>
       <td><?= $row['artikelnamen']?></td>
       <td><?= $row['gesamteSumme']?>€</td>
+      <td><?= $row['versandOption']?></td>
       <td><?= $row['date']?></td>
-      <td><button id="again" class="btn btn-sm btn-light"><i class="fas fa-redo"></i></button></td>
+      <form method="post" action="buyAgain.php" onsubmit="return buyAgainCheck();">
+      <td class="text-center"><button id="again" class="btn btn-sm btn-light border" type="submit" value="<?= $row['id']?>" name="buyAgainButton" onclick="activateLoader();"><i class="fas fa-redo"></i></button></td>
+      </form>
     </tr>
       <?php $rowCounter++; ?>
     <?php endwhile; mysqli_close($webshopcon);?> 
   </tbody>
 </table>
 
-<div class="row">
-      <div class="col">
-        <form method="post" action="deleteOrders.php" onsubmit="return areYouSure();">
-        <button class="btn btn-danger text-center" style="margin-bottom:50px;" onclick="activateLoader()">Bestellverlauf löschen</button>
-        <form>
-      </div>
-</div>
+<?php
+  if($rowCounter > 1){
+    echo '<div class="row">
+    <div class="col">
+      <form method="post" action="deleteOrders.php" onsubmit="return areYouSure();">
+      <button class="btn btn-danger text-center" style="margin-bottom:50px;" onclick="activateLoader()">Bestellverlauf löschen</button>
+      <form>
+    </div>
+</div>';
+  }else {
+    echo '<br><h2 class="text-center">Keine durchgeführten Bestellungen hinterlegt.</h2>';
+  }
+
+?>
+
 </div>
 
 

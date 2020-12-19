@@ -2,7 +2,7 @@
 
 <?php
     
-
+    session_start();
 
     try {
 
@@ -23,8 +23,12 @@
         
         //Hier wurde die Summe übergeben, welche anschließend der Bestellung mitgegeben werden soll.
         $summeAllerArtikel = $_POST['cartId'];
+        //Versandoption
+        $versandOption = $_POST['sendOrderButton'];
+        //UserID holen
+        $userId = $_SESSION['id'];
         
-        $sql = "SELECT user, artikel, anzahl, title FROM warenkorb w, artikel a WHERE w.artikel = a.id;";
+        $sql = "SELECT user, artikel, anzahl, title FROM warenkorb w, artikel a WHERE w.artikel = a.id and user = '$userId';";
         $result = $webshopcon->query($sql);
 
         
@@ -32,7 +36,7 @@
         $stringAlleArtikel = '';
         $count = 1;
 
-        $userId = '';
+      
         $dateAndTime = ''. date("d.m.Y").', '.date("H:i").' Uhr';
         
         //Zusammenfügen aller Titel in einen String --> $stringAlleArtikel
@@ -48,10 +52,10 @@
        
 
 
-        $sql = "INSERT INTO bestellungen (userid, date, artikelnamen, gesamteSumme) VALUES ('$userId', '$dateAndTime', '$stringAlleArtikel', '$summeAllerArtikel');";
+        $sql = "INSERT INTO bestellungen (userid, date, artikelnamen, gesamteSumme, versandOption) VALUES ('$userId', '$dateAndTime', '$stringAlleArtikel', '$summeAllerArtikel', '$versandOption');";
         $result = $webshopcon->query($sql);
 
-        $sql = "DELETE FROM warenkorb";
+        $sql = "DELETE FROM warenkorb WHERE user = '$userId'";
         $result = $webshopcon->query($sql);
 
 

@@ -28,6 +28,25 @@ session_start();
 <?php
 
     session_start();
+
+    //Verbindung herstellen
+    $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+    if(!$webshopcon){
+      echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+      echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+      echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+      exit;
+    }
+
+    //zeit des Logouts speichern
+    $dateAndTime = ''. date("d.m.Y").', '.date("H:i").' Uhr';
+    $userId = $_SESSION['id'];
+    //Speichern des logout-zeitpunktes in logout-Tabelle
+    $sql = "INSERT INTO logouts (user, lastlogout) VALUES ('$userId', '$dateAndTime');";
+    $result = $webshopcon->query($sql);
+
+
     $_SESSION = array();
 
     if(ini_get("session.use_cookies")){

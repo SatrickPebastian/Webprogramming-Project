@@ -80,11 +80,14 @@
           if(document.getElementById('checkboxStandard').checked){
             document.getElementById('entireSum').innerHTML = '<?= $gesamtSumme?>' + '€';
             document.getElementById('cartId').value = '<?= $gesamtSumme?>';
+            document.getElementById('sendOrderButton').value = 'Standard';
+
           }else if(document.getElementById('checkboxExpress').checked){
             var summeAndLieferung = <?= $gesamtSumme?> + 4.9;
             var summeGerundet = Number((summeAndLieferung).toFixed(2));
             document.getElementById('entireSum').innerHTML = '' + summeGerundet + '€';
             document.getElementById('cartId').value = summeGerundet;
+            document.getElementById('sendOrderButton').value = 'Express'; 
           }
 
         }

@@ -1,4 +1,6 @@
 <?php
+
+    session_start();
     sleep(2);
     //Verbindung herstellen
     $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
@@ -9,8 +11,10 @@
         echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
         exit;
     }
-
-    $sql = "DELETE FROM bestellungen;";
+    
+    //UserID holen
+    $userId = $_SESSION['id'];
+    $sql = "DELETE FROM bestellungen WHERE userid = '$userId';";
     $result = $webshopcon->query($sql);
 
 

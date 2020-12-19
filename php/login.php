@@ -59,6 +59,8 @@
                 echo "id: " . $row["id"]. " - Name" . $row["firstname"]." " . $row["lastname"]."<br>";
             }*/
 
+            
+
             mysqli_close($wbsconnection);
         
 

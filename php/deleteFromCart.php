@@ -1,4 +1,6 @@
 <?php
+
+    session_start();
      //Verbindung herstellen
      $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
                         
@@ -9,15 +11,16 @@
          exit;
      }
 
-     
+    $userId = $_SESSION['id'];
     $articleId = $_POST['deleteArticle'];
-    $sql = "DELETE FROM warenkorb WHERE artikel = '$articleId';";
+    $sql = "DELETE FROM warenkorb WHERE artikel = '$articleId' and user = '$userId';";
     $result = $webshopcon->query($sql);
         
 
-     header("Location: warenkorb.php");
+    mysqli_close($webshopcon);
+    header("Location: warenkorb.php");
 
-     mysqli_close($webshopcon);
+     
 
 
 

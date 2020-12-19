@@ -49,7 +49,7 @@
         </div>
         <div class="col-sm-12 col-md-6 text-right">
             <form method="post" action="bestellen.php" onsubmit="return checkVersand();">
-                <button class="btn btn-lg btn-block btn-success text-uppercase">Kostenpflichtig bestellen</button>
+                <button class="btn btn-lg btn-block btn-success text-uppercase" id="sendOrderButton" type="submit" name="sendOrderButton">Kostenpflichtig bestellen</button>
                 <input type="hidden" name="cartId" id="cartId">
             </form>
                 

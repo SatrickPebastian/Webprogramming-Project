@@ -84,11 +84,54 @@
 
     <!-- Begrüßung -->
     <div class="jumbotron" style="margin:40px; position:absolute; top:100px;">
-        <h1 class="display-4">Willkommen!</h1>
-        <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-        <hr class="my-4">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+
+        <?php
+          //Verbindung herstellen
+          $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+          if(!$webshopcon){
+            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+            exit;
+          }
+
+          $userId = '';
+          $lastDate = '';
+          $row = '';
+
+          if(isset($_SESSION['id'])==TRUE){
+            $userId = $_SESSION['id'];
+            //Holen des letzten logins
+            $sql = "SELECT lastlogout FROM logouts WHERE user = '$userId' ORDER BY id DESC;";
+            $result = $webshopcon->query($sql);
+            $row = $result->fetch_assoc();
+            if($row != null){
+              $lastDate = $row['lastlogout'];
+            }
+          }
+
+
+          if(isset($_SESSION['login'])==111){
+            echo '<h1 class="display-4">Hallo '.$_SESSION['firstname'].' '.$_SESSION['lastname'].'!</h1>';
+            if($row != null){
+              echo '<p class="lead">Sie waren zuletzt online am '."$lastDate".'</p>';
+            } else {
+              echo '<p class="lead">Wir freuen uns sehr Sie als neues Mitglied begrüßen zu dürfen.</p>';
+            }
+                echo '<hr class="my-4">
+                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>';
+          }else {
+            echo '<h1 class="display-4">Willkommen!</h1>
+            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>';
+          }
+        ?>
+
+        
       </div>
 
 </body>
