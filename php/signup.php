@@ -48,9 +48,7 @@
     if(isset($_POST['txt_straße'])){
         $sStreet=$_POST['txt_straße'];
     }
-    if(isset($_POST['select_land'])){
-        $sCountry=$_POST['select_land'];
-    }   
+    
 
     try{
         $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
@@ -62,7 +60,7 @@
             exit;
         }
 
-        $sql= "INSERT INTO user(firstname, lastname, username, password, email, street, plz, stadt, country) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sPassword', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', '$sCountry')";
+        $sql= "INSERT INTO user(firstname, lastname, username, password, email, street, plz, stadt) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sPassword', '$sEmail', '$sStreet', '$sPLZ', '$sStadt')";
         
         echo $sql;
 
