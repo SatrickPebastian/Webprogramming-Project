@@ -22,7 +22,7 @@
         return $passwort;
     }
 
-    $password_hash = /* hier vielleicht echo */ hashPassword();
+    $password_hash = hashPassword();
     
     //hier muss statt testpasswort hashPassword() durchgeführt werden um das zufällige Passwort zu bekommen
     $sPassword = hash('sha512', $password_hash);

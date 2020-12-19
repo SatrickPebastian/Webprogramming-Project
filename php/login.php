@@ -34,7 +34,7 @@
             }
 
 
-            $sql = "SELECT * FROM user where username='$sUsername' and password='$sPassword'";
+            $sql = "SELECT id, firstname, lastname, username, email, street, stadt, plz, country FROM user where username='$sUsername' and password='$sPassword'";
 
             $result = $wbsconnection->query($sql);
 
