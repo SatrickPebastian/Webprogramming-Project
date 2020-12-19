@@ -88,7 +88,7 @@
 
       $username = $_SESSION['username'];
 
-      $sql = "SELECT email, stadt, country, plz, street FROM user WHERE username = '$username';";
+      $sql = "SELECT email, stadt, plz, street FROM user WHERE username = '$username';";
       $result = $webshopcon->query($sql);
       $row = $result->fetch_assoc();
 
@@ -96,7 +96,7 @@
       $userStreet = $row['street'];
       $userCity = $row['stadt'];
       $userPlz = $row['plz'];
-      $userCountry = $row['country'];
+      
     
     ?>
 
