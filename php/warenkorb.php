@@ -174,8 +174,11 @@
                             exit;
                         }
 
+                        //UserID abfragen
+                        $userId = $_SESSION['id'];
+
                         //Tabellen Joinen und abfragen
-                        $sql = "SELECT imageLink, title, price, anzahl, artikel FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+                        $sql = "SELECT imageLink, title, price, anzahl, artikel FROM artikel a, warenkorb w WHERE a.id = w.artikel and user = '$userId';";
                         $result = $webshopcon->query($sql);
                         $countRows = 0;
                       ?>

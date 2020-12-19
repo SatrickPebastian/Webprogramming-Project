@@ -1,11 +1,7 @@
 <?php 
-
+    session_start();
     sleep(1);
    
-
-    if($_SESSION['login']!= 111){
-        header("Location: login.php");
-    }
         
     try {
 
@@ -20,18 +16,20 @@
         }
 
         
+        //UserID aus Sessionvariable holen
+        $userId = $_SESSION['id'];
 
         //ArtikelID aus dem Form holen
         $articleId = $_POST['id'];
 
-        $sql = "SELECT anzahl, artikel FROM warenkorb WHERE artikel = '$articleId';";
+        $sql = "SELECT anzahl, artikel FROM warenkorb WHERE artikel = '$articleId' and user = '$userId';";
         $result = $webshopcon->query($sql);
         $row = $result->fetch_assoc();
 
         if($row == null){
             
             //Userdaten erstmalig in Datenbank übergeben
-            $sql = "INSERT INTO warenkorb (user, artikel, anzahl) VALUES ('2', '$articleId', '1');";
+            $sql = "INSERT INTO warenkorb (user, artikel, anzahl) VALUES ('$userId', '$articleId', '1');";
             $webshopcon->query($sql);
             
         } else {
@@ -40,7 +38,7 @@
             $aktuelleAnzahl = $row['anzahl'];
             $neueAnzahl = $aktuelleAnzahl + 1;
             
-            $sql = "UPDATE warenkorb SET anzahl = '$neueAnzahl' WHERE artikel = '$articleId';";
+            $sql = "UPDATE warenkorb SET anzahl = '$neueAnzahl' WHERE artikel = '$articleId' and user = '$userId';";
             $webshopcon->query($sql);
         }
 

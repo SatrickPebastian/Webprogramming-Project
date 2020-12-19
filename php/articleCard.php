@@ -30,12 +30,12 @@
 
 </script>
 
-<div class="card artikelItems">
+<div class="card artikelItems ">
 <img src="<?= $row['imageLink']?>" class="card-img-top" alt="<?= $row['title']?>" height="350" width="200">
     <div class="card-body">
         <h5 class="card-title"><?= $row['title']?></h5>
     </div>
-    <div class="card-footer">
+    <div class="card-footer m-0 pr-3 pl-3 pt-3">
     <div >
         
         <form method="post" action="addToCart.php">
@@ -49,7 +49,7 @@
         ?>
 
         <input type="hidden" name="id" value="<?= $row['id']?>">
-        <button class="btn btn-light btn-sm" type="button" style="float:right;" data-toggle="popover" data-content="<?= $row['descr']?>" data-container="body" data-placement="top">Details</button>
+        <button class="btn btn-light btn-sm border mr-1" type="button" style="float:right;" data-toggle="popover" data-content="<?= $row['descr']?>" data-container="body" data-placement="top">Details</button>
         </form>
         
         </div>

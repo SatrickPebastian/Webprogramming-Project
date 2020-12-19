@@ -1,5 +1,5 @@
 
-    <tr>
+    
                                 
     <td></td>
     <td></td>
@@ -31,17 +31,15 @@
     <td class="text-right"><?= $gesamtSumme ?>€</td>
     <td></td>
     </tr>
-
+    
     <tr>
-      <td>
-      <!-- Buttons für Gebührenauswahl -->
-        <form>
-          <input id="checkboxStandard" type="radio" name="checkboxVersand" onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;Standardversand</input> 
-          <br>
-          <input id="checkboxExpress" type="radio" name="checkboxVersand" onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;Expressversand</input>
-        </form>
-      </td>
       <td></td>
+      <td><!-- Buttons für Gebührenauswahl -->
+        <form>
+          <input id="checkboxStandard" type="radio" name="checkboxVersand" onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;&nbsp;Standardversand</input> 
+          <br>
+          <input id="checkboxExpress" type="radio" name="checkboxVersand" onclick="calcLiefergebuehren(); calcEntireSum()">&nbsp;&nbsp;Expressversand (+4.90€)</input>
+        </form></td>
       <td class="text-center">Liefergebühren</td>
       <td class="text-right" id="liefergebuehren">
         0.00€
