@@ -28,7 +28,7 @@
                     </div>  
 
                     <div class="panel-body" >
-                        <form method="POST" action="php/signup.php" id="signupform" class="form-horizontal" role="form">
+                        <form method="POST" action="php/signup.php" id="signupform" class="form-horizontal" role="form" onload= "init()"  onsubmit ="return pruefen();">
                             <div id="signupalert" style="display:none" class="alert alert-danger">
                                 <p>Error:</p>
                                 <span></span>
@@ -90,6 +90,182 @@
         </div>
 
         <script type="text/javascript">
+
+            function init(){
+                var myTextfeldX=document.getElementById("eingabe1");
+                myTextfeldX.addEventListener("blur", 
+                function (){
+                    this.style.border = "solid #FF0000";
+                }, false);           
+            }
+
+            function prüfe(){
+                var vorname = document.querySelector("#txt_vorname").value;
+                var nachname = document.querySelector("#txt_nachname").value;
+                var username = document.querySelector("#txt_username").value;
+                var email = document.querySelector("#txt_email").value;
+                var straße = document.querySelector("#txt_straße").value;
+                var plz = document.querySelector("#txt_plz").value;
+                var stadt = document.querySelector("#txt_stadt").value;
+
+                var string ='';
+
+                if(vorname = ""){
+                    string += 'Bitte den Vornamen angeben! /n';
+                    return false;
+                    
+                }else if(vorname.search(/^[a-zA-Z]+$/) == -1){
+                    string +='Bitte nur Buchstaben eingeben! /n';
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+
+                }
+                if(nachname = ""){
+                    string += 'Bitte den Nachnamen angeben! /n';
+                    return false;
+                }else if(nachname.search(/^[a-zA-Z]+$/) == -1){
+                    string += 'Bitte nur Buchstaben eingeben! /n';
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+                }
+                if(username= ""){
+                    string +='Bitte den Username angeben! /n';
+                    return false;
+                }else if(gibt es schon){
+                    string += 'Der Username ist schon vergeben! /n';
+                }else{
+                    activateLoader();
+                    return true;
+                }
+                if(email = ""){
+                    string +='Bitte die Email angeben! /n';
+                    return false;
+                }else if(wird schon benutzt){
+                    string += 'Die Email-Adresse wurde schon benutzt! /n';
+
+                }else{
+                    activateLoader();
+                    return true;
+                }
+                if(straße = ""){
+                    string += 'Bitte die Straße angeben! /n';
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+                }
+                if(stadt = ""){
+                    string += 'Bitte die Stadt angeben! /n';
+                    return false;
+                }else if(stadt.search(/^[a-zA-Z]+$/) == -1){
+                    string += 'Bitte nur Buchstaben eingeben! /n';
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+                }
+
+                alert(string);
+            }
+
+            /*function prüfeVorname(){
+
+                var msg = document.querySelector("#txt_vorname").value;
+
+                if(msg = ""){
+                    string +='Bitte den Vornamen angeben! /n';
+                    return false;
+                    
+                }else if(msg.search(/^[a-zA-Z]+$/) == -1){
+                    string += 'Bitte nur Buchstaben eingeben! /n';
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+
+                }
+            }
+            function prüfeNachname(){
+
+                var msg = document.querySelector("#txt_nachname").value;
+                if(msg = ""){
+                    string +='Bitte den Nachnamen angeben! /n';
+                    return false;
+                }else if(msg.search(/^[a-zA-Z]+$/) == -1){
+                    string +='Bitte nur Buchstaben eingeben! /n';
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+                }
+            }
+            function prüfeUsername(){
+                var msg = document.querySelector("#txt_username").value;
+                if(msg = ""){
+                    string +='Bitte den Username angeben! /n';
+                    return false;
+                }else if(gibt es schon){
+                        string += 'Der Username ist schon vergeben! /n';
+                }else{
+                    activateLoader();
+                    return true;
+                }
+            }
+            function prüfeEmail(){
+                var msg = document.querySelector("#txt_email").value;
+                if(msg = ""){
+                    string +='Bitte die Email angeben! /n';
+                    return false;
+                }else if(wird schon benutzt){
+                    string += 'Die Email-Adresse wurde schon benutzt! /n';
+
+                }else{
+                    activateLoader();
+                    return true;
+                }
+            }
+            function prüfeStraße(){
+                var msg = document.querySelector("#txt_straße").value;
+                if(msg = ""){
+                    'Bitte die Straße angeben!');
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+                }
+
+            }
+            function prüfePlz(){
+                var msg = document.querySelector("#txt_plz").value;
+                if(msg = ""){
+                    alert('Bitte die PLZ angeben!');
+                    return false;
+                }else if(!isNanN(msg)){
+                    alert('Bitte nur Zahlen eingeben!');
+                    return false;
+                }else{
+                    activateLoader();
+                    return true; 
+                }
+
+            }
+            function prüfeStadt(){
+                var msg = document.querySelector("#txt_stadt").value;
+                if(msg = ""){
+                    alert('Bitte die Stadt angeben!');
+                    return false;
+                }else if(msg.search(/^[a-zA-Z]+$/) == -1){
+                    alert('Bitte nur Buchstaben eingeben!');
+                    return false;
+                }else{
+                    activateLoader();
+                    return true;
+                }
+            }
 
             function prüfeDaten(){
               
@@ -503,7 +679,7 @@
                   //alles richtig also durchlassen 
               }
     
-            }
+            }*/
     
           </script>
     </body>
