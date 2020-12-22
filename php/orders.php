@@ -35,7 +35,14 @@
     <!-- neuestes fontawesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <!-- Sweet alert import -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  
+    
+
     <script type="text/javascript">
+    var checker = false;
       function areYouSure(){
         if(confirm("Sind Sie sicher, dass Sie ihre gesamte Bestellhistorie löschen möchten?")){
           return true;
@@ -63,14 +70,14 @@
 
       }
 
-      function buyAgainCheck(){
-        if(confirm("Sind Sie sicher, dass Sie diese Bestellung erneut durchführen möchten?")){
-          if(confirm("Möchten Sie "))
-          return true;
-        }else {
-          return false;
-        }
+      function checkBuyAgain(e){
+        
       }
+      
+      
+
+
+      
 
     </script>
     
@@ -167,8 +174,9 @@
       <td><?= $row['gesamteSumme']?>€</td>
       <td><?= $row['versandOption']?></td>
       <td><?= $row['date']?></td>
-      <form method="post" action="buyAgain.php" onsubmit="return buyAgainCheck();">
-      <td class="text-center"><button id="again" class="btn btn-sm btn-light border" type="submit" value="<?= $row['id']?>" name="buyAgainButton" onclick="activateLoader();"><i class="fas fa-redo"></i></button></td>
+      <form method="post" action="buyAgain.php" id="buyAgainForm" onsubmit="return checkBuyAgain()">
+      <td class="text-center"><button id="buyAgainButton" type="submit" class="btn btn-sm btn-light border" value="<?= $row['id']?>" name="buyAgainButton"><i class="fas fa-redo"></i></button></td>
+      
       </form>
     </tr>
       <?php $rowCounter++; ?>

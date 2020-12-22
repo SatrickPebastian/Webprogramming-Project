@@ -35,6 +35,9 @@
        <link href="../css/karussell.css" rel="stylesheet">
        <link href="../css/loader.css" rel="stylesheet">
 
+        <!-- Sweet alert import -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
        <?php
            //Verbindung herstellen
           $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");

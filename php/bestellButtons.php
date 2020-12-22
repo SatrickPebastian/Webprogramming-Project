@@ -31,7 +31,10 @@
         var checkStand = document.getElementById('checkboxStandard');
         var checkExp = document.getElementById('checkboxExpress');
         if(checkStand.checked != true && checkExp.checked != true){
-            alert("Bitte eine Versandoption auswählen");
+            swal({
+                title: "Bitte eine Versandart auswählen.",
+                icon: "warning",
+            });
             return false;
         } else{
             activateLoader();

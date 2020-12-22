@@ -1,11 +1,12 @@
 <?php
   session_start();
 
-    if($_SESSION['login']!=111){
-        header("Location: ../login.html");
-    }
-    
+  if($_SESSION['login']!=111){
+    header("Location: ../login.html");
+  }
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,10 +18,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-    <!-- Fontawesome -->
-    <link href="fontawesome/css/font-awesome.css" rel="stylesheet">
-    <link href="fontawesome/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
+     <!-- neuestes fontawesome -->
+     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
@@ -28,6 +27,12 @@
     <!-- CSS Files -->
     <link href="../css/main.css" rel="stylesheet">
     <link href="../css/karussell.css" rel="stylesheet">
+
+    <!-- Sweet alert import -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
 </head>
 <body>
@@ -73,7 +78,7 @@
     </nav>
     </header>
 
-    <main>
+  <main>
     <?php
       
       //Verbindung herstellen
@@ -97,51 +102,116 @@
       $userCity = $row['stadt'];
       $userPlz = $row['plz'];
       
-    
     ?>
-
+    
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
-          <form>
+          <h1 class="display-4 text-center">Persönliche Informationen</h1>
+          <br><br><br><br>
+          <form method="post" action="updateProfile.php" id="updateForm">
+
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">E-Mail</label>
-                <input type="email" class="form-control" id="inputEmail4" value="<?= $userEmail?>" style="width:500px;">
+                <input type="email" class="form-control" value="<?= $userEmail?>" style="width:500px;" readonly id="email" name="email">
               </div>
-              
             </div>
 
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="inputAddress">Straße</label>
-                <input type="text" class="form-control" id="inputAddress" value="<?= $userStreet?>" style="width:300px;">
+                <input type="text" class="form-control" value="<?= $userStreet?>" style="width:300px;" readonly id="street" name="street">
               </div>
             </div>
 
             <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputAddress">Stadt</label>
-                <input type="text" class="form-control" id="inputAddress" style="width:300px;" value="<?= $userCity?>">
-              </div>
               <div class="form-group col-md-4">
-                <label for="inputAddress">PLZ</label>
-                <input type="text" class="form-control" id="inputAddress" style="width:100px;" value="<?= $userPlz?>">
+                <label for="inputAddress">Stadt</label>
+                <input type="text" class="form-control" style="width:300px;" value="<?= $userCity?>" readonly id="city" name="city">
+              </div>
+            
+
+              <div class="form-group col-md-4">
+                  <label for="inputAddress">PLZ</label>
+                  <input type="text" class="form-control" style="width:100px;" value="<?= $userPlz?>" readonly id="plz" name="plz">
+                </div>
+              </div>
+            <div class="row justify-content-start">
+              <div class="col-2">
+              <button type="button" class="btn btn-primary mt-5" onclick="editMode()" id="editButton">Bearbeiten</button>
+              </div>
+              <div class="col-2">
+              <button class="btn btn-success mt-5" onclick="oldMode()" id="saveButton" name="saveButton" type="submit" disabled>Speichern</button>
+              </div>
+              <div class="col-8">
+              <button class="btn btn-danger mt-5" type="button">Passwort ändern</button>
               </div>
             </div>
-
-
-                                    
-              
-         
             
-            <button type="submit" class="btn btn-primary mt-5">Bearbeiten</button>
           </form>
+
+         
+          
+          
+          
         </div>
+          
       </div>
 
         
 
-    </main>
-    
+  </main>
+
+  <script type="text/javascript">
+
+    function editMode(){
+      var editButton = document.getElementById('editButton');
+      var saveButton = document.getElementById('saveButton');
+
+      document.getElementById('email').removeAttribute("readonly");
+      document.getElementById('street').removeAttribute("readonly");
+      document.getElementById('city').removeAttribute("readonly");
+      document.getElementById('plz').removeAttribute("readonly");
+      
+      editButton.disabled = true;
+      saveButton.disabled = false;
+    }
+
+    function oldMode(){
+      var editButton = document.getElementById('editButton');
+      var saveButton = document.getElementById('saveButton');
+
+      document.getElementById('email').setAttribute("readonly", true);
+      document.getElementById('street').setAttribute("readonly", true);
+      document.getElementById('city').setAttribute("readonly", true);
+      document.getElementById('plz').setAttribute("readonly", true);
+
+      editButton.disabled = false;
+      saveButton.disabled = true;
+
+      swal({
+        title: "Daten gespeichert.",
+        icon: "success",
+      });
+    }
+
+    $(document).ready(function(e) {
+        $('#saveButton').click(function(e){
+          e.preventDefault();
+
+          $.ajax({
+          method: "post",
+          url: "updateProfile.php",
+          data: $('#updateForm').serialize(),
+          dataType: "text",
+          success: function(response) {
+            console.log(response);
+          }
+        });
+      });
+    });
+
+  </script>
+
 </body>
 </html>

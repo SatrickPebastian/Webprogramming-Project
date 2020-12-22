@@ -14,9 +14,9 @@
 
      $userId = $_SESSION['id'];
      $orderId = $_POST['buyAgainButton'];
-     echo $_POST['buyAgainButton'];
+     
 
-     $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme FROM bestellungen WHERE id = '$orderId';"; 
+     $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme, versandOption FROM bestellungen WHERE id = '$orderId';"; 
      $result = $webshopcon->query($sql);
 
      $row = $result->fetch_assoc();
@@ -26,8 +26,9 @@
      $newOrderDate = ''. date("d.m.Y").', '.date("H:i").' Uhr';;
      $newOrderNames = $row['artikelnamen'];
      $newOrderSum = $row['gesamteSumme'];
+     $newOrderOption = $row['versandOption'];
 
-     $sql = "INSERT INTO bestellungen (userid, date, artikelnamen, gesamteSumme) VALUES ('$newOrderUserId', '$newOrderDate', '$newOrderNames', '$newOrderSum');";
+     $sql = "INSERT INTO bestellungen (userid, date, artikelnamen, gesamteSumme, versandOption) VALUES ('$newOrderUserId', '$newOrderDate', '$newOrderNames', '$newOrderSum', '$newOrderOption');";
      $result = $webshopcon->query($sql);
 
      mysqli_close($webshopcon);
