@@ -162,6 +162,30 @@
 
   </main>
 
+  <footer>
+  <br><br><br><br><br>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-bottom">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+          
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../impressum.html"><small>Impressum</small> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../datenschutzerklärung.html"><small>Datenschutzerklärung</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../agb.html"><small>AGB</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../hilfe.html"><small>Hilfe</small></a>
+        </li>      
+      </ul>
+  
+    </div>
+  </nav>
+</footer>
+
   <script type="text/javascript">
 
     function editMode(){

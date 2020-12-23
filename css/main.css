@@ -1,6 +1,11 @@
 /* Google Font: Cabin, 400 */
 @import url('https://fonts.googleapis.com/css2?family=Cabin&display=swap');
 
+body {
+    position:relative;
+    min-height:100vh;
+}
+
 p, h2 {
    font-family:'Cabin', 'sans-serif';
 }
@@ -41,6 +46,19 @@ ul li a:hover {
     color:white;
     transition:all 500ms;
 }
+
+#welcome {
+    width:95%;
+}
+
+.navbar-bottom {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    
+}
+
+
 
 
 

@@ -103,7 +103,7 @@
 <body>
 
      <!-- Navigationsleiste -->
-  <header>
+<header>
 
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -143,7 +143,7 @@
         
       </div>
     </nav>
-    </header>
+</header>
 
 <main>
 
@@ -245,6 +245,31 @@
             echo '<h2 class="text-center">Aktuell sind keine Produkte im Warenkorb hinterlegt.';
           }
         ?>
-    </main>
+</main>
+
+<footer>
+  <br><br><br><br><br>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-bottom">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+          
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../impressum.html"><small>Impressum</small> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../datenschutzerklärung.html"><small>Datenschutzerklärung</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../agb.html"><small>AGB</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../hilfe.html"><small>Hilfe</small></a>
+        </li>      
+      </ul>
+  
+    </div>
+  </nav>
+</footer>
+
 </body>
 </html>

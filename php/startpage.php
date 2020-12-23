@@ -5,32 +5,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Startseite</title>
 
-     <!-- Bootstrap v4 -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-     <!-- Fontawesome -->
-     <link href="fontawesome/css/font-awesome.css" rel="stylesheet">
-     <link href="fontawesome/css/font-awesome.min.css" rel="stylesheet">
-     <script src="https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
- 
-     <!-- Google Fonts -->
-     <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
- 
-     <!-- CSS Files -->
-     <link href="../css/main.css" rel="stylesheet">
-     <link href="../css/karussell.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Startseite</title>
+
+   <!-- Bootstrap v4 -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
   
+    <!-- Fontawesome -->
+  <script src="https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
+
+  <!-- CSS Files -->
+  <link href="../css/main.css" rel="stylesheet">
+  <link href="../css/karussell.css" rel="stylesheet">
+  <link href="../css/artikelpage.css" rel="stylesheet">
+  <link href="../css/loader.css" rel="stylesheet">
+  
 </head>
 <body>
 
     <!-- Navigationsleiste -->
-  <header>
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="../index.php"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +51,7 @@
           </li>
           
         </ul>
+
         <!-- Dynamische navbar anzeige, jenachdem ob man eingeloggt ist oder nicht -->
         <?php
           if(isset($_SESSION['login'])==111){
@@ -80,10 +82,12 @@
 
       </div>
     </nav>
-    </header>
-
-    <!-- Begrüßung -->
-    <div class="jumbotron" style="margin:40px; position:absolute; top:100px;">
+</header>
+<main>
+  <!-- Begrüßung -->
+  <div class="row" id="welcome">
+    <div class="col-10">
+      <div class="jumbotron" style="margin:30px;">
 
         <?php
           //Verbindung herstellen
@@ -131,8 +135,35 @@
           }
         ?>
 
-        
       </div>
+    </div>
+  </div>
+
+</main>
+  
+<footer>
+  <br><br><br><br><br>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-bottom">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+          
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../impressum.html"><small>Impressum</small> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../datenschutzerklärung.html"><small>Datenschutzerklärung</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../agb.html"><small>AGB</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../hilfe.html"><small>Hilfe</small></a>
+        </li>      
+      </ul>
+  
+    </div>
+  </nav>
+</footer>
 
 </body>
 </html>

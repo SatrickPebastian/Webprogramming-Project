@@ -19,7 +19,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Document</title>
+    <title>Shop</title>
 
       <!-- Bootstrap v4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
@@ -183,8 +183,31 @@
   
 
 </main>
-            <br>
-            <br>
+  <br><br>
+
+  <footer>
+  <br><br><br><br><br>
+  <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-bottom">
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+          
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../impressum.html"><small>Impressum</small> <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../datenschutzerklärung.html"><small>Datenschutzerklärung</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../agb.html"><small>AGB</small></a>
+        </li>
+        <li class="nav-item mr-5 ml-5">
+          <a class="nav-link" href="../hilfe.html"><small>Hilfe</small></a>
+        </li>      
+      </ul>
+  
+    </div>
+  </nav>
+</footer>
             
 </body>
 </html>
