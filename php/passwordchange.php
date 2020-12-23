@@ -23,7 +23,9 @@ session_start();
             exit;
         }
 
-        $sql1 = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user where id= 7 and password='$sPassword'"; //id auslesen
+        $userid=$_SESSION['id'];
+
+        $sql1 = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user where id= $userid and password='$sPassword'";
         $result = $wbsconnection->query($sql1);
         if($result->num_rows > 0){
             $sChangeSuccess = true;
@@ -41,7 +43,7 @@ session_start();
             echo "0 Treffer!";
         }
 
-        $sql2 = "UPDATE `user` SET 'password' = '$sPassword' WHERE 'user'.'id' = 7"; // id auslesen 
+        $sql2 = "UPDATE `user` SET 'password' = '$sPassword' WHERE 'user'.'id' = $userid";
         
         echo $sql2;
 
