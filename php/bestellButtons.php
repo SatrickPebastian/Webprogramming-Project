@@ -60,7 +60,6 @@
         <div class="col-sm-12 col-md-6 text-right">
             <form method="post" action="bestellen.php" onsubmit="return checkVersand();">
                 <button class="btn btn-lg btn-block btn-success text-uppercase" id="sendOrderButton" type="submit" name="sendOrderButton" onclick="sendEmail()">Kostenpflichtig bestellen</button>
-                <textarea class="form-control" id="bodyForm" placeholder="Email Body" name="bodyForm"></textarea>
                 <input type="hidden" name="cartId" id="cartId">
             </form>
                 
