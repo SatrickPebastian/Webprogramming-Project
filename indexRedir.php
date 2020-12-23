@@ -42,13 +42,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="php/startpage.php">Home</a>
+            <a class="nav-link mr-2 ml-4" href="php/startpage.php">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="php/ueberuns.php">About</a>
+            <a class="nav-link mr-2 ml-2" href="php/ueberuns.php">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="php/artikelpage.php">Shop</a>
+            <a class="nav-link mr-2 ml-2" href="php/artikelpage.php">Shop</a>
           </li>
           
         </ul>
