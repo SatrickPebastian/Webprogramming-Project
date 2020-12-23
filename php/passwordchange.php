@@ -4,39 +4,38 @@ session_start();
     if($_SESSION['login']!=111){
         header("Location: ../login.html");
     }
+
+    $passwort ="";
+
+    if(isset($_POST['txt_password1'])){
+        $passwort=$_POST['txt_password1'];
+    }
+    $sPasswort = hash('sha512', $passwort);
+
+    try{
+        $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+    
+        if(!$wbsconnection){
+            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+            exit;
+        }
+
+        $sql = "UPDATE `user` SET 'password' = '$sPasswort' WHERE 'user'.'id' = 7"; // id auslesen 
+        
+        echo $sql;
+
+        if($wbsconnection->query($sql) === TRUE){
+            echo "Super! Passwordänderung erfolgreich!";
+        }else{
+            echo "Fehler beim Ändern des Passworts!: " . $wbsconnection->error;
+        }
+
+        mysqli_close($wbsconnection);
+
+    }catch(Exception $e){
+        echo "FEHLER beim verbinden der Datenbank";
+    }
 ?>
  
-<!DOCTYPE html>
-<html>
-    <head>
-    </head>
-    <body>
-    <form>
-      <fieldset>
-        <legend>Passwort bestätigen</legend>
-        <label for="password1">Passwort:</label>
-        <input type="password" required id="password1" />
-  
-        <label for="password2">Passwort bestätigen:</label>
-        <input type="password" required id="password2" />
-
-        <button>Absenden</button>
-      </fieldset>
-    </form>
-    <script type="text/javascript">
-        var password1 = document.getElementById('password1');
-        var password2 = document.getElementById('password2');
-
-        var checkPasswordValidity = function() {
-            if (password1.value != password2.value) {
-                password2.setCustomValidity('Passwörter müssen übereinstimmen!');
-            } else {
-                password2.setCustomValidity('');
-            }        
-        };
-
-        password1.addEventListener('change', checkPasswordValidity);
-        password2.addEventListener('change', checkPasswordValidity);
-    </script>
-    </body>
-</html>

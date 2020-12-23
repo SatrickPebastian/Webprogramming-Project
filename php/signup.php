@@ -10,7 +10,7 @@
     $sCountry="";
 
 
-    function hashPassword() {
+    function zufallspassword() {
         $passwort ="";
         $pool  = "abcdefghijklmnopqrstuvwxyz";
         $pool .= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -22,10 +22,10 @@
         return $passwort;
     }
 
-    $password_hash = hashPassword();
+    $sPassword = zufallspassword();
     
     //hier muss statt testpasswort hashPassword() durchgeführt werden um das zufällige Passwort zu bekommen
-    $sPassword = hash('sha512', $password_hash);
+    //$sPassword = hash('sha512', $password_hash);
 
     if(isset($_POST['txt_vorname'])){
         $sFirstname=$_POST['txt_vorname'];
@@ -72,13 +72,56 @@
 
         mysqli_close($wbsconnection);
 
+        //$sql = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user WHERE id = '$userId';";
+        //$result = $webshopcon->query($sql);
+        //$row = $result->fetch_assoc();
+
+
+        
+        //$userMail = $row['email'];
+        //$userWholeName = $row['firstname'].' '.$row['lastname'];
+        $body = "Hallo ".$sUsername."<br>"."Vielen Dank für Ihre Regestrierung bei Gameshark ".$sFirstname.$sLastname.". <br> Ihr Passwort lautet: ".$sPassword.". Bitte melden Sie sich an und legen Sie sich ein neues Passwort an. CHecken SIe zudem bitte Ihre Adressdaten auf Ihrem Profil";
+
+        //Mail verschicken
+
+
+        require_once "PHPMailer/PHPMailer.php";
+        require_once "PHPMailer/SMTP.php";
+        require_once "PHPMailer/Exception.php";
+
+        $mail = new PHPMailer(true);
+
+        //SMTP Einstellungen
+        $mail->isSMTP();
+        $mail->Host = "smtp.gmail.com";
+        $mail->SMTPAuth = true;
+        $mail->Username = "gameSharkReutlingen@gmail.com";
+        $mail->Password = "gameshark123";
+        $mail->Port = 465; // 587 für tls
+        $mail->SMTPSecure = "ssl"; //oder tls
+
+        //Email Einstellungen
+        $mail->isHTML(true);
+        $mail->setFrom("gameSharkReutlingen@gmail.com", "GameShark-Team");
+        $mail->addAddress($userMail);
+        $mail->Subject = "Ihre Regestrierung bei GameShark";
+        $mail->Body = $body;
+
+        if($mail->send()){
+            echo "Email versendet!";
+        }else {
+            echo "Etwas ist schiefgelaufen: <br><br>" . $mail->ErrorInfo;
+        }
+
     }catch(Exception $e){
         echo "FEHLER beim verbinden der Datenbank";
     }
 
+    
+
     //header("Location: ../login.html");
     
-    include_once 'phpmailer/PHPMailerAutoload.php';
+    /*include_once 'phpmailer/PHPMailerAutoload.php';
     $oMailer = new PHPMailer;
     $oMailer->CharSet = 'UTF-8';
 
@@ -112,7 +155,7 @@
 
     }
 
-    echo 'Mail with PHPMailer sent successfully!';
+    echo 'Mail with PHPMailer sent successfully!'; */
 
 
     

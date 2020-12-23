@@ -28,7 +28,7 @@
                     </div>  
 
                     <div class="panel-body" >
-                        <form method="POST" action="php/signup.php" id="signupform" class="form-horizontal" role="form" onload= "init()"  onsubmit ="return pruefen();">
+                        <form method="POST" action="php/signup.php" id="signupform" class="form-horizontal" role="form" onsubmit ="return pruefen();">
                             <div id="signupalert" style="display:none" class="alert alert-danger">
                                 <p>Error:</p>
                                 <span></span>
@@ -100,88 +100,20 @@
             }
 
             function prüfe(){
-                var vorname = document.querySelector("#txt_vorname").value;
-                var nachname = document.querySelector("#txt_nachname").value;
-                var username = document.querySelector("#txt_username").value;
-                var email = document.querySelector("#txt_email").value;
-                var straße = document.querySelector("#txt_straße").value;
-                var plz = document.querySelector("#txt_plz").value;
-                var stadt = document.querySelector("#txt_stadt").value;
+                if(!prüfeVorname() || !prüfeNachname() || !prüfeUsername() || !prüfeEmail() || !prüfeStraße() || !prüfeStraße() || !prüfePlz() || !prüfeStadt()){
+                    //do Fehlermeldung unten welche Felder fehlen (Das erst wenn submit gedrückt wurde anzeigen!!!!)
+                }
+            }
 
-                var string ='';
+            function prüfeVorname(){
+                var vorname = document.querySelector("#txt_vorname").value;
 
                 if(vorname = ""){
-                    string += 'Bitte den Vornamen angeben! /n';
+                    alert('Bitte den Vornamen angeben! /n');
                     return false;
                     
                 }else if(vorname.search(/^[a-zA-Z]+$/) == -1){
-                    string +='Bitte nur Buchstaben eingeben! /n';
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
-
-                }
-                if(nachname = ""){
-                    string += 'Bitte den Nachnamen angeben! /n';
-                    return false;
-                }else if(nachname.search(/^[a-zA-Z]+$/) == -1){
-                    string += 'Bitte nur Buchstaben eingeben! /n';
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
-                }
-                if(username= ""){
-                    string +='Bitte den Username angeben! /n';
-                    return false;
-                }else if(gibt es schon){
-                    string += 'Der Username ist schon vergeben! /n';
-                }else{
-                    activateLoader();
-                    return true;
-                }
-                if(email = ""){
-                    string +='Bitte die Email angeben! /n';
-                    return false;
-                }else if(wird schon benutzt){
-                    string += 'Die Email-Adresse wurde schon benutzt! /n';
-
-                }else{
-                    activateLoader();
-                    return true;
-                }
-                if(straße = ""){
-                    string += 'Bitte die Straße angeben! /n';
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
-                }
-                if(stadt = ""){
-                    string += 'Bitte die Stadt angeben! /n';
-                    return false;
-                }else if(stadt.search(/^[a-zA-Z]+$/) == -1){
-                    string += 'Bitte nur Buchstaben eingeben! /n';
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
-                }
-
-                alert(string);
-            }
-
-            /*function prüfeVorname(){
-
-                var msg = document.querySelector("#txt_vorname").value;
-
-                if(msg = ""){
-                    string +='Bitte den Vornamen angeben! /n';
-                    return false;
-                    
-                }else if(msg.search(/^[a-zA-Z]+$/) == -1){
-                    string += 'Bitte nur Buchstaben eingeben! /n';
+                    alert('Bitte nur Buchstaben eingeben! /n');
                     return false;
                 }else{
                     activateLoader();
@@ -190,13 +122,13 @@
                 }
             }
             function prüfeNachname(){
+                var nachname = document.querySelector("#txt_nachname").value;
 
-                var msg = document.querySelector("#txt_nachname").value;
-                if(msg = ""){
-                    string +='Bitte den Nachnamen angeben! /n';
+                if(nachname = ""){
+                    alert('Bitte den Nachnamen angeben! /n');
                     return false;
-                }else if(msg.search(/^[a-zA-Z]+$/) == -1){
-                    string +='Bitte nur Buchstaben eingeben! /n';
+                }else if(nachname.search(/^[a-zA-Z]+$/) == -1){
+                    alert('Bitte nur Buchstaben eingeben! /n');
                     return false;
                 }else{
                     activateLoader();
@@ -204,47 +136,50 @@
                 }
             }
             function prüfeUsername(){
-                var msg = document.querySelector("#txt_username").value;
-                if(msg = ""){
-                    string +='Bitte den Username angeben! /n';
+                var username = document.querySelector("#txt_username").value;
+
+                if(username= ""){
+                    alert('Bitte den Username angeben! /n');
                     return false;
                 }else if(gibt es schon){
-                        string += 'Der Username ist schon vergeben! /n';
+                    alert('Der Username ist schon vergeben! /n');
                 }else{
                     activateLoader();
                     return true;
                 }
             }
             function prüfeEmail(){
-                var msg = document.querySelector("#txt_email").value;
-                if(msg = ""){
-                    string +='Bitte die Email angeben! /n';
+                var email = document.querySelector("#txt_email").value;
+
+                if(email = ""){
+                    alert('Bitte die Email angeben! /n');
                     return false;
                 }else if(wird schon benutzt){
-                    string += 'Die Email-Adresse wurde schon benutzt! /n';
+                    alert('Die Email-Adresse wurde schon benutzt! /n');
 
                 }else{
                     activateLoader();
                     return true;
-                }
+                }  
             }
             function prüfeStraße(){
-                var msg = document.querySelector("#txt_straße").value;
-                if(msg = ""){
-                    'Bitte die Straße angeben!');
+                var straße = document.querySelector("#txt_straße").value;
+
+                if(straße = ""){
+                    alert('Bitte die Straße angeben! /n');
                     return false;
                 }else{
                     activateLoader();
                     return true;
                 }
-
             }
             function prüfePlz(){
-                var msg = document.querySelector("#txt_plz").value;
-                if(msg = ""){
+                var plz = document.querySelector("#txt_plz").value;
+
+                if(plz = ""){
                     alert('Bitte die PLZ angeben!');
                     return false;
-                }else if(!isNanN(msg)){
+                }else if(!isNanN(plz)){
                     alert('Bitte nur Zahlen eingeben!');
                     return false;
                 }else{
@@ -254,433 +189,18 @@
 
             }
             function prüfeStadt(){
-                var msg = document.querySelector("#txt_stadt").value;
-                if(msg = ""){
-                    alert('Bitte die Stadt angeben!');
+                var stadt = document.querySelector("#txt_stadt").value;
+                if(stadt = ""){
+                    aler('Bitte die Stadt angeben! /n');
                     return false;
-                }else if(msg.search(/^[a-zA-Z]+$/) == -1){
-                    alert('Bitte nur Buchstaben eingeben!');
+                }else if(stadt.search(/^[a-zA-Z]+$/) == -1){
+                    alert('Bitte nur Buchstaben eingeben! /n');
                     return false;
                 }else{
                     activateLoader();
                     return true;
                 }
             }
-
-            function prüfeDaten(){
-              
-              if(Vorname beeinhaltet Zahlen, Nachname okey, Username okey, email okey, straße okey, plz okey, stadt okey){
-                // alert dass Vorname falsch
-                //alert nich ausgefüllt
-              }else if(Vorname okey, Nachname beeinhaltet zahlen , Username okey, email okey, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username ist schon vergeben, email okey, straße okey, plz okey, stadt okey){
-                //alert Username ist vergeben
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email ist nich ausggefüllt, straße okey, plz okey, stadt okey){
-                //alert Username ist vergeben
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email okey, straße okey, plz beinhaltet buchstaben, stadt okey){
-                //alert plz falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey , Username okey, email okey, straße okey, plz okey, stadt beeinhaltet zahlen){
-                //alert Stadt falsch
-                //alert nich ausgefüllt
-
-            //2er
-            }else if(Vorname falsch, Nachname falsch , Username okey, email okey, straße okey, plz okey, stadt okey){
-                //alert  falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch , Username falsch, email okey, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email okey, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email okey, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email okey, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße okey, plz okey, stadt oke){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email okey, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email okey, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email okey, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email okey, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email okey, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email okey, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-
-            //3er
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email okey, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email okey, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email okey, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email okey , straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey , email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey Username falsch, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-
-
-            //4er
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße okey, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username okey, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-
-            //5er
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße falsch, plz okey, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße okey, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße okey, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username okey, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username okey, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname okey, Username falsch, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-
-            //6er
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße falsch, plz falsch, stadt okey){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße falsch, plz okey, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße okey, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email okey, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname falsch, Username okey, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname falsch, Nachname okey, Username falsch, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else if(Vorname okey, Nachname falsch, Username falsch, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-
-            //7er
-            }else if(Vorname falsch, Nachname falsch, Username falsch, email falsch, straße falsch, plz falsch, stadt falsch){
-                //alert Nachname falsch
-                //alert nich ausgefüllt
-            }else{
-                  //alles richtig also durchlassen 
-              }
-    
-            }*/
-    
           </script>
     </body>
 </htlm>
