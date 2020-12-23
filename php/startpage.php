@@ -1,5 +1,20 @@
 <?php
   session_start();
+
+  //Verbindung herstellen
+  $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                        
+  if(!$webshopcon){
+    echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+    echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+  }
+
+  
+
+  $sql = "SELECT userid FROM online;";
+  $result = $webshopcon->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -135,6 +150,18 @@
           }
         ?>
 
+      </div>
+    </div>
+    <div class="col-2 h-100">
+      <div class="card text-center w-100" style="margin:30px;">
+        <div class="card-body">
+          <h5 class="card-title">Online Nutzer:</h5>
+
+       
+
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
       </div>
     </div>
   </div>

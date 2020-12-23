@@ -38,6 +38,8 @@
 
             $result = $wbsconnection->query($sql);
 
+            $userId = '';
+
             if($result->num_rows > 0){
                 $bLoginSuccess = true;
 
@@ -49,15 +51,21 @@
                     $_SESSION['username'] = $row["username"];
                     $_SESSION['login'] = 111;
                     $_SESSION['zeit'] = time();
+                    $userId = $row['id'];
                 }
             }else{
                 echo "0 Treffer!";
             }
 
+            
             /*while($row = $result->fetch_assoc())
             {
                 echo "id: " . $row["id"]. " - Name" . $row["firstname"]." " . $row["lastname"]."<br>";
             }*/
+
+            //Login in Tabelle online speichern
+            $sql = "INSERT INTO online (userid) VALUES ('$userId');";
+            $result = $wbsconnection->query($sql);
 
             
 
