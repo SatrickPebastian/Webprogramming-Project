@@ -17,15 +17,15 @@
         $pool .= "0123456789";
         srand ((double)microtime()*1000000);
         for ($index = 0; $index < 8; $index++) { 
-         $passwort .= substr($pool,(rand()%(strlen ($pool))), 1);
+            $passwort .= substr($pool,(rand()%(strlen ($pool))), 1);
         }
         return $passwort;
     }
 
-    $sPassword = zufallspassword();
+    $password_tohash = zufallspassword();
     
     //hier muss statt testpasswort hashPassword() durchgeführt werden um das zufällige Passwort zu bekommen
-    //$sPassword = hash('sha512', $password_hash);
+    $sPassword = hash('sha512', $password_hash);
 
     if(isset($_POST['txt_vorname'])){
         $sFirstname=$_POST['txt_vorname'];
@@ -80,7 +80,7 @@
         
         //$userMail = $row['email'];
         //$userWholeName = $row['firstname'].' '.$row['lastname'];
-        $body = "Hallo ".$sUsername."<br>"."Vielen Dank für Ihre Regestrierung bei Gameshark ".$sFirstname.$sLastname.". <br> Ihr Passwort lautet: ".$sPassword.". Bitte melden Sie sich an und legen Sie sich ein neues Passwort an. CHecken SIe zudem bitte Ihre Adressdaten auf Ihrem Profil";
+        $body = "Hallo ".$sUsername."<br>"."Vielen Dank für Ihre Regestrierung bei Gameshark ".$sFirstname.$sLastname.". <br> Ihr Passwort lautet: ".$password_tohash.". Bitte melden Sie sich an und legen Sie sich ein neues Passwort an. CHecken SIe zudem bitte Ihre Adressdaten auf Ihrem Profil";
 
         //Mail verschicken
 

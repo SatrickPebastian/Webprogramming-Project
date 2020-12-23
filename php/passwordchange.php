@@ -6,11 +6,12 @@ session_start();
     }
 
     $passwort ="";
+    $sChangeSuccess=false;
 
     if(isset($_POST['txt_password1'])){
         $passwort=$_POST['txt_password1'];
     }
-    $sPasswort = hash('sha512', $passwort);
+    $sPassword = hash('sha512', $passwort);
 
     try{
         $wbsconnection = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
@@ -22,11 +23,29 @@ session_start();
             exit;
         }
 
-        $sql = "UPDATE `user` SET 'password' = '$sPasswort' WHERE 'user'.'id' = 7"; // id auslesen 
-        
-        echo $sql;
+        $sql1 = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user where id= 7 and password='$sPassword'"; //id auslesen
+        $result = $wbsconnection->query($sql1);
+        if($result->num_rows > 0){
+            $sChangeSuccess = true;
 
-        if($wbsconnection->query($sql) === TRUE){
+            while($row = $result->fetch_assoc()){
+
+                $_SESSION['id'] = $row["id"];
+                $_SESSION['firstname'] = $row["firstname"];
+                $_SESSION['lastname'] = $row["lastname"];
+                $_SESSION['username'] = $row["username"];
+                $_SESSION['login'] = 111;
+                $_SESSION['zeit'] = time();
+            }
+        }else{
+            echo "0 Treffer!";
+        }
+
+        $sql2 = "UPDATE `user` SET 'password' = '$sPassword' WHERE 'user'.'id' = 7"; // id auslesen 
+        
+        echo $sql2;
+
+        if($wbsconnection->query($sql2) === TRUE){
             echo "Super! Passwordänderung erfolgreich!";
         }else{
             echo "Fehler beim Ändern des Passworts!: " . $wbsconnection->error;
@@ -37,5 +56,5 @@ session_start();
     }catch(Exception $e){
         echo "FEHLER beim verbinden der Datenbank";
     }
+
 ?>
- 
