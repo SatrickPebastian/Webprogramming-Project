@@ -38,7 +38,7 @@
 <body>
 
     <!-- Navigationsleiste -->
-  <header>
+<header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="../index.php"><img src="../images/resourceImages/hai23.png" width="40" height="auto"><span style="font-family: 'BioRhyme', serif;">&nbsp;GameShark</span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,9 +76,9 @@
         
       </div>
     </nav>
-    </header>
+</header>
 
-  <main>
+<main>
     <?php
       
       //Verbindung herstellen
@@ -109,7 +109,7 @@
           <h1 class="display-4 text-center">Persönliche Informationen</h1>
           <br><br><br><br>
           <form method="post" action="updateProfile.php" id="updateForm">
-
+          
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputEmail4">E-Mail</label>
@@ -159,10 +159,9 @@
       </div>
 
         
+</main>
 
-  </main>
-
-  <footer>
+<footer>
   <br><br><br><br><br>
   <nav class="navbar navbar-expand-sm navbar-light bg-light navbar-bottom">
     <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -202,9 +201,11 @@
     }
 
     function oldMode(){
+
       var editButton = document.getElementById('editButton');
       var saveButton = document.getElementById('saveButton');
 
+      
       document.getElementById('email').setAttribute("readonly", true);
       document.getElementById('street').setAttribute("readonly", true);
       document.getElementById('city').setAttribute("readonly", true);
@@ -213,27 +214,34 @@
       editButton.disabled = false;
       saveButton.disabled = true;
 
+      
       swal({
-        title: "Daten gespeichert.",
-        icon: "success",
-      });
+                title: "Daten gespeichert.",
+                icon: "success",
+              });
     }
 
-    $(document).ready(function(e) {
+      $(document).ready(function(e) {
         $('#saveButton').click(function(e){
           e.preventDefault();
 
-          $.ajax({
-          method: "post",
-          url: "updateProfile.php",
-          data: $('#updateForm').serialize(),
-          dataType: "text",
-          success: function(response) {
-            console.log(response);
-          }
+            $.ajax({
+              method: "post",
+              url: "updateProfile.php",
+              data: $('#updateForm').serialize(),
+              dataType: "text",
+              success: function(response) {
+                console.log(response);
+              }
+            });
+
+
         });
       });
-    });
+    
+
+
+      
 
   </script>
 

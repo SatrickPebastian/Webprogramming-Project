@@ -1,6 +1,9 @@
 
 <link href="loader.css" rel="stylesheet">
 
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script type="text/javascript">
     function activateLoader(){
 
@@ -42,6 +45,10 @@
         } 
     }
 
+    function sendEmail(){
+        
+    }
+
     
 </script>
 
@@ -52,7 +59,8 @@
         </div>
         <div class="col-sm-12 col-md-6 text-right">
             <form method="post" action="bestellen.php" onsubmit="return checkVersand();">
-                <button class="btn btn-lg btn-block btn-success text-uppercase" id="sendOrderButton" type="submit" name="sendOrderButton">Kostenpflichtig bestellen</button>
+                <button class="btn btn-lg btn-block btn-success text-uppercase" id="sendOrderButton" type="submit" name="sendOrderButton" onclick="sendEmail()">Kostenpflichtig bestellen</button>
+                <textarea class="form-control" id="bodyForm" placeholder="Email Body" name="bodyForm"></textarea>
                 <input type="hidden" name="cartId" id="cartId">
             </form>
                 
