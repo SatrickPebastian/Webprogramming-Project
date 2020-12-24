@@ -216,9 +216,9 @@
 
       
       swal({
-                title: "Daten gespeichert.",
-                icon: "success",
-              });
+        title: "Daten gespeichert.",
+        icon: "success",
+      });
     }
 
       $(document).ready(function(e) {

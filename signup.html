@@ -6,6 +6,14 @@
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="javaScript/jquery-2.1.4.min.js"></script>
+
+        <!-- Sweet alert import -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        
         
         <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -18,189 +26,371 @@
                 <div class="panel panel-info" >
                     <div class="panel-heading">
                         <div class="panel-title">
-                            Sign Up
+                            Registrieren
                         </div>
                         <div style="float:right; font-size: 80%; position: relative; top:-10px">
                             <a href="login.html">
-                                Sign in?
+                                Sie haben bereits einen Account?
                             </a>
                         </div>
                     </div>  
 
                     <div class="panel-body" >
-                        <form method="POST" action="php/signup.php" id="signupform" class="form-horizontal" role="form" onsubmit ="return pruefen();">
+                        <form id="signupform" class="form-horizontal" role="form">
                             <div id="signupalert" style="display:none" class="alert alert-danger">
                                 <p>Error:</p>
                                 <span></span>
                             </div>          
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_vorname" class="col-md-3 control-label">Vorname</label>
                                 <div class="col-md-9">
-                                    <input id="txt_vorname" name="txt_vorname" placeholder="Vorname" class="form-control" required="" type="text">
+                                    <input id="txt_vorname" name="txt_vorname" placeholder="Vorname" class="form-control" required type="text">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_nachname" class="col-md-3 control-label">Nachname</label>
                                 <div class="col-md-9">
-                                    <input id="txt_nachname" name="txt_nachname" placeholder="Nachname" class="form-control" required="" type="text">
+                                    <input id="txt_nachname" name="txt_nachname" placeholder="Nachname" class="form-control" required type="text">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_username" class="col-md-3 control-label">Username</label>
                                 <div class="col-md-9">
-                                    <input id="txt_username" name="txt_username" placeholder="Username" class="form-control" required="" type="text">
+                                    <small id="usernameError" style="color:red; position:absolute; bottom:33px; left:205px;"></small>
+                                    <input id="txt_username" name="txt_username" placeholder="Username" class="form-control" required type="text">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_email" class="col-md-3 control-label">Email</label>
                                 <div class="col-md-9">
-                                    <input id="txt_email" name="txt_email" placeholder="Email" class="form-control" required="" type="text">
+                                    <small id="emailError" style="color:red; position:absolute; bottom:33px; left:225px;"></small>
+                                    <input id="txt_email" name="txt_email" placeholder="Email" class="form-control" required type="email">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_straße" class="col-md-3 control-label">Straße</label>
                                 <div class="col-md-9">
-                                    <input id="txt_straße" name="txt_straße" placeholder="Straße" class="form-control" required="" type="text">
+                                    <input id="txt_straße" name="txt_straße" placeholder="Straße" class="form-control" required type="text">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_plz" class="col-md-3 control-label">PLZ</label>
                                 <div class="col-md-9">
-                                    <input id="txt_plz" name="txt_plz" placeholder="PLZ" class="form-control" required="" type="text">
+                                    <small id="plzError" style="color:red; position:absolute; bottom:33px; left:200px;"></small>
+                                    <input id="txt_plz" name="txt_plz" placeholder="PLZ" class="form-control" required type="text">
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_stadt" class="col-md-3 control-label">Stadt</label>
                                 <div class="col-md-9">
-                                    <input id="txt_stadt" name="txt_stadt" placeholder="Stadt" class="form-control" required="" type="text">
+                                    <small id="stadtError" style="color:red; position:absolute; bottom:33px; left:191px;"></small>
+                                    <input id="txt_stadt" name="txt_stadt" placeholder="Stadt" class="form-control" required type="text">
                                 </div>
                             </div>
                             
                             
                             <div class="form-group">                                        
                                 <div class="col-md-offset-3 col-md-9">
-                                    <button id="button1_save" name="button1_save" class="btn btn-success">Registrieren</button>
+                                    <button id="button1_save" name="button1_save" class="btn btn-success" type="submit">Registrieren</button>
                                     <button type="reset" id="button2_cancel" name="button2_cancel" class="btn btn-inverse">Abbrechen</button>
                                 </div>
                             </div>  
                         </form>
-                    </div>                    
+                    </div> 
+                    <div id="errorMessage" style="color:red; margin:7px;"></div>                   
                 </div>  
             </div>  
         </div>
 
         <script type="text/javascript">
 
-            function init(){
-                var myTextfeldX=document.getElementById("eingabe1");
-                myTextfeldX.addEventListener("blur", 
-                function (){
-                    this.style.border = "solid #FF0000";
-                }, false);           
-            }
+            const firstname = document.getElementById('txt_vorname');
+            const lastname = document.getElementById('txt_nachname');
+            
+            
+            const straße = document.getElementById('txt_straße');
+            const plz = document.getElementById('txt_plz');
+            const stadt = document.getElementById('txt_stadt');
 
-            function prüfe(){
-                if(!prüfeVorname() || !prüfeNachname() || !prüfeUsername() || !prüfeEmail() || !prüfeStraße() || !prüfeStraße() || !prüfePlz() || !prüfeStadt()){
-                    //do Fehlermeldung unten welche Felder fehlen (Das erst wenn submit gedrückt wurde anzeigen!!!!)
-                }
-            }
+            const errorElement = document.getElementById('errorMessage');
 
-            function prüfeVorname(){
-                var vorname = document.querySelector("#txt_vorname").value;
+            const form = document.getElementById('signupform');
 
-                if(vorname = ""){
-                    alert('Bitte den Vornamen angeben! /n');
-                    return false;
+            let messages = [];
+
+            let usernameCheckDb = false;
+            let emailCheckDb = false;
+            let plzCheck = false;
+            let stadtCheck = false;
+
+
+            $(document).ready(function(){
+
+                //Mit AJAX überprüfen ob E-Mail bereits registriert wurde.
+               $('#txt_email').blur(function(){
+
+                let email = $('#txt_email').val();
+                $('#txt_email').css('border', '');
+                $('#emailError').html("");
+
+                $.ajax({
+                    method: "post",
+                    url: "php/checkEmail.php",
+                    data: {
+                        'email' : email
+                    },
+                    dataType: "json",
+                    success: function(daten){
+
+                        if(daten === true){
+                            emailCheckDb = true;
+                        }else {
+                            emailCheckDb = false;
+
+                            $('#txt_email').css('border', 'solid #FF0000');
+                            $('#emailError').html("E-Mail ist bereits registriert.");
+                        }
+                    },
+                    error: function(daten){
+                        console.log("etwas ist schiefgelaufen.");
+                    }
+                });
+               });
+               
+
+               //Mit AJAX überprüfen ob Username bereits registriert wurde.
+               $('#txt_username').blur(function(){
+
+                let username = $('#txt_username').val();
+                $('#txt_username').css('border', '');
+                $('#usernameError').html("");
+
+                $.ajax({
+                    method: "post",
+                    url: "php/checkUsername.php",
+                    data: {
+                        'username' : username
+                    },
+                    dataType: "json",
+                    success: function(daten){
+
+                        if(daten === true){
+                            usernameCheckDb = true;
+                        }else {
+                            usernameCheckDb = false;
+
+                            $('#txt_username').css('border', 'solid #FF0000');
+                            $('#usernameError').html("Username ist bereits vergeben.");
+                        }
+                    },
+                    error: function(daten){
+                        console.log("etwas ist schiefgelaufen.");
+                    }
+                });
+                });
+
+
+                //Überprüfen ob PLZ gültig ist (genauer: ob PLZ eine Zahl ist)
+                $('#txt_plz').blur(function(){
+
+                    let plz = $('#txt_plz').val();
+                    $('#plzError').html("");
+                    $('#txt_plz').css('border', '');
+
+                    if(isNaN(plz)){
+                        $('#plzError').html("Bitte eine gültige PLZ eingeben.");
+                        $('#txt_plz').css('border', 'solid #FF0000');
+                    }else {
+                        plzCheck = true;
+                    }
+                });
+
+
+                //Überprüfen ob Stadt gültig ist (genauer: ob Stadt aus Buchstaben besteht)
+                $('#txt_stadt').blur(function(){
+
+                    let stadt = $('#txt_stadt').val();
+                    $('#stadtError').html("");
+                    $('#txt_stadt').css('border', '');
+
+                    if(!isNaN(stadt)){
+                        
+                        $('#stadtError').html("Bitte eine gültige Eingabe tätigen.");
+                        $('#txt_stadt').css('border', 'solid #FF0000');
+                        
+                    }else {
+                        console.log('klappt');
+                        console.log(stadtCheck);
+                        stadtCheck = true;
+                        console.log(stadtCheck);
+                    }
+                });
+
+
+
+                $('#signupform').submit(function(e){
+                    e.preventDefault();
+
+                    if(usernameCheckDb == false){
+                        messages.push('Username ist bereits vergeben.');
+                    }
+
+                    if(emailCheckDb == false){
+                        messages.push('E-Mail Addresse ist bereits registriert.');
+                    }
+
+                    if(plzCheck == false){
+                        messages.push('Bitte gültige PLZ eingeben.');
+                    }
+
+                    //Hier noch kleiner Bug zu fixen
+                    if(stadtCheck == false){
+                        messages.push("Bitte gültige Stadt eingeben.");
+                    }
+
+
+                    if(messages.length > 0){
+                        e.preventDefault();
+                        swal({
+                            title: "Fehler",
+                            icon: "error",
+                            text: messages.join('\n')
+                        });
+                        messages = [];
+                    }else {
+                        swal({
+                        title: "Registrierung erfolgreich",
+                        icon: "success",
+                        text: "Sie haben eine E-Mail mit Ihrem Passwort erhalten."
+                        });
+
+                        $.ajax({
+                        method: "post",
+                        url: "php/signup.php",
+                        data: $('#signupform').serialize(),
+                        dataType: "text",
+                        success: function(response) {
+                            console.log(response);
+                        }
+                        });
+                    }
+                });
+            });
+
+
+
+            //SVENJAS CODE (nichts geändert, nur kommentiert)
+
+            // function init(){
+            //     var myTextfeldX=document.getElementById("eingabe1");
+            //     myTextfeldX.addEventListener("blur", 
+            //     function (){
+            //         this.style.border = "solid #FF0000";
+            //     }, false);           
+            // }
+
+            // function prüfe(){
+            //     if(!prüfeVorname() || !prüfeNachname() || !prüfeUsername() || !prüfeEmail() || !prüfeStraße() || !prüfeStraße() || !prüfePlz() || !prüfeStadt()){
+            //         //do Fehlermeldung unten welche Felder fehlen (Das erst wenn submit gedrückt wurde anzeigen!!!!)
+            //     }
+            // }
+
+            // function prüfeVorname(){
+            //     var vorname = document.querySelector("#txt_vorname").value;
+
+            //     if(vorname = ""){
+            //         alert('Bitte den Vornamen angeben! /n');
+            //         return false;
                     
-                }else if(vorname.search(/^[a-zA-Z]+$/) == -1){
-                    alert('Bitte nur Buchstaben eingeben! /n');
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
+            //     }else if(vorname.search(/^[a-zA-Z]+$/) == -1){
+            //         alert('Bitte nur Buchstaben eingeben! /n');
+            //         return false;
+            //     }else{
+            //         activateLoader();
+            //         return true;
 
-                }
-            }
-            function prüfeNachname(){
-                var nachname = document.querySelector("#txt_nachname").value;
+            //     }
+            // }
+            // function prüfeNachname(){
+            //     var nachname = document.querySelector("#txt_nachname").value;
 
-                if(nachname = ""){
-                    alert('Bitte den Nachnamen angeben! /n');
-                    return false;
-                }else if(nachname.search(/^[a-zA-Z]+$/) == -1){
-                    alert('Bitte nur Buchstaben eingeben! /n');
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
-                }
-            }
-            function prüfeUsername(){
-                var username = document.querySelector("#txt_username").value;
+            //     if(nachname = ""){
+            //         alert('Bitte den Nachnamen angeben! /n');
+            //         return false;
+            //     }else if(nachname.search(/^[a-zA-Z]+$/) == -1){
+            //         alert('Bitte nur Buchstaben eingeben! /n');
+            //         return false;
+            //     }else{
+            //         activateLoader();
+            //         return true;
+            //     }
+            // }
+            // function prüfeUsername(){
+            //     var username = document.querySelector("#txt_username").value;
 
-                if(username= ""){
-                    alert('Bitte den Username angeben! /n');
-                    return false;
-                }else if(gibt es schon){
-                    alert('Der Username ist schon vergeben! /n');
-                }else{
-                    activateLoader();
-                    return true;
-                }
-            }
-            function prüfeEmail(){
-                var email = document.querySelector("#txt_email").value;
+            //     if(username= ""){
+            //         alert('Bitte den Username angeben! /n');
+            //         return false;
+            //     }else if(gibt es schon){
+            //         alert('Der Username ist schon vergeben! /n');
+            //     }else{
+            //         activateLoader();
+            //         return true;
+            //     }
+            // }
+            // function prüfeEmail(){
+            //     var email = document.querySelector("#txt_email").value;
 
-                if(email = ""){
-                    alert('Bitte die Email angeben! /n');
-                    return false;
-                }else if(wird schon benutzt){
-                    alert('Die Email-Adresse wurde schon benutzt! /n');
+            //     if(email = ""){
+            //         alert('Bitte die Email angeben! /n');
+            //         return false;
+            //     }else if(wird schon benutzt){
+            //         alert('Die Email-Adresse wurde schon benutzt! /n');
 
-                }else{
-                    activateLoader();
-                    return true;
-                }  
-            }
-            function prüfeStraße(){
-                var straße = document.querySelector("#txt_straße").value;
+            //     }else{
+            //         activateLoader();
+            //         return true;
+            //     }  
+            // }
+            // function prüfeStraße(){
+            //     var straße = document.querySelector("#txt_straße").value;
 
-                if(straße = ""){
-                    alert('Bitte die Straße angeben! /n');
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
-                }
-            }
-            function prüfePlz(){
-                var plz = document.querySelector("#txt_plz").value;
+            //     if(straße = ""){
+            //         alert('Bitte die Straße angeben! /n');
+            //         return false;
+            //     }else{
+            //         activateLoader();
+            //         return true;
+            //     }
+            // }
+            // function prüfePlz(){
+            //     var plz = document.querySelector("#txt_plz").value;
 
-                if(plz = ""){
-                    alert('Bitte die PLZ angeben!');
-                    return false;
-                }else if(!isNanN(plz)){
-                    alert('Bitte nur Zahlen eingeben!');
-                    return false;
-                }else{
-                    activateLoader();
-                    return true; 
-                }
+            //     if(plz = ""){
+            //         alert('Bitte die PLZ angeben!');
+            //         return false;
+            //     }else if(!isNanN(plz)){
+            //         alert('Bitte nur Zahlen eingeben!');
+            //         return false;
+            //     }else{
+            //         activateLoader();
+            //         return true; 
+            //     }
 
-            }
-            function prüfeStadt(){
-                var stadt = document.querySelector("#txt_stadt").value;
-                if(stadt = ""){
-                    aler('Bitte die Stadt angeben! /n');
-                    return false;
-                }else if(stadt.search(/^[a-zA-Z]+$/) == -1){
-                    alert('Bitte nur Buchstaben eingeben! /n');
-                    return false;
-                }else{
-                    activateLoader();
-                    return true;
-                }
-            }
+            // }
+            // function prüfeStadt(){
+            //     var stadt = document.querySelector("#txt_stadt").value;
+            //     if(stadt = ""){
+            //         aler('Bitte die Stadt angeben! /n');
+            //         return false;
+            //     }else if(stadt.search(/^[a-zA-Z]+$/) == -1){
+            //         alert('Bitte nur Buchstaben eingeben! /n');
+            //         return false;
+            //     }else{
+            //         activateLoader();
+            //         return true;
+            //     }
+            // }
           </script>
     </body>
 </htlm>
