@@ -64,7 +64,7 @@
             }*/
 
             //Login in Tabelle online speichern
-            $sql = "INSERT INTO online (userid) VALUES ('$userId');";
+            $sql = "UPDATE user SET status = 'online' WHERE id = '$userId';";
             $result = $wbsconnection->query($sql);
 
             

@@ -46,6 +46,10 @@ session_start();
     $sql = "INSERT INTO logouts (user, lastlogout) VALUES ('$userId', '$dateAndTime');";
     $result = $webshopcon->query($sql);
 
+    $userId = $_SESSION['id'];
+    $sql = "UPDATE user SET status = 'offline' WHERE id = '$userId';";
+    $result = $webshopcon->query($sql);
+
 
     $_SESSION = array();
 

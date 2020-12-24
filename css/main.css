@@ -58,6 +58,16 @@ ul li a:hover {
     
 }
 
+.onlineButton {
+    color: green;
+    
+}
+
+.offlineButton {
+    color:red;
+    
+}
+
 
 
 

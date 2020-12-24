@@ -13,8 +13,9 @@
 
   
 
-  $sql = "SELECT userid FROM online;";
+  $sql = "SELECT status, username FROM user;";
   $result = $webshopcon->query($sql);
+
 ?>
 
 <!DOCTYPE html>
@@ -41,6 +42,27 @@
   <link href="../css/karussell.css" rel="stylesheet">
   <link href="../css/artikelpage.css" rel="stylesheet">
   <link href="../css/loader.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+
+      //Online-User Daten werden alle 500ms aktualisiert
+      setInterval(function(){
+        $.get("getOnline.php", function(daten){
+          $('#onlineUserCard').html(daten);
+        });
+      }, 500);
+
+      setInterval(function(){
+        $.get("getOffline.php", function(daten){
+          $('#offlineUserCard').html(daten);
+        });
+      }, 500);
+    });
+  </script>
   
 </head>
 <body>
@@ -153,14 +175,30 @@
       </div>
     </div>
     <div class="col-2 h-100">
-      <div class="card text-center w-100" style="margin:30px;">
+      <div class="card text-center w-100" style="margin:30px;" id="userStatus">
         <div class="card-body">
           <h5 class="card-title">Online Nutzer:</h5>
 
-       
+          <!-- Hier werden Daten von getOnline.php mittels AJAX eingefügt -->
+          <span id="onlineUserCard"></span>
+          <br>
+          <div class="accordion" id="offlineUserAccordion">
+            <div class="card w-75 h-100 d-inline-block">
+              <div class="card-header" id="headingOne"> 
+                <button class="btn btn-light" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expended="true" aria-controls="collapseOne">
+                  zeige Offline Nutzer
+                </button>
+              </div>
+              
+              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#offlineUserAccordion">
+                <div class="card-body">
 
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+                  <!-- Hier werden Daten von getOffline.php mittels AJAX eingefügt -->
+                  <span id="offlineUserCard"></span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
