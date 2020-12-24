@@ -65,7 +65,7 @@
         }
 
         $sql= "INSERT INTO user(firstname, lastname, username, password, email, street, plz, stadt, status) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sPassword', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', 'offline')";
-
+        $result = $wbsconnection->query($sql);
 
         mysqli_close($wbsconnection);
 

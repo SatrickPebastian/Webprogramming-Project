@@ -36,7 +36,7 @@
                     </div>  
 
                     <div class="panel-body" >
-                        <form id="signupform" class="form-horizontal" role="form">
+                        <form id="signupform" class="form-horizontal" role="form" method="POST" action="php/signup.php">
                             <div id="signupalert" style="display:none" class="alert alert-danger">
                                 <p>Error:</p>
                                 <span></span>
@@ -267,8 +267,16 @@
                         $.ajax({
                         method: "post",
                         url: "php/signup.php",
-                        data: $('#signupform').serialize(),
-                        dataType: "text",
+                        data: {
+                            'txt_vorname' : $('#txt_vorname').val(),
+                            'txt_nachname' : $('#txt_nachname').val(),
+                            'txt_username' : $('#txt_username').val(),
+                            'txt_email' : $('#txt_email').val(),
+                            'txt_stadt' : $('#txt_stadt').val(),
+                            'txt_plz' : $('#txt_plz').val(),
+                            'txt_straße' : $('#txt_straße').val()
+                        },
+                        dataType: "json",
                         success: function(response) {
                             console.log(response);
                         }

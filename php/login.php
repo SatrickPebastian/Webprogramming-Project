@@ -33,8 +33,10 @@
                 exit;
             }
 
-
-            $sql = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user where username='$sUsername' and password='$sPassword'";
+           
+            $hashedPassword = hash('sha512', $sPassword);
+            
+            $sql = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user where username='$sUsername' and password='$hashedPassword'";
 
             $result = $wbsconnection->query($sql);
 
