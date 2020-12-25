@@ -95,12 +95,10 @@
         $mail->Subject = "Ihre Registrierung bei GameShark";
         $mail->Body = $body;
 
-        if($mail->send()){
-            sleep(2);
-            header("Location: ../signup.html");
-        }else {
-            echo "Etwas ist schiefgelaufen: <br><br>" . $mail->ErrorInfo;
-        }
+        $mail->send();
+        sleep(2);
+        header("Location: ../login.html");
+        
 
     }catch(Exception $e){
         echo "FEHLER beim verbinden der Datenbank";
