@@ -152,7 +152,7 @@
 
   <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">Warenkorb</h1>
+        <h1 class="jumbotron-heading display-4">Warenkorb</h1>
      </div>
 </section>
 <br>

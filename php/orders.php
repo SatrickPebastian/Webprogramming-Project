@@ -132,7 +132,7 @@
 
 <section class="jumbotron text-center">
     <div class="container">
-        <h1 class="jumbotron-heading">Meine Bestellungen</h1>
+        <h1 class="jumbotron-heading display-4">Meine Bestellungen</h1>
      </div>
 </section>
 

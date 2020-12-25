@@ -105,59 +105,54 @@
     ?>
     
       <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4 text-center">Persönliche Informationen</h1>
-          <br><br><br><br>
-          <form method="post" action="updateProfile.php" id="updateForm">
-          
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputEmail4">E-Mail</label>
-                <input type="email" class="form-control" value="<?= $userEmail?>" style="width:500px;" readonly id="email" name="email">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputAddress">Straße</label>
-                <input type="text" class="form-control" value="<?= $userStreet?>" style="width:300px;" readonly id="street" name="street">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <label for="inputAddress">Stadt</label>
-                <input type="text" class="form-control" style="width:300px;" value="<?= $userCity?>" readonly id="city" name="city">
-              </div>
-            
-
-              <div class="form-group col-md-4">
-                  <label for="inputAddress">PLZ</label>
-                  <input type="text" class="form-control" style="width:100px;" value="<?= $userPlz?>" readonly id="plz" name="plz">
-                </div>
-              </div>
-            <div class="row justify-content-start">
-              <div class="col-2">
-              <button type="button" class="btn btn-primary mt-5" onclick="editMode()" id="editButton">Bearbeiten</button>
-              </div>
-              <div class="col-2">
-              <button class="btn btn-success mt-5" onclick="oldMode()" id="saveButton" name="saveButton" type="submit" disabled>Speichern</button>
-              </div>
-              <div class="col-8">
-              <button class="btn btn-danger mt-5" type="button">Passwort ändern</button>
-              </div>
-            </div>
-            
-          </form>
-
-         
-          
-          
-          
-        </div>
-          
+        <h1 class="text-center display-4">Persönliche Informationen</h1>
       </div>
 
+      <div class="container">
+        <br>
+        <form method="post" action="updateProfile.php" id="updateForm">
+          <div class="form-row justify-content-center d-flex flex-row">
+            <div class="p2">
+              <label for="inputEmail4"><b>E-Mail</b></label>
+              <input type="email" class="form-control mb-4" value="<?= $userEmail?>" style="width:400px;" readonly id="email" name="email">
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center d-flex flex-row">
+            <div class="p2">
+              <label for="inputAddress"><b>Straße</b></label>
+              <input type="text" class="form-control mb-4" value="<?= $userStreet?>" style="width:300px;" readonly id="street" name="street">
+            </div>
+          </div>
+
+          <div class="form-row justify-content-center d-flex flex-row">
+            <div class="p2">
+              <label for="inputAddress"><b>Stadt</b></label>
+              <input type="text" class="form-control mr-2 mb-4" style="width:300px;" value="<?= $userCity?>" readonly id="city" name="city">
+            </div>
+         
+            <div class="p2">
+                <label for="inputAddress"><b>PLZ</b></label>
+                <input type="text" class="form-control ml-2 mb-4" style="width:100px;" value="<?= $userPlz?>" readonly id="plz" name="plz">
+            </div>
+          </div>
+
+          <br>
+
+          <div class="form-row justify-content-center d-flex flex-row">
+            <div class="p2">
+              <button type="button" class="btn btn-primary m-2" onclick="editMode()" id="editButton">Bearbeiten</button>
+              <button class="btn btn-success m-2" onclick="oldMode()" id="saveButton" name="saveButton" type="submit" hidden>Speichern</button>
+            </div>
+          
+
+          
+            <div class="p2">
+              <button class="btn btn-danger m-2" type="button">Passwort ändern</button>
+            </div>
+          </div>
+        </form>
+      </div>
         
 </main>
 
@@ -185,35 +180,36 @@
   </nav>
 </footer>
 
+
+
   <script type="text/javascript">
 
     function editMode(){
       var editButton = document.getElementById('editButton');
       var saveButton = document.getElementById('saveButton');
 
+      $('#editButton').hide();
+      $('#saveButton').attr('hidden', false);
+
       document.getElementById('email').removeAttribute("readonly");
       document.getElementById('street').removeAttribute("readonly");
       document.getElementById('city').removeAttribute("readonly");
       document.getElementById('plz').removeAttribute("readonly");
-      
-      editButton.disabled = true;
-      saveButton.disabled = false;
+
     }
 
     function oldMode(){
 
       var editButton = document.getElementById('editButton');
       var saveButton = document.getElementById('saveButton');
-
+ 
+      $('#editButton').show();
+      $('#saveButton').attr('hidden', true);
       
       document.getElementById('email').setAttribute("readonly", true);
       document.getElementById('street').setAttribute("readonly", true);
       document.getElementById('city').setAttribute("readonly", true);
       document.getElementById('plz').setAttribute("readonly", true);
-
-      editButton.disabled = false;
-      saveButton.disabled = true;
-
       
       swal({
         title: "Daten gespeichert.",
@@ -221,28 +217,22 @@
       });
     }
 
-      $(document).ready(function(e) {
-        $('#saveButton').click(function(e){
-          e.preventDefault();
+    $(document).ready(function(e) {
+      $('#saveButton').click(function(e){
+        e.preventDefault();
 
-            $.ajax({
-              method: "post",
-              url: "updateProfile.php",
-              data: $('#updateForm').serialize(),
-              dataType: "text",
-              success: function(response) {
-                console.log(response);
-              }
-            });
-
-
-        });
+          $.ajax({
+            method: "post",
+            url: "updateProfile.php",
+            data: $('#updateForm').serialize(),
+            dataType: "text",
+            success: function(response) {
+              console.log(response);
+            }
+          });
       });
+    });
     
-
-
-      
-
   </script>
 
 </body>
