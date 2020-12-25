@@ -1,5 +1,8 @@
 
-<link href="loader.css" rel="stylesheet">
+<link href="../css/loader.css" rel="stylesheet">
+
+<!-- Sweet alert import -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- jQuery -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -16,13 +19,20 @@
         setTimeout(function(){
                 loader.style.visibility = origLoader;
                 
-        }, 1750);
+        }, 2100);
+
         setTimeout(function(){
                 
                 overlay.style.visibility = origOverlay;
-        }, 2000); 
+        }, 2350);
 
-        
+        setTimeout(function(){
+            swal({
+                title: "Bestellung erfolgreich",
+                text: "Sie erhalten in Kürze eine Bestellbestätigung per E-Mail.",
+                icon:"success"
+            });
+        },2500);
     }
 
     //Validierung bevor die Daten versendet werden.
@@ -44,11 +54,6 @@
             return true;
         } 
     }
-
-    function sendEmail(){
-        
-    }
-
     
 </script>
 
@@ -59,7 +64,7 @@
         </div>
         <div class="col-sm-12 col-md-6 text-right">
             <form method="post" action="bestellen.php" onsubmit="return checkVersand();">
-                <button class="btn btn-lg btn-block btn-success text-uppercase" id="sendOrderButton" type="submit" name="sendOrderButton" onclick="sendEmail()">Kostenpflichtig bestellen</button>
+                <button class="btn btn-lg btn-block btn-success text-uppercase" id="sendOrderButton" type="submit" name="sendOrderButton">Kostenpflichtig bestellen</button>
                 <input type="hidden" name="cartId" id="cartId">
             </form>
                 

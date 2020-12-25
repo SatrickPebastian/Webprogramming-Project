@@ -9,6 +9,8 @@
 
     $bLoginSuccess=false;
 
+    $row = null;
+
     if(isset($_POST['username'])){
         $sUsername=$_POST['username'];
     }
@@ -69,6 +71,11 @@
             $sql = "UPDATE user SET status = 'online' WHERE id = '$userId';";
             $result = $wbsconnection->query($sql);
 
+            //Holen des letzten logouts um zu prüfen, ob das der erste Login ist oder nicht
+            $sql = "SELECT firstLogin FROM user WHERE id = '$userId';";
+            $result = $wbsconnection->query($sql);
+            $row = $result->fetch_assoc();
+
             
 
             mysqli_close($wbsconnection);
@@ -79,10 +86,16 @@
         }
     }
 
-    if($bLoginSuccess){
+
+
+    if($bLoginSuccess && ($row['firstLogin'] == 'no')){
         header("Location: startpage.php");
-    }else{
-        header("Location: ../login.html");
-    }
+        }else if($bLoginSuccess && ($row['firstLogin'] == 'yes')){
+            header("Location: newPassword.php");
+        }else {
+            header("Location: ../login.html");
+        }
+        
+    
 
 ?>

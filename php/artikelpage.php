@@ -177,9 +177,7 @@
     
   </div>
 
-  <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
-  <div class="cssload-spin-box" id="loader2"></div>
-  <div id="hidePage2" class="hidePage"></div>
+  
   
 
 </main>
@@ -207,6 +205,10 @@
   
     </div>
   </nav>
+
+  <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
+  <div class="cssload-spin-box" id="loader2"></div>
+  <div id="hidePage2" class="hidePage"></div>
 </footer>
             
 </body>

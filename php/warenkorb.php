@@ -154,8 +154,8 @@
     <div class="container">
         <h1 class="jumbotron-heading display-4">Warenkorb</h1>
      </div>
-</section>
-<br>
+  </section>
+  <br>
 
 <div class="container mb-4">
     <div class="row">
@@ -233,9 +233,7 @@
           }
         ?>
 
-        <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
-        <div class="cssload-spin-box" id="loader"></div>
-        <div id="hidePage" class="hidePage">
+        
           
         </div>
     
@@ -272,6 +270,10 @@
   
     </div>
   </nav>
+
+  <!-- Die Elemente, welche für den Lade-Spinner verantwortlich sind. -->
+  <div class="cssload-spin-box" id="loader"></div>
+  <div id="hidePage" class="hidePage">
 </footer>
 
 </body>

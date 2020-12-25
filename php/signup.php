@@ -64,7 +64,7 @@
             exit;
         }
 
-        $sql= "INSERT INTO user(firstname, lastname, username, password, email, street, plz, stadt, status) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sPassword', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', 'offline')";
+        $sql= "INSERT INTO user(firstname, lastname, username, password, email, street, plz, stadt, status, firstLogin) VALUES ('$sFirstname', '$sLastname', '$sUsername', '$sPassword', '$sEmail', '$sStreet', '$sPLZ', '$sStadt', 'offline', 'yes')";
         $result = $wbsconnection->query($sql);
 
         mysqli_close($wbsconnection);
