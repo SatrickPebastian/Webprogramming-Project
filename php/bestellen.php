@@ -12,7 +12,7 @@
 
         //Bewirkt Zeitverzögerung der Form-Submission. Dadurch wird der Loader auf der warenkorb.php Seite sichtbar.
         //Ohne diese Zeile würde der Loader sichtbar werden aber durch die Form-Submission direkt unterbrochen.
-        sleep(1);
+        
         
         //Verbindung herstellen
         $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
@@ -107,7 +107,7 @@
         $sql = "DELETE FROM warenkorb WHERE user = '$userId'";
         $result = $webshopcon->query($sql);
         
-        
+        sleep(3);
         
         mysqli_close($webshopcon);
 

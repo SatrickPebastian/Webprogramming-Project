@@ -30,16 +30,16 @@
             swal({
                 title: "Bestellung erfolgreich",
                 text: "Sie erhalten in Kürze eine Bestellbestätigung per E-Mail.",
-                icon:"success"
+                icon:"success",
+                buttons: false,
+                closeOnClickOutside: false,
             });
-        },2500);
+        },2350);
     }
 
     //Validierung bevor die Daten versendet werden.
     function checkVersand(){
-
         var warenkorbBtn = document.getElementById('warenkorbBtn');
-        
         
         var checkStand = document.getElementById('checkboxStandard');
         var checkExp = document.getElementById('checkboxExpress');

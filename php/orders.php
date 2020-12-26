@@ -134,8 +134,8 @@
         <td><?= $row['versandOption']?></td>
         <td><?= $row['date']?></td>
         <form method="post" action="buyAgain.php" id="buyAgainForm">
-        <td class="text-center"><button id="buyAgainButton" type="submit" class="btn btn-sm btn-light border" value="<?= $row['id']?>" name="buyAgainButton" onclick="buyAgain();"><i class="fas fa-redo"></i></button></td>
-        
+        <td class="text-center"><button class="btn btn-sm btn-light border buyAgainButton" name="buyAgainButton"><i class='fas fa-redo'></i></button></td>
+        <input type="hidden" value="<?= $row['id']?>" name="hiddenBuyAgain" id="hiddenBuyAgain">
         </form>
       </tr>
         <?php $rowCounter++; ?>
@@ -222,12 +222,55 @@
                       
                       overlay.style.visibility = origOverlay;
               }, 2000); 
+             
               $('#deleteOrdersForm').submit();
             }
           });
           
+        });
+
+        $('.buyAgainButton').click(function(e){
+          e.preventDefault();
+          swal({
+            title: "1-Click Buy again",
+            text: "Diese Bestellung erneut durchführen?",
+            buttons: {
+              cancel: "Abbrechen",
+              confirm: "Fortfahren"
+            },
+
+          }).then((willBuyAgain) => {
+            if(willBuyAgain){
+
+              var loader = document.getElementById('loader2');
+              var overlay = document.getElementById('hidePage2');
+              var origOverlay = overlay.style.visibility;
+              var origLoader = loader.style.visibility;
+              loader.style.visibility = 'visible';
+              overlay.style.visibility = 'visible';
+              setTimeout(function(){
+                      loader.style.visibility = origLoader;
+                      
+              }, 1750);
+              setTimeout(function(){
+                      
+                      overlay.style.visibility = origOverlay;
+              }, 2000); 
+              setTimeout(function(){
+                swal({
+                    title: "Bestellung erfolgreich",
+                    text: "Sie erhalten in Kürze eine Bestellbestätigung per E-Mail.",
+                    icon:"success",
+                    buttons: false,
+                    closeOnClickOutside: false,
+                });
+              },2350);
+
+              $('#buyAgainForm').submit();
+            }
           });
         });
+      });
       
   </script>
 
