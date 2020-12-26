@@ -94,68 +94,68 @@
 
   <br>
   <div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Produkte</th>
-        <th scope="col">Preis</th>
-        <th scope="col">Versandart</th>
-        <th scope="col">Zeitpunkt</th>
-        <th scope="col" class="text-center">Buy again</th>
-      </tr>
-    </thead>
-    <tbody>
-    
-    <?php
-      //Verbindung herstellen
-      $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
-                          
-      if(!$webshopcon){
-        echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
-        echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
-        echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
-        exit;
-      }
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Produkte</th>
+          <th scope="col">Preis</th>
+          <th scope="col">Versandart</th>
+          <th scope="col">Zeitpunkt</th>
+          <th scope="col" class="text-center">Buy again</th>
+        </tr>
+      </thead>
+      <tbody>
+      
+        <?php
+          //Verbindung herstellen
+          $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                              
+          if(!$webshopcon){
+            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+            exit;
+          }
 
-      $userId = $_SESSION['id'];
-      //Absteigende Ordnung, damit die neuesten Bestellungen als erstes gelistet werden.
-      $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme, versandOption FROM bestellungen WHERE userid = '$userId' ORDER BY id DESC;";
-      $result = $webshopcon->query($sql);
+          $userId = $_SESSION['id'];
+          //Absteigende Ordnung, damit die neuesten Bestellungen als erstes gelistet werden.
+          $sql = "SELECT id, userid, date, artikelnamen, gesamteSumme, versandOption FROM bestellungen WHERE userid = '$userId' ORDER BY id DESC;";
+          $result = $webshopcon->query($sql);
 
-      $rowCounter = 1;
-      while($row = $result->fetch_assoc()):
-    ?>
+          $rowCounter = 1;
+          while($row = $result->fetch_assoc()):
+        ?>
 
-      <tr>  
-        <th scope="row"><?= $rowCounter?></th>
-        <td><?= $row['artikelnamen']?></td>
-        <td><?= $row['gesamteSumme']?>€</td>
-        <td><?= $row['versandOption']?></td>
-        <td><?= $row['date']?></td>
-        <form method="post" action="buyAgain.php" id="buyAgainForm">
-        <td class="text-center"><button class="btn btn-sm btn-light border buyAgainButton" name="buyAgainButton"><i class='fas fa-redo'></i></button></td>
-        <input type="hidden" value="<?= $row['id']?>" name="hiddenBuyAgain" id="hiddenBuyAgain">
-        </form>
-      </tr>
+        <tr>  
+          <th scope="row"><?= $rowCounter?></th>
+          <td><?= $row['artikelnamen']?></td>
+          <td><?= $row['gesamteSumme']?>€</td>
+          <td><?= $row['versandOption']?></td>
+          <td><?= $row['date']?></td>
+          <form method="post" action="buyAgain.php" id="buyAgainForm">
+          <td class="text-center"><button class="btn btn-sm btn-light border buyAgainButton" name="buyAgainButton"><i class='fas fa-redo'></i></button></td>
+          <input type="hidden" value="<?= $row['id']?>" name="hiddenBuyAgain" id="hiddenBuyAgain">
+          </form>
+        </tr>
         <?php $rowCounter++; ?>
-      <?php endwhile; mysqli_close($webshopcon);?> 
-    </tbody>
-  </table>
+        <?php endwhile; mysqli_close($webshopcon);?> 
+      </tbody>
+    </table>
 
-  <?php
-    if($rowCounter > 1){
-      echo '<div class="row">
-      <div class="col">
-        <form method="post" action="deleteOrders.php" id="deleteOrdersForm">
-        <button class="btn btn-danger text-center" style="margin-bottom:50px;" type="submit" id="deleteOrdersButton">Bestellverlauf löschen</button>
-        </form>
-      </div>
-  </div>';
-    }else {
-      echo '<br><h2 class="text-center">Keine durchgeführten Bestellungen hinterlegt.</h2>';
-    }
-  ?>
+    <?php
+      if($rowCounter > 1){
+        echo '<div class="row">
+              <div class="col">
+              <form method="post" action="deleteOrders.php" id="deleteOrdersForm">
+              <button class="btn btn-danger text-center" style="margin-bottom:50px;" type="submit" id="deleteOrdersButton">Bestellverlauf löschen</button>
+              </form>
+              </div>
+              </div>';
+      }else {
+        echo '<br><h2 class="text-center">Keine durchgeführten Bestellungen hinterlegt.</h2>';
+      }
+    ?>
 
   </div>
 
@@ -193,84 +193,84 @@
   //Sendet 
     $(document).ready(function(){
       
-        $('#deleteOrdersButton').click(function(e){
-          e.preventDefault();
-          swal({
-            title: "Achtung",
-            text: "Diese Aktion wird Ihren gesamten Bestellverlauf löschen.",
-            icon: "warning",
-            buttons: {
-              cancel: "Abbrechen",
-              confirm: "Fortfahren"
-            },
-            dangerMode : true,
+      $('#deleteOrdersButton').click(function(e){
+        e.preventDefault();
+        swal({
+          title: "Achtung",
+          text: "Diese Aktion wird Ihren gesamten Bestellverlauf löschen.",
+          icon: "warning",
+          buttons: {
+            cancel: "Abbrechen",
+            confirm: "Fortfahren"
+          },
+          dangerMode : true,
+        
+        }).then((willDelete) => {
           
-          }).then((willDelete) => {
+          if(willDelete){
+            var loader = document.getElementById('loader2');
+            var overlay = document.getElementById('hidePage2');
+            var origOverlay = overlay.style.visibility;
+            var origLoader = loader.style.visibility;
+            loader.style.visibility = 'visible';
+            overlay.style.visibility = 'visible';
+            setTimeout(function(){
+                    loader.style.visibility = origLoader;
+                    
+            }, 1750);
+            setTimeout(function(){
+                    
+                    overlay.style.visibility = origOverlay;
+            }, 2000); 
             
-            if(willDelete){
-              var loader = document.getElementById('loader2');
-              var overlay = document.getElementById('hidePage2');
-              var origOverlay = overlay.style.visibility;
-              var origLoader = loader.style.visibility;
-              loader.style.visibility = 'visible';
-              overlay.style.visibility = 'visible';
-              setTimeout(function(){
-                      loader.style.visibility = origLoader;
-                      
-              }, 1750);
-              setTimeout(function(){
-                      
-                      overlay.style.visibility = origOverlay;
-              }, 2000); 
-             
-              $('#deleteOrdersForm').submit();
-            }
-          });
-          
+            $('#deleteOrdersForm').submit();
+          }
         });
+        
+      });
 
-        $('.buyAgainButton').click(function(e){
-          e.preventDefault();
-          swal({
-            title: "1-Click Buy again",
-            text: "Diese Bestellung erneut durchführen?",
-            buttons: {
-              cancel: "Abbrechen",
-              confirm: "Fortfahren"
-            },
+      $('.buyAgainButton').click(function(e){
+        e.preventDefault();
+        swal({
+          title: "1-Click Buy again",
+          text: "Diese Bestellung erneut durchführen?",
+          buttons: {
+            cancel: "Abbrechen",
+            confirm: "Fortfahren"
+          },
 
-          }).then((willBuyAgain) => {
-            if(willBuyAgain){
+        }).then((willBuyAgain) => {
+          if(willBuyAgain){
 
-              var loader = document.getElementById('loader2');
-              var overlay = document.getElementById('hidePage2');
-              var origOverlay = overlay.style.visibility;
-              var origLoader = loader.style.visibility;
-              loader.style.visibility = 'visible';
-              overlay.style.visibility = 'visible';
-              setTimeout(function(){
-                      loader.style.visibility = origLoader;
-                      
-              }, 1750);
-              setTimeout(function(){
-                      
-                      overlay.style.visibility = origOverlay;
-              }, 2000); 
-              setTimeout(function(){
-                swal({
-                    title: "Bestellung erfolgreich",
-                    text: "Sie erhalten in Kürze eine Bestellbestätigung per E-Mail.",
-                    icon:"success",
-                    buttons: false,
-                    closeOnClickOutside: false,
-                });
-              },2350);
+            var loader = document.getElementById('loader2');
+            var overlay = document.getElementById('hidePage2');
+            var origOverlay = overlay.style.visibility;
+            var origLoader = loader.style.visibility;
+            loader.style.visibility = 'visible';
+            overlay.style.visibility = 'visible';
+            setTimeout(function(){
+                    loader.style.visibility = origLoader;
+                    
+            }, 1750);
+            setTimeout(function(){
+                    
+                    overlay.style.visibility = origOverlay;
+            }, 2000); 
+            setTimeout(function(){
+              swal({
+                  title: "Bestellung erfolgreich",
+                  text: "Sie erhalten in Kürze eine Bestellbestätigung per E-Mail.",
+                  icon:"success",
+                  buttons: false,
+                  closeOnClickOutside: false,
+              });
+            },2350);
 
-              $('#buyAgainForm').submit();
-            }
-          });
+            $('#buyAgainForm').submit();
+          }
         });
       });
+    });
       
   </script>
 

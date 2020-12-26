@@ -156,13 +156,14 @@
           if(isset($_SESSION['login'])==111){
             echo '<h1 class="display-4">Hallo '.$_SESSION['firstname'].' '.$_SESSION['lastname'].'!</h1>';
             if($row != null){
-              echo '<p class="lead">Sie waren zuletzt online am '."$lastDate".'</p>';
+              echo '<p class="lead">Du warst zuletzt online am '."$lastDate".'</p>';
             } else {
-              echo '<p class="lead">Wir freuen uns sehr Sie als neues Mitglied begrüßen zu dürfen.</p>';
+              echo '<p class="lead">Wir freuen uns sehr, dich als neues Mitglied begrüßen zu dürfen.</p>';
+              echo '<hr class="my-4">
+                    <br>
+                    <p>Bleib immer auf dem neuesten Stand.<br>GameShark liefert dir stets aktuelle Informationen rund um die Spieleindustrie.</p>';
             }
-                echo '<hr class="my-4">
-                <br>
-            <p>Bleib immer auf dem neuesten Stand.<br>GameShark liefert dir stets aktuelle Informationen rund um die Spieleindustrie.</p>';
+            
           }else {
             echo '<h1 class="display-4">Willkommen!</h1>
             <p class="lead">GameShark ist eine Plattform, welche mit hochwertigen Computerspielen handelt und mit seinem Service überzeugt.</p>
