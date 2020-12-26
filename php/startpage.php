@@ -124,7 +124,7 @@
   <!-- Begrüßung -->
   <div class="row" id="welcome">
     <div class="col-10">
-      <div class="jumbotron" style="margin:30px;">
+      <div class="jumbotron" style="margin:30px;text-align:center">
 
         <?php
           //Verbindung herstellen
@@ -161,14 +161,15 @@
               echo '<p class="lead">Wir freuen uns sehr Sie als neues Mitglied begrüßen zu dürfen.</p>';
             }
                 echo '<hr class="my-4">
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>';
+                <br>
+            <p>Bleib immer auf dem neuesten Stand.<br>GameShark liefert dir stets aktuelle Informationen rund um die Spieleindustrie.</p>';
           }else {
             echo '<h1 class="display-4">Willkommen!</h1>
-            <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+            <p class="lead">GameShark ist eine Plattform, welche mit hochwertigen Computerspielen handelt und mit seinem Service überzeugt.</p>
             <hr class="my-4">
-            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>';
+            <br>
+            <p>Bleib immer auf dem neuesten Stand.<br>GameShark liefert dir stets aktuelle Informationen rund um die Spieleindustrie.</p>';
+           
           }
         ?>
 
