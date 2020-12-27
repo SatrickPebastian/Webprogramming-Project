@@ -196,7 +196,7 @@
        </div>
        <div class="col-lg-4">
       <div class="card" style="width:200px;">
-        <img class="card-img-top" src="https://exchange.reutlingen-university.de/owa/service.svc/s/GetFileAttachment?id=AQMkADJmOTU0MDJjLWE0NjMtNDVmZS04NzI1LWRlMTQwOWY3M2JjMQBGAAADjf8uPXCCikOxCRevXKrZFQcAwzR5e8yv%2BEy3UaCQE8fuFwAAAgEMAAAAwzR5e8yv%2BEy3UaCQE8fuFwABQk8kvQAAAAESABAA6JUbMFDmvky9WeR0%2F6o2OQ%3D%3D&X-OWA-CANARY=Zhw7S160HkKIyJisPQhgMpAxTsaCo9gIP7IwYnxoL27CZMv6IOKfQogNAa4so2UEBww67slK0pY.&isImagePreview=True" alt="Card image">
+        <img class="card-img-top" src="https://exchange.reutlingen-university.de/owa/service.svc/s/GetFileAttachment?id=AQMkADJmOTU0MDJjLWE0NjMtNDVmZS04NzI1LWRlMTQwOWY3M2JjMQBGAAADjf8uPXCCikOxCRevXKrZFQcAwzR5e8yv%2BEy3UaCQE8fuFwAAAgEMAAAAwzR5e8yv%2BEy3UaCQE8fuFwABQk8kvQAAAAESABAA6JUbMFDmvky9WeR0%2F6o2OQ%3D%3D&X-OWA-CANARY=1aLas1UbxUqpjZke-Gtb9AA2zA2nqtgIZBgpzVpTU7ninWRwZIAocJ9zuqGCNdiJwHmR7-fS3CQ.&isImagePreview=True" alt="Card image">
         <div class="card-body">
           <h4 class="card-title">Patrick Stopper</h4>
           <p class="card-text">Blablablabla</p>
@@ -207,7 +207,7 @@
 
        <div class="col-lg-4">
       <div class="card" style="width:200px">
-        <img class="card-img-top" src="../images/aboutus/Sabrina.jpg" alt="Card image">
+        <img class="card-img-top" src="https://3c-bap.gmx.net/mail/client/attachment/view/tmai1651e71f4f4fd99c/N0I4QjJCOUQtNUUyOC00NUZFLTk1MDEtNzNDN0FGMzc0MDQx;jsessionid=EDA62CFE8BD2CB67FB9614CD3589E776-n4.bap34b" alt="Card image">
         <div class="card-body">
           <h4 class="card-title">Svenja Bystrzinski</h4>
           <p class="card-text">Blablablabla</p>
