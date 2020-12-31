@@ -23,8 +23,6 @@
        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
        <!-- Fontawesome -->
-       <link href="fontawesome/css/font-awesome.css" rel="stylesheet">
-       <link href="fontawesome/css/font-awesome.min.css" rel="stylesheet">
        <script src="https://kit.fontawesome.com/d36fdbef7d.js" crossorigin="anonymous"></script>
    
        <!-- Google Fonts -->
@@ -35,11 +33,11 @@
        <link href="../css/karussell.css" rel="stylesheet">
        <link href="../css/loader.css" rel="stylesheet">
 
-        <!-- Sweet alert import -->
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <!-- Sweet alert import -->
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <!-- jQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
        <?php
            //Verbindung herstellen

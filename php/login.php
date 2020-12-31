@@ -61,12 +61,6 @@
                 echo "0 Treffer!";
             }
 
-            
-            /*while($row = $result->fetch_assoc())
-            {
-                echo "id: " . $row["id"]. " - Name" . $row["firstname"]." " . $row["lastname"]."<br>";
-            }*/
-
             //Login in Tabelle online speichern
             $sql = "UPDATE user SET status = 'online' WHERE id = '$userId';";
             $result = $wbsconnection->query($sql);
@@ -93,7 +87,7 @@
         }else if($bLoginSuccess && ($row['firstLogin'] == 'yes')){
             header("Location: newPassword.php");
         }else {
-            header("Location: ../login.html");
+            header("Location: ../loginPage.php");
         }
         
     
