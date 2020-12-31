@@ -7,7 +7,6 @@
   $dsn = "mysql:host=localhost;dbname=webshopdb;charset=utf8";
   $db = new PDO($dsn, 'root', '');
 
-
   $sql ="SELECT id, title, descr, imageLink, price FROM artikel";
   $result = $db->query($sql);
 

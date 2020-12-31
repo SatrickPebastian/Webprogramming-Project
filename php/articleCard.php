@@ -18,13 +18,10 @@
         overlay.style.visibility = 'visible';
         setTimeout(function(){
                 loader.style.visibility = origLoader;
-                
         }, 1750);
         setTimeout(function(){
-                
                 overlay.style.visibility = origOverlay;
         }, 2000); 
-        
 }
 
 
