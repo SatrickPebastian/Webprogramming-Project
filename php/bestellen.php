@@ -95,6 +95,7 @@
         $mail->addAddress($userMail);
         $mail->Subject = "Ihre Bestellung bei GameShark";
         $mail->Body = $body;
+        $mail->CharSet = 'UTF-8';
 
         if($mail->send()){
             echo "Email versendet!";

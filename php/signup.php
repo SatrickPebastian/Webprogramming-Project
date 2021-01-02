@@ -94,6 +94,7 @@
         $mail->addAddress($sEmail);
         $mail->Subject = "Ihre Registrierung bei GameShark";
         $mail->Body = $body;
+        $mail->CharSet = 'UTF-8';
 
         $mail->send();
         sleep(2);
