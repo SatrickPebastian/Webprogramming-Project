@@ -61,8 +61,14 @@
                 echo "0 Treffer!";
             }
 
+            //Auflösung des Benutzers speichern
+            $userResolutionWidth = $_POST['userResolutionWidth'];
+            $userResolutionHeight = $_POST['userResolutionHeight'];
+            
+            $userResolutionConcat = $userResolutionWidth. " x ".$userResolutionHeight;
+
             //Login in Tabelle online speichern
-            $sql = "UPDATE user SET status = 'online' WHERE id = '$userId';";
+            $sql = "UPDATE user SET status = 'online', resolution = '$userResolutionConcat' WHERE id = '$userId';";
             $result = $wbsconnection->query($sql);
 
             //Holen des letzten logouts um zu prüfen, ob das der erste Login ist oder nicht
@@ -73,7 +79,7 @@
             
 
             mysqli_close($wbsconnection);
-        
+            
 
         }catch(Exception $e){
             echo "FEHLER beim verbinden der Datenbank:".$e;
