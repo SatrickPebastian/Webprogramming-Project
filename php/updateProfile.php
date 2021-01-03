@@ -10,13 +10,12 @@
         exit;
     }
 
-    $newEmail = $_POST['email'];
     $newStreet = $_POST['street'];
     $newCity = $_POST['city'];
     $newPlz = $_POST['plz'];
     $userId = $_SESSION['id'];
 
-    $sql = "UPDATE user SET email = '$newEmail', street = '$newStreet', stadt = '$newCity', plz = '$newPlz' WHERE id = '$userId';";
+    $sql = "UPDATE user SET street = '$newStreet', stadt = '$newCity', plz = '$newPlz' WHERE id = '$userId';";
     $result = $webshopcon->query($sql);
 
     mysqli_close($webshopcon);

@@ -48,7 +48,7 @@
 
 
     //Inhalt der E-Mail
-    $body = "Hallo ".$userWholeName."<br>"."Vielen Dank für Ihre Bestellung bei GameShark. Ihre Bestellung: <br>".$newOrderNames."<br>".$newOrderSum."<br>".$newOrderOption."<br> Ihre Bestellung wird an folgende Adresse versandt: <br>".$row['street']." ".$row['stadt']." ".$row['plz'].""; 
+    $body = "Vielen Dank für Ihre Bestellung bei GameShark. <br>Ihre Bestellung: <br><br>".$newOrderNames."<br><br>Preis: ".$newOrderSum." €<br><br>Lieferung per ".$newOrderOption." Versand<br><br><br> Ihre Bestellung wird an folgende Adresse versandt: <br>".$row['street']."<br> ".$row['plz']." ".$row['stadt'].""; 
 
 
     require_once "PHPMailer/PHPMailer.php";

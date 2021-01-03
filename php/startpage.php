@@ -117,7 +117,6 @@
             <button class="btn btn-outline-light my-2 my-sm-0" type="submit" style="margin:10px;">Login</button>
           </form>';
           }
-
         ?>
 
       </div>

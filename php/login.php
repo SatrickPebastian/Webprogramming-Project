@@ -87,7 +87,7 @@
         }else if($bLoginSuccess && ($row['firstLogin'] == 'yes')){
             header("Location: newPassword.php");
         }else {
-            header("Location: ../loginPage.php");
+            header("Location: ../login.html");
         }
         
     

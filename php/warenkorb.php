@@ -40,30 +40,30 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
        <?php
-           //Verbindung herstellen
+          //Verbindung herstellen
           $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
-                        
-                        if(!$webshopcon){
-                            echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
-                            echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
-                            echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
-                            exit;
-                        }
+                      
+          if(!$webshopcon){
+              echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+              echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+              echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+              exit;
+          }
 
-                        //Tabellen Joinen und abfragen
-                        
-                              //hole preis und anzahl aus gejointer tabelle
-                              $sql = "SELECT price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
-                              $result = $webshopcon->query($sql);
-                              $gesamtSumme = 0;
+          //Tabellen Joinen und abfragen
+          
+          //hole preis und anzahl aus gejointer tabelle
+          $sql = "SELECT price, anzahl FROM artikel a, warenkorb w WHERE a.id = w.artikel;";
+          $result = $webshopcon->query($sql);
+          $gesamtSumme = 0;
 
-                              //berechne preis gesamtpreis
-                              while($row = $result->fetch_assoc()){
-                                $gesamtSumme += ($row['price'] * $row['anzahl']);
-                              }
-                           
-                              mysqli_close($webshopcon);
-        ?>
+          //berechne preis gesamtpreis
+          while($row = $result->fetch_assoc()){
+            $gesamtSumme += ($row['price'] * $row['anzahl']);
+          }
+        
+          mysqli_close($webshopcon);
+      ?>
 
 
       <script type="text/javascript">
@@ -95,6 +95,56 @@
           }
 
         }
+
+        function checkDelete(){
+          
+          swal({
+            title: titleToDelete + " wurde aus dem Warenkorb entfernt",
+            confirm: "Ok"
+          }).then((isOk) => {
+            if(isOk){
+              return true;
+            }else if(isOk == null){
+              return true;
+            }
+          });
+        }
+
+        $(document).ready(function(){
+          let titleToDelete = $('#titleDelete').val();
+          $('#delete').click(function(e){
+            e.preventDefault();
+            swal({
+              text: titleToDelete + " wurde aus dem Warenkorb entfernt.",
+              confirm: "Ok"
+            }).then((isOk) => {
+              if(isOk){
+                $.ajax({
+                  method: "post",
+                  url: "deleteFromCart.php",
+                  data: $('#deleteFromCartForm').serialize(),
+                  dataType: "text",
+                  success: function(response) {
+                    console.log(response);
+                  }
+                });
+                window.location.href = "warenkorb.php";
+              }else if(isOk == null){
+                $.ajax({
+                  method: "post",
+                  url: "deleteFromCart.php",
+                  data: $('#deleteFromCartForm').serialize(),
+                  dataType: "text",
+                  success: function(response) {
+                    console.log(response);
+                  }
+                });
+                window.location.href = "warenkorb.php";
+              }
+            });
+          });
+        });
+        
 
       </script>
        
@@ -199,8 +249,9 @@
                             <td class="text-center"><?= $row['anzahl']?></td>
                             <td class="text-right"><?= $row['price']?>€</td>
                             <td class="text-right">
-                              <form method="post" action="deleteFromCart.php">
-                                <button id="delete" class="btn btn-sm btn-danger" type="submit" onclick="alert('<?= $row['title']?> wurde aus dem Warenkorb entfernt.');">
+                              <form id="deleteFromCartForm">
+                                <button id="delete" class="btn btn-sm btn-danger">
+                                <input type="hidden" value="<?= $row['title']?>" id="titleDelete">
                                 <i class="fa fa-trash"></i> 
                                 </button>
                                 <input type="hidden" name="deleteArticle" value="<?= $row['artikel']?>">

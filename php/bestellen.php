@@ -69,7 +69,7 @@
         
         $userMail = $row['email'];
         $userWholeName = $row['firstname'].' '.$row['lastname'];
-        $body = "Hallo ".$userWholeName."<br>"."Vielen Dank für Ihre Bestellung bei GameShark. Ihre Bestellung: <br>".$stringAlleArtikel."<br>".$summeAllerArtikel."<br>".$versandOption."<br> Ihre Bestellung wird an folgende Adresse versandt: <br>".$row['street']." ".$row['stadt']." ".$row['plz']."";
+        $body = "Vielen Dank für Ihre Bestellung bei GameShark. <br>Ihre Bestellung: <br><br>".$stringAlleArtikel."<br><br>Preis: ".$summeAllerArtikel." €<br><br>Lieferung per ".$versandOption." Versand<br><br><br> Ihre Bestellung wird an folgende Adresse versandt: <br>".$row['street']."<br> ".$row['plz']." ".$row['stadt']."";
 
         //Mail verschicken
 

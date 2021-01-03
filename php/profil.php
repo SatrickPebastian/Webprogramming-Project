@@ -111,12 +111,7 @@
       <div class="container">
         <br>
         <form method="post" action="updateProfile.php" id="updateForm">
-          <div class="form-row justify-content-center d-flex flex-row">
-            <div class="p2">
-              <label for="inputEmail4"><b>E-Mail</b></label>
-              <input type="email" class="form-control mb-4" value="<?= $userEmail?>" style="width:400px;" readonly id="email" name="email">
-            </div>
-          </div>
+          
 
           <div class="form-row justify-content-center d-flex flex-row">
             <div class="p2">
@@ -191,7 +186,6 @@
       $('#editButton').hide();
       $('#saveButton').attr('hidden', false);
 
-      document.getElementById('email').removeAttribute("readonly");
       document.getElementById('street').removeAttribute("readonly");
       document.getElementById('city').removeAttribute("readonly");
       document.getElementById('plz').removeAttribute("readonly");
@@ -206,7 +200,6 @@
       $('#editButton').show();
       $('#saveButton').attr('hidden', true);
       
-      document.getElementById('email').setAttribute("readonly", true);
       document.getElementById('street').setAttribute("readonly", true);
       document.getElementById('city').setAttribute("readonly", true);
       document.getElementById('plz').setAttribute("readonly", true);
