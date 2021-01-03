@@ -43,7 +43,7 @@
                     </div>  
 
                     <div class="panel-body" >
-                        <form id="signupform" class="form-horizontal" role="form" method="POST" action="php/signup.php">
+                        <form id="signupform" class="form-horizontal" role="form" method="POST" action="php/signup.php" autocomplete="off">
                             <div id="signupalert" style="display:none" class="alert alert-danger">
                                 <p>Error:</p>
                                 <span></span>
@@ -51,40 +51,40 @@
                             <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_vorname" class="col-md-3 control-label">Vorname</label>
                                 <div class="col-md-9">
-                                    <input id="txt_vorname" name="txt_vorname" placeholder="Vorname" class="form-control" required type="text">
+                                    <input id="txt_vorname" name="txt_vorname" placeholder="Vorname" class="form-control" required type="text" autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_nachname" class="col-md-3 control-label">Nachname</label>
                                 <div class="col-md-9">
-                                    <input id="txt_nachname" name="txt_nachname" placeholder="Nachname" class="form-control" required type="text">
+                                    <input id="txt_nachname" name="txt_nachname" placeholder="Nachname" class="form-control" required type="text" autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_username" class="col-md-3 control-label">Username</label>
                                 <div class="col-md-9">
                                     <small id="usernameError" style="color:red; position:absolute; bottom:33px; left:205px;"></small>
-                                    <input id="txt_username" name="txt_username" placeholder="Username" class="form-control" required type="text">
+                                    <input id="txt_username" name="txt_username" placeholder="Username" class="form-control" required type="text" autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_email" class="col-md-3 control-label">Email</label>
                                 <div class="col-md-9">
                                     <small id="emailError" style="color:red; position:absolute; bottom:33px; left:225px;"></small>
-                                    <input id="txt_email" name="txt_email" placeholder="Email" class="form-control" required type="email">
+                                    <input id="txt_email" name="txt_email" placeholder="Email" class="form-control" required type="email" autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_straße" class="col-md-3 control-label">Straße</label>
                                 <div class="col-md-9">
-                                    <input id="txt_straße" name="txt_straße" placeholder="Straße" class="form-control" required type="text">
+                                    <input id="txt_straße" name="txt_straße" placeholder="Straße" class="form-control" required type="text" autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 30px;">
                                 <label for="txt_plz" class="col-md-3 control-label">PLZ</label>
                                 <div class="col-md-9">
                                     <small id="plzError" style="color:red; position:absolute; bottom:33px; left:200px;"></small>
-                                    <input id="txt_plz" name="txt_plz" placeholder="PLZ" class="form-control" required type="text">
+                                    <input id="txt_plz" name="txt_plz" placeholder="PLZ" class="form-control" required type="text" autocomplete="new-password">
                                 </div>
                             </div>
                             <div class="form-group" style="margin-bottom: 30px;">
@@ -127,8 +127,10 @@
 
             let usernameCheckDb = false;
             let emailCheckDb = false;
-            let plzCheck = false;
+            var plzCheck = false;
             let stadtCheck = false;
+
+            
 
 
             $(document).ready(function(){
@@ -224,7 +226,6 @@
                         
                         $('#stadtError').html("Bitte eine gültige Eingabe tätigen.");
                         $('#txt_stadt').css('border', 'solid #FF0000');
-                        
                     }else {
                         console.log('klappt');
                         console.log(stadtCheck);
@@ -257,7 +258,6 @@
 
 
                     if(messages.length > 0){
-                        e.preventDefault();
                         swal({
                             title: "Fehler",
                             icon: "error",
@@ -299,6 +299,21 @@
                     window.location = 'php/startpage.php';
                 });
             });
+
+            //Funktion um auch den Autofill des Browsers als Change-Event zu registrieren.
+            $.fn.allchange = function (callback){
+                var me = this;
+                var last = "";
+                var infunc = function() {
+                    var text = $(me).val();
+                    if(text != last){
+                        last = text;
+                        callback();
+                    }
+                    setTimeout(infunc, 100);
+                }
+                setTimeout(infunc, 100);
+            }
 
 
 

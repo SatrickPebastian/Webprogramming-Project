@@ -41,7 +41,10 @@
   <link href="../css/main.css" rel="stylesheet">
   <link href="../css/karussell.css" rel="stylesheet">
   <link href="../css/artikelpage.css" rel="stylesheet">
-  <link href="../css/loader.css" rel="stylesheet">
+  <link href="../css/loader.css" rel="stylesheet">  
+
+  <!-- Sweet alert import -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -157,6 +160,9 @@
             echo '<h1 class="display-4">Hallo '.$_SESSION['firstname'].' '.$_SESSION['lastname'].'!</h1>';
             if($row != null){
               echo '<p class="lead">Du warst zuletzt online am '."$lastDate".'</p>';
+              echo '<hr class="my-4">
+                    <br>
+                    <p>Bleib immer auf dem neuesten Stand.<br>GameShark liefert dir stets aktuelle Informationen rund um die Spieleindustrie.</p>';
             } else {
               echo '<p class="lead">Wir freuen uns sehr, dich als neues Mitglied begrüßen zu dürfen.</p>';
               echo '<hr class="my-4">
@@ -178,7 +184,7 @@
     </div>
     <div class="col-2 h-100">
       <div class="card text-center w-100" style="margin:30px;" id="userStatus">
-        <div class="card-body">
+        <div class="card-body" style="width:250px;height:auto">
           <h5 class="card-title">Online Nutzer:</h5>
 
           <!-- Hier werden Daten von getOnline.php mittels AJAX eingefügt -->
@@ -205,6 +211,21 @@
       </div>
     </div>
   </div>
+
+  <!-- News -->
+  <?php
+    $sql = "SELECT picture, description, link, date FROM news;";
+    $result = $webshopcon->query($sql);
+  ?>
+
+  <div class="row">
+    <?php while($row = $result->fetch_assoc()):?>
+    <div class="col-4">
+      <?php include 'newsCard.php';?>
+    </div>
+    <?php endwhile; ?>
+  </div>
+  <!-- News Ende -->
 
 </main>
   
