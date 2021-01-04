@@ -1,16 +1,20 @@
 <?php
   session_start();
 
-  error_reporting(-1);
-  ini_set('display_errors', 'On');
+  //Verbindung herstellen
+  $webshopcon = mysqli_connect("127.0.0.1", "root", "", "webshopdb");
+                          
+  if(!$webshopcon){
+    echo "Fehler: konnte nicht mit MariaDB verbinden." . PHP_EOL;
+    echo "Debug-Fehlernummer: " . mysqli_connect_errno() . PHP_EOL;
+    echo "Debug-Fehlermeldung: " . mysqli_connect_error() . PHP_EOL;
+    exit;
+  }
 
-  $dsn = "mysql:host=localhost;dbname=webshopdb;charset=utf8";
-  $db = new PDO($dsn, 'root', '');
+  $sql ="SELECT id, title, descr, imageLink, price, genre FROM artikel";
+  $result = $webshopcon->query($sql);
 
-  $sql ="SELECT id, title, descr, imageLink, price FROM artikel";
-  $result = $db->query($sql);
-
-?>
+  ?>
 
 
 <!DOCTYPE html>
@@ -19,10 +23,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Shop</title>
-
+ <!-- jQuery -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <!-- Bootstrap v4 -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
     <!-- Fontawesome -->
     <link href="../fontawesome/css/font-awesome.css" rel="stylesheet">
@@ -37,7 +42,9 @@
     <link href="../css/karussell.css" rel="stylesheet">
     <link href="../css/artikelpage.css" rel="stylesheet">
     <link href="../css/loader.css" rel="stylesheet">
-    
+
+   
+    <script src ="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js"></script>
 
 </head>
 <body>
@@ -101,82 +108,19 @@
 
 
   <main>
-      <!-- Grid -->
-
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header headingOne" style="text-align:center">
-            <h5 class="mb-0">
-              <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                Filter
-              </button>
-            </h5>
-          </div>
-          <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <div class="form-group">
-                    <label class="col-md-4 control-label" for="checkboxes"><b>Genre</b></label>
-                    <div class="col-md-4">
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Action
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Open-World
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Autorennen
-                        </label>
-                      </div>
-                      <div class="checkbox">
-                        <label for="checkboxes-0">
-                          <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-                            Ego-Shooter
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col">
-                  
-                  <!-- Hier Preis Range-Input hinzufügen -->
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-
-      
+          <br><br>
       <section class="container" id="products">
         <div class="row">
-          <?php while($row = $result->fetch()):?>
+          <?php while($row = $result->fetch_assoc()):?>
             <div class="col-3">
               <?php include 'articleCard.php'?>
             </div>
           <?php endwhile;?>
         </div>
-        </section>
-
-
-      </div>
-    </div>
-    
-  </div>
-
+      </section>
+      
   
+      
   
 
 </main>
@@ -210,5 +154,6 @@
   <div id="hidePage2" class="hidePage"></div>
 </footer>
             
+  
 </body>
 </html>

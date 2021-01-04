@@ -1,12 +1,12 @@
 
 <link href="../css/loader.css" rel="stylesheet">
 <link href="../css/artikelpage.css" rel="stylesheet">
+    
 
 <script>
-    $( function( )
-    {
-        $( "[data-toggle='popover'" ).popover( );
-    } );
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
 
     function activateLoader(){
 
@@ -31,6 +31,26 @@
 <img src="<?= $row['imageLink']?>" class="card-img-top" alt="<?= $row['title']?>" height="350" width="200">
     <div class="card-body">
         <h5 class="card-title"><?= $row['title']?></h5>
+        <?php
+            if($row['genre'] == "Action"){
+                echo '<span class="badge badge-danger">Action</span>';
+            }else if($row['genre'] == "Open-World"){
+                echo '<span class="badge badge-primary">Open-World</span>';
+            }else if($row['genre'] == "Autorennen"){
+                echo '<span class="badge badge-secondary">Autorennen</span>';
+            }else if($row['genre'] == "Sport"){
+                echo '<span class="badge badge-info">Sport</span>';
+            }else if($row['genre'] == "Ego-Shooter"){
+                echo '<span class="badge badge-warning">Ego-Shooter</span>';
+            }else if($row['genre'] == "Simulation"){
+                echo '<span class="badge badge-success">Simulation</span>';
+            }else if($row['genre'] == "Rollenspiel"){
+                echo '<span class="badge badge-dark">Rollenspiel</span>';
+            }else {
+                echo '<br>';
+            }
+        ?>
+
     </div>
     <div class="card-footer m-0 pr-3 pl-3 pt-3">
     <div >
