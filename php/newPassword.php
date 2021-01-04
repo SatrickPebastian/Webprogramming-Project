@@ -43,6 +43,9 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+    <!-- SHA512 ajax  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.js"></script>
+
 </head>
 <body>
     
@@ -57,7 +60,7 @@
         </section>
     </div>
     <br><br>
-    <form action="firstPassword.php" method="post" onsubmit="return checkPasswordEquality()">
+    <form id="firstPasswordForm">
         <div class="form-row d-flex flex-row justify-content-center">
             <div class="p2">
                 <label for="password1">Ihr Passwort:</label> 
@@ -75,22 +78,40 @@
 </main>
 
 <script type="text/javascript">
-    function checkPasswordEquality(){
-        let pwField1 = $('#password1');
-        let pwField2 = $('#password2');
+    $(document).ready(function(){
+        $('#sendFirstPasswordButton').click(function(e){
+            e.preventDefault();
+            let inpPass1 = $('#password1').val();
+            let inpPass2 = $('#password2').val();
 
-        if(pwField1.val() != pwField2.val()){
-            swal({
-                title:"Fehler",
-                text:"Fehlerhafte Passworteingabe",
-                icon:"error"
-            });
-            return false;
+            if(inpPass1 != inpPass2){
+                swal({
+                    title: "Ihre eingegebenen Passwörter stimmen nicht überein.",
+                    icon: "error"
+                });
+            }else if(inpPass1.length < 6 || inpPass2.length < 6){
+                swal({
+                    title: "Ihr Passwort muss mindestens sechs Zeichen lang sein.",
+                    icon: "error"
+                });
+            }else {
+                let hashedPass = sha512(inpPass2);
 
-        }else {
-            return true;
-        }
-    }
+                $.ajax({
+                    method: "post",
+                    url: "firstPassword.php",
+                    data: {hashedPass: hashedPass},
+                    dataType: "text",
+                    success: function(response) {
+                        console.log(response);
+                    }
+                });
+                window.location.href = 'startpage.php';
+            }
+        });
+    });
+
+    
 </script>
 
 </body>

@@ -14,8 +14,8 @@
     if(isset($_POST['username'])){
         $sUsername=$_POST['username'];
     }
-    if(isset($_POST['password'])){
-        $sPassword=$_POST['password'];
+    if(isset($_POST['hashedPassword'])){
+        $sPassword=$_POST['hashedPassword'];
     }
 
     if($sUsername=="" || $sPassword==""){
@@ -36,9 +36,9 @@
             }
 
            
-            $hashedPassword = hash('sha512', $sPassword);
             
-            $sql = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user where username='$sUsername' and password='$hashedPassword'";
+            
+            $sql = "SELECT id, firstname, lastname, username, email, street, stadt, plz FROM user where username='$sUsername' and password='$sPassword'";
 
             $result = $wbsconnection->query($sql);
 

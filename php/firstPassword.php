@@ -11,11 +11,10 @@
       exit;
     }
 
-    $newPassword = $_POST['password2'];
-    $hashedNewPassword = hash('sha512', $newPassword);
+    $newPassword = $_POST['hashedPass'];
     $userId = $_SESSION['id'];
 
-    $sql = "UPDATE user SET password = '$hashedNewPassword', firstLogin = 'no' WHERE id = '$userId';";
+    $sql = "UPDATE user SET password = '$newPassword', firstLogin = 'no' WHERE id = '$userId';";
     $result = $webshopcon->query($sql);
 
     mysqli_close($webshopcon);
