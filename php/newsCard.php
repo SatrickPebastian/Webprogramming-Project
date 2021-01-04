@@ -11,6 +11,7 @@
         $newString = substr($articleDescr, 0, 105);
         $articleDescr = $newString.'...';
     }
+    
 ?>
 
 <div class="card w-50 border-dark shadow-sm" style="margin-left:100px;margin-top:20px;margin-bottom:50px;">
@@ -19,14 +20,18 @@
         <p><?= $articleDescr?></p>
         <small class="text-muted"><b><?= $row['date']?></b></small>
         <button class="btn btn-primary btn-sm border mr-1" type="button" style="float:right;" onclick="checkReading()">Weiterlesen</button>
-        <input type="hidden" value="<?= $row['link']?>" id="hiddenLink">
+        <input type="hidden" value="<?= $row['link']?>" class="hiddenLinks">
+        <input type="hidden" value="<?= $counter?>" id="linkCounter">
     </div>
     
    
 </div>
 
 <script>   
-    let link = $('#hiddenLink').val();
+   
+    let linkCount = $('#linkCounter').val();
+    let links = document.getElementsByClass("hiddenLinks");
+
     function checkReading(){
         swal({
             text: "Diese Aktion leitet dich auf eine andere Webseite weiter. Trotzdem fortfahren?",
@@ -37,7 +42,7 @@
 
         }).then((willContinue) => {
             if(willContinue){
-                window.open(link);
+                window.open(links[linkCount]);
             }
         });
         

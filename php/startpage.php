@@ -215,12 +215,31 @@
   <?php
     $sql = "SELECT picture, description, link, date FROM news;";
     $result = $webshopcon->query($sql);
+
+    $counter = 0;
+
   ?>
   
     <div class="row">
       <?php while($row = $result->fetch_assoc()):?>
+        <?php 
+          $articleDescr = $row['description'];
+          if(strlen($articleDescr) > 105){
+              $newString = substr($articleDescr, 0, 105);
+              $articleDescr = $newString.'...';
+          }
+        ?>
       <div class="col-4" style="margin-right:-160px;">
-        <?php include 'newsCard.php';?>
+        <div class="card w-50 border-dark shadow-sm" style="margin-left:100px;margin-top:20px;margin-bottom:50px;">
+        <img src="<?= $row['picture']?>" class="card-img-top" alt="<?= $row['title']?>">
+            <div class="card-body">
+                <p><?= $articleDescr?></p>
+                <small class="text-muted"><b><?= $row['date']?></b></small>
+                <button class="btn btn-primary btn-sm border mr-1 linkButtons" type="button" style="float:right;" value="<?= $row['link']?>">Weiterlesen</button>
+            </div>
+            <?php $counter++;?>
+          
+        </div>
       </div>
       <?php endwhile; ?>
     </div>
@@ -255,15 +274,23 @@
 </footer>
 
 <script>
-  var docWidth = document.documentElement.offsetWidth;
-[].forEach.call(
-  document.querySelectorAll('*'),
-  function(el) {
-    if (el.offsetWidth > docWidth) {
-      console.log(el);
-    }
-  }
-);
+
+  $('.linkButtons').click(function(){
+      let link = $(this).val();
+        swal({
+            text: "Diese Aktion leitet dich auf eine andere Webseite weiter. Trotzdem fortfahren?",
+            buttons : {
+                cancel: "Abbrechen",
+                confirm: "Ok"
+            }
+
+        }).then((willContinue) => {
+            if(willContinue){
+                window.open(link);
+            }
+        });
+  });
+
 </script>
 
 </body>
