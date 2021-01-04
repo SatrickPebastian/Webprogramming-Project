@@ -3,6 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="images/resourceImages/hai23.png">
+
         <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="javaScript/jquery-2.1.4.min.js"></script>
@@ -251,7 +254,6 @@
                         messages.push('Bitte gültige PLZ eingeben.');
                     }
 
-                    //Hier noch kleiner Bug zu fixen
                     if(stadtCheck == false){
                         messages.push("Bitte gültige Stadt eingeben.");
                     }
@@ -315,120 +317,6 @@
                 setTimeout(infunc, 100);
             }
 
-
-
-            //SVENJAS CODE (nichts geändert, nur kommentiert)
-
-            // function init(){
-            //     var myTextfeldX=document.getElementById("eingabe1");
-            //     myTextfeldX.addEventListener("blur", 
-            //     function (){
-            //         this.style.border = "solid #FF0000";
-            //     }, false);           
-            // }
-
-            // function prüfe(){
-            //     if(!prüfeVorname() || !prüfeNachname() || !prüfeUsername() || !prüfeEmail() || !prüfeStraße() || !prüfeStraße() || !prüfePlz() || !prüfeStadt()){
-            //         //do Fehlermeldung unten welche Felder fehlen (Das erst wenn submit gedrückt wurde anzeigen!!!!)
-            //     }
-            // }
-
-            // function prüfeVorname(){
-            //     var vorname = document.querySelector("#txt_vorname").value;
-
-            //     if(vorname = ""){
-            //         alert('Bitte den Vornamen angeben! /n');
-            //         return false;
-                    
-            //     }else if(vorname.search(/^[a-zA-Z]+$/) == -1){
-            //         alert('Bitte nur Buchstaben eingeben! /n');
-            //         return false;
-            //     }else{
-            //         activateLoader();
-            //         return true;
-
-            //     }
-            // }
-            // function prüfeNachname(){
-            //     var nachname = document.querySelector("#txt_nachname").value;
-
-            //     if(nachname = ""){
-            //         alert('Bitte den Nachnamen angeben! /n');
-            //         return false;
-            //     }else if(nachname.search(/^[a-zA-Z]+$/) == -1){
-            //         alert('Bitte nur Buchstaben eingeben! /n');
-            //         return false;
-            //     }else{
-            //         activateLoader();
-            //         return true;
-            //     }
-            // }
-            // function prüfeUsername(){
-            //     var username = document.querySelector("#txt_username").value;
-
-            //     if(username= ""){
-            //         alert('Bitte den Username angeben! /n');
-            //         return false;
-            //     }else if(gibt es schon){
-            //         alert('Der Username ist schon vergeben! /n');
-            //     }else{
-            //         activateLoader();
-            //         return true;
-            //     }
-            // }
-            // function prüfeEmail(){
-            //     var email = document.querySelector("#txt_email").value;
-
-            //     if(email = ""){
-            //         alert('Bitte die Email angeben! /n');
-            //         return false;
-            //     }else if(wird schon benutzt){
-            //         alert('Die Email-Adresse wurde schon benutzt! /n');
-
-            //     }else{
-            //         activateLoader();
-            //         return true;
-            //     }  
-            // }
-            // function prüfeStraße(){
-            //     var straße = document.querySelector("#txt_straße").value;
-
-            //     if(straße = ""){
-            //         alert('Bitte die Straße angeben! /n');
-            //         return false;
-            //     }else{
-            //         activateLoader();
-            //         return true;
-            //     }
-            // }
-            // function prüfePlz(){
-            //     var plz = document.querySelector("#txt_plz").value;
-
-            //     if(plz = ""){
-            //         alert('Bitte die PLZ angeben!');
-            //         return false;
-            //     }else if(!isNanN(plz)){
-            //         alert('Bitte nur Zahlen eingeben!');
-            //         return false;
-            //     }else{
-            //         activateLoader();
-            //         return true; 
-            //     }
-
-            // }
-            // function prüfeStadt(){
-            //     var stadt = document.querySelector("#txt_stadt").value;
-            //     if(stadt = ""){
-            //         aler('Bitte die Stadt angeben! /n');
-            //         return false;
-            //     }else if(stadt.search(/^[a-zA-Z]+$/) == -1){
-            //         alert('Bitte nur Buchstaben eingeben! /n');
-            //         return false;
-            //     }else{
-            //         activateLoader();
-            //         return true;
-            //     }
-            // }
           </script>
     </body>
 </htlm>
