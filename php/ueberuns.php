@@ -189,14 +189,14 @@
         <img class="card-img-top" src="../images/aboutus/Sabrina (2).jpg" alt="Card image">
         <div class="card-body">
           <h4 class="card-title">Sabrina<br> Klett</h4>
-          <p class="card-text">Blablablabla</p>
+          <p class="card-text">Studentin der Wirtschafts-<br>informatik im 3. Semester</p>
           
         </div>
       </div>
        </div>
        <div class="col-lg-4">
       <div class="card" style="width:200px;">
-        <img class="card-img-top" src="https://exchange.reutlingen-university.de/owa/service.svc/s/GetFileAttachment?id=AQMkADJmOTU0MDJjLWE0NjMtNDVmZS04NzI1LWRlMTQwOWY3M2JjMQBGAAADjf8uPXCCikOxCRevXKrZFQcAwzR5e8yv%2BEy3UaCQE8fuFwAAAgEMAAAAwzR5e8yv%2BEy3UaCQE8fuFwABQk8kvQAAAAESABAA6JUbMFDmvky9WeR0%2F6o2OQ%3D%3D&X-OWA-CANARY=1aLas1UbxUqpjZke-Gtb9AA2zA2nqtgIZBgpzVpTU7ninWRwZIAocJ9zuqGCNdiJwHmR7-fS3CQ.&isImagePreview=True" alt="Card image">
+        <img class="card-img-top" src="../images/aboutus/Patrick.jpg" alt="Card image">
         <div class="card-body">
           <h4 class="card-title">Patrick Stopper</h4>
           <p class="card-text">Blablablabla</p>
@@ -207,7 +207,7 @@
 
        <div class="col-lg-4">
       <div class="card" style="width:200px">
-        <img class="card-img-top" src="https://3c-bap.gmx.net/mail/client/attachment/view/tmai1651e71f4f4fd99c/N0I4QjJCOUQtNUUyOC00NUZFLTk1MDEtNzNDN0FGMzc0MDQx;jsessionid=EDA62CFE8BD2CB67FB9614CD3589E776-n4.bap34b" alt="Card image">
+        <img class="card-img-top" src="../images/aboutus/Svenja.jpeg" alt="Card image">
         <div class="card-body">
           <h4 class="card-title">Svenja Bystrzinski</h4>
           <p class="card-text">Blablablabla</p>
@@ -229,16 +229,16 @@
           
       <ul class="navbar-nav mx-auto">
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../impressum.html"><small>Impressum</small> <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="../impressum.php"><small>Impressum</small> <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../datenschutzerklärung.html"><small>Datenschutzerklärung</small></a>
+          <a class="nav-link" href="../datenschutzerklärung.php"><small>Datenschutzerklärung</small></a>
         </li>
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../agb.html"><small>AGB</small></a>
+          <a class="nav-link" href="../agb.php"><small>AGB</small></a>
         </li>
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../hilfe.html"><small>Hilfe</small></a>
+          <a class="nav-link" href="../hilfe.php"><small>Hilfe</small></a>
         </li>      
       </ul>
   
