@@ -211,7 +211,7 @@
           <br>
         <br>
         <h2>Schnelle Lieferung</h2>
-        <p>Durch kostenlosen Premiumversand sind sämtliche Artikel spätestens in zwei Tagen bei dir zuhause.</p>
+        <p>Durch günstigen Premiumversand sind sämtliche Artikel spätestens in zwei Tagen bei dir zuhause. Alternativ kannst du kostenfreien Standardversand wählen.</p>
       
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->

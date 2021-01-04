@@ -216,15 +216,17 @@
     $sql = "SELECT picture, description, link, date FROM news;";
     $result = $webshopcon->query($sql);
   ?>
-
-  <div class="row">
-    <?php while($row = $result->fetch_assoc()):?>
-    <div class="col-4">
-      <?php include 'newsCard.php';?>
+  
+    <div class="row">
+      <?php while($row = $result->fetch_assoc()):?>
+      <div class="col-4" style="margin-right:-160px;">
+        <?php include 'newsCard.php';?>
+      </div>
+      <?php endwhile; ?>
     </div>
-    <?php endwhile; ?>
-  </div>
-  <!-- News Ende -->
+    <!-- News Ende -->
+  
+  
 
 </main>
   
@@ -251,6 +253,18 @@
     </div>
   </nav>
 </footer>
+
+<script>
+  var docWidth = document.documentElement.offsetWidth;
+[].forEach.call(
+  document.querySelectorAll('*'),
+  function(el) {
+    if (el.offsetWidth > docWidth) {
+      console.log(el);
+    }
+  }
+);
+</script>
 
 </body>
 </html>
