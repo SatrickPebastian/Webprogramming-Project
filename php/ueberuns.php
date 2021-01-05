@@ -143,81 +143,82 @@
       <br>
       
       <br>
-      <h5 style="font-family: 'Cabin', sans-senif; font-size: 40px; margin-left: 120px">Unsere Werte und Ziele</h5>
+      <h5 style="font-family: 'Cabin', sans-senif; font-size: 40px; margin-left: 220px">Unsere Werte</h5>
       <br>
       <br>
       <div class="container marketing">
         
       <div class="row">
         <div class="col-lg-4">
-          <img src="https://cms.weka.ch/fileadmin/_processed_/e/0/csm_Kreativitaet_foerdern_afe8aac56d.jpg" height="200" width="auto">
+          <br>
+          <img src="../images/aboutus/kreativitat.svg" height="100" width="auto">
           <br>
           <br>
           <h2>Kreativität</h2>
-          <p>Alles, was wir tun, soll durchdrungen sein von Fantasie, innovativen Ideen und Spaß.</p>
+          <p>Wir arbeiten stets an neuen Wegen und Möglichkeiten, um unseren Kunden ein besseres Rundumerlebnis "Gaming" zu bieten.</p>
           
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-          
-          <img src="https://coda.newjobs.com/api/imagesproxy/ms/cms/careeradvice/images/chgr/0.jpg" height="200" width="auto">
+          <br>
+          <img src="../images/aboutus/motivation.svg" height="100" width="auto">
           <br>
           <br>
-          <h2>Lernbereitschaft</h2>
-          <p>Wir hören zu, wir sind bescheiden und wir sind offen für neue Sichtweisen. Wir fordern uns selbst heraus, als Firma zu wachsen und uns zu verändern.</p>
+          <h2>Motivation</h2>
+          <p>Um unser Angebot so spannend und begeisternd wie möglich zu gestalten ist uns kein Stein zu schwer und kein Berg zu hoch.</p>
           
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
-         
-          <img src="https://www.fuehren-und-wirken.de/wp-content/uploads/2016/09/Meeting-Fehler-Tipps-1-704x454.jpg" height="200" width="auto">
+         <br>
+          <img src="../images/aboutus/passion.svg" height="100" width="auto">
          
             <br>
           <br>
           <h2>Leidenschaft</h2>
-          <p>Unser volles Potenzial schöpfen wir aus, indem wir tun, was wir lieben, und dabei Spaß haben.</p>
+          <p>Trotz allen Herausforderungen finden wir immer wieder Freude an unserer Arbeit und lassen diese in unseren Service einfließen.</p>
         
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
+      <br>
+      <br>
 
       <!--Unser Team-->
      
-      <h5 style="font-family: 'Cabin', sans-senif; font-size: 40px; margin-left: 1px;">Unser Team</h5>
+      <h5 style="font-family: 'Cabin', sans-senif; font-size: 40px; margin-left: -170px;">Unser Team</h5>
+      <br>
       <br>
       <br>
 
-      
-<div class="row" style="margin-left: 100px;">
-  <div class="col-lg-4">
-      <div class="card" style="width:200px;">
-        <img class="card-img-top" src="../images/aboutus/Sabrina (2).jpg" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Sabrina<br> Klett</h4>
-          <p class="card-text">Studentin der Wirtschafts-<br>informatik im 3. Semester</p>
-          
-        </div>
+      <div class="container marketing">
+          <div class="row">
+            <div class="col-lg-4">
+              <img src="../images/aboutus/Sabrina (2).jpg" alt="Sabrina" width="200" height="auto" style="border-width:2px !important;" class="border border-dark shadow-lg rounded">
+              <br>
+              <br>
+              <h4>Sabrina Klett</h4>
+              <p>Studentin der Wirtschaftsinformatik<br>im 3. Semester</p>
+            </div>
+            <div class="col-lg-4">
+            <img src="../images/aboutus/Patrick3.jpg" alt="Patrick" width="212" height="279"  style="border-width:2px !important;" class="border border-dark shadow-lg rounded">
+              <br>
+              <br>
+              <h4>Patrick Stopper</h4>
+              <p>Student der Wirtschaftsinformatik<br>im 3. Semester</p>
+            </div>
+            <div class="col-lg-4">
+            <img src="../images/aboutus/Svenja.jpeg" alt="Svenja" width="193" height="280"  style="border-width:2px !important;" class="border border-dark shadow-lg rounded">
+              <br>
+              <br>
+              <h4>Svenja Bystrzinski</h4>
+              <p>Studentin der Wirtschaftsinformatik<br>im 3. Semester</p>
+            </div>
+          </div>
       </div>
-       </div>
-       <div class="col-lg-4">
-      <div class="card" style="width:200px;">
-        <img class="card-img-top" src="../images/aboutus/Patrick.jpg" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Patrick Stopper</h4>
-          <p class="card-text">Blablablabla</p>
-          
-        </div>
-      </div>
-       </div>
 
-       <div class="col-lg-4">
-      <div class="card" style="width:200px">
-        <img class="card-img-top" src="../images/aboutus/Svenja.jpeg" alt="Card image">
-        <div class="card-body">
-          <h4 class="card-title">Svenja Bystrzinski</h4>
-          <p class="card-text">Blablablabla</p>
-          
-        </div>
-      </div> 
-         </div>
-      </div><!--row-->
+      <br>
+      <br>
+      <br>
+      <br>
+ 
 
 
 
