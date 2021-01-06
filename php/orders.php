@@ -136,8 +136,8 @@
           <td><?= $row['versandOption']?></td>
           <td><?= $row['date']?></td>
           <form method="post" action="buyAgain.php" id="buyAgainForm">
-          <td class="text-center"><button class="btn btn-sm btn-light border buyAgainButton" name="buyAgainButton"><i class='fas fa-redo'></i></button></td>
-          <input type="hidden" value="<?= $row['id']?>" name="hiddenBuyAgain" id="hiddenBuyAgain">
+          <td class="text-center"><button class="btn btn-sm btn-light border buyAgainButton" name="buyAgainButton" value="<?= $row['id']?>"><i class='fas fa-redo'></i></button></td>
+          
           </form>
         </tr>
         <?php $rowCounter++; ?>
@@ -233,6 +233,8 @@
 
       $('.buyAgainButton').click(function(e){
         e.preventDefault();
+
+        let hiddenBuyAgain = $(this).val();
         swal({
           title: "1-Click Buy again",
           text: "Diese Bestellung erneut durchführen?",
@@ -268,7 +270,14 @@
               });
             },2350);
 
-            $('#buyAgainForm').submit();
+            $.ajax({
+              method: "post",
+              url: "buyAgain.php",
+              data: {hiddenBuyAgain : hiddenBuyAgain},
+              dataType: "text"
+            });
+            window.location.href = 'orders.php';
+
           }
         });
       });
