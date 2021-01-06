@@ -43,8 +43,8 @@ body {
 }
 .form-button {
     background-color: rgba(8, 17, 102, 0.473);
-    border-color: rgba(196, 125, 236, 0.473);
-    color: #e6e6e6;
+    border-color: rgba(39, 15, 177, 0.473);
+    color: #3428a5;
 }
 .form-button:hover,
 .form-button:focus,
