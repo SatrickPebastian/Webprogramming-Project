@@ -98,33 +98,21 @@
 
         }
 
-        function checkDelete(){
-          
-          swal({
-            title: titleToDelete + " wurde aus dem Warenkorb entfernt",
-            confirm: "Ok"
-          }).then((isOk) => {
-            if(isOk){
-              return true;
-            }else if(isOk == null){
-              return true;
-            }
-          });
-        }
-
         $(document).ready(function(){
-          let titleToDelete = $('#titleDelete').val();
-          $('#delete').click(function(e){
+
+          $('.deleteButtons').click(function(e){
             e.preventDefault();
+            let id = $(this).val();
+
             swal({
-              text: titleToDelete + " wurde aus dem Warenkorb entfernt.",
+              text: "Der Artikel wurde erfolgreich aus dem Warenkorb entfernt.",
               confirm: "Ok"
             }).then((isOk) => {
               if(isOk){
                 $.ajax({
                   method: "post",
                   url: "deleteFromCart.php",
-                  data: $('#deleteFromCartForm').serialize(),
+                  data: {id: id},
                   dataType: "text",
                   success: function(response) {
                     console.log(response);
@@ -135,7 +123,7 @@
                 $.ajax({
                   method: "post",
                   url: "deleteFromCart.php",
-                  data: $('#deleteFromCartForm').serialize(),
+                  data: {id:id},
                   dataType: "text",
                   success: function(response) {
                     console.log(response);
@@ -145,8 +133,9 @@
               }
             });
           });
-        });
-        
+
+          });
+
 
       </script>
        
@@ -237,7 +226,7 @@
                         $userId = $_SESSION['id'];
 
                         //Tabellen Joinen und abfragen
-                        $sql = "SELECT imageLink, title, price, anzahl, artikel FROM artikel a, warenkorb w WHERE a.id = w.artikel and user = '$userId';";
+                        $sql = "SELECT w.artikel, imageLink, title, price, anzahl, artikel FROM artikel a, warenkorb w WHERE a.id = w.artikel and user = '$userId';";
                         $result = $webshopcon->query($sql);
                         $countRows = 0;
                       ?>
@@ -252,11 +241,10 @@
                             <td class="text-right"><?= $row['price']?>€</td>
                             <td class="text-right">
                               <form id="deleteFromCartForm">
-                                <button id="delete" class="btn btn-sm btn-danger">
-                                <input type="hidden" value="<?= $row['title']?>" id="titleDelete">
+                                <button id="delete" class="btn btn-sm btn-danger deleteButtons" value="<?= $row['artikel']?>">
                                 <i class="fa fa-trash"></i> 
                                 </button>
-                                <input type="hidden" name="deleteArticle" value="<?= $row['artikel']?>">
+                               
                               </form> 
                             </td>
                           </tr>
@@ -327,5 +315,12 @@
   <div id="hidePage" class="hidePage">
 </footer>
 
+
+<script>
+  $(document).ready(function(){
+
+  });
+
+</script>
 </body>
 </html>

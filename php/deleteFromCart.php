@@ -12,7 +12,7 @@
      }
 
     $userId = $_SESSION['id'];
-    $articleId = $_POST['deleteArticle'];
+    $articleId = $_POST['id'];
     $sql = "DELETE FROM warenkorb WHERE artikel = '$articleId' and user = '$userId';";
     $result = $webshopcon->query($sql);
         
