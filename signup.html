@@ -308,6 +308,13 @@
                         text: "Sie haben eine E-Mail mit Ihrem Passwort erhalten."
                         
                         }).then(function(){
+                            $('#txt_vorname').val("");
+                            $('#txt_nachname').val("");
+                            $('#txt_username').val("");
+                            $('#txt_email').val("");
+                            $('#txt_stadt').val("");
+                            $('#txt_plz').val("");
+                            $('#txt_straße').val("");
                             window.location = "login.html";
                         });
                     }
