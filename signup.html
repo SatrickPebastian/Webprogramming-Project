@@ -4,11 +4,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="images/resourceImages/hai23.png">
-
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="javaScript/jquery-2.1.4.min.js"></script>
+        <link rel="icon" href="images/resourceImages/shark.svg">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <!-- Sweet alert import -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -16,14 +15,12 @@
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         
-
+         <!-- Google Fonts -->
+       <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
         
-
+        <link href="css/background.css" rel="stylesheet">
+        <link href="css/signup.css" rel="stylesheet">
         
-        
-        <!--<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="javascript/jquery-2.1.4.min.js"></script>-->
         <title>Sign Up</title>
     </head>
     <body>
@@ -31,85 +28,97 @@
     <header>
         
     </header>
-        <div class="container">    
-            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-                <div class="panel panel-info" >
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            Registrieren
+   
+        <div class="container p-0" style="width:40%; height:100vh; background-color:rgba(0, 0, 0, 0.253);color:white; float:left;">   
+            
+            <div id="loginbox" style="margin-top:100px;margin-left:80px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">     
+                
+                <h2>Registrierung</h2><br>
+            
+                   
+                <form id="signupform" class="form-horizontal" role="form" method="POST" action="php/signup.php" autocomplete="off">
+                    <div id="signupalert" style="display:none" class="alert alert-danger">
+                        <p>Error:</p>
+                        <span></span>
+                    </div>          
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="txt_vorname" class="col-md-3 control-label">Vorname</label>
+                        <div class="col-md-9">
+                            <input id="txt_vorname" name="txt_vorname" placeholder="Vorname" class="form-control bg-dark" required type="text" autocomplete="new-password" onfocus="this.style.color='#d5d6d9'">
                         </div>
-                        <div style="float:right; font-size: 80%; position: relative; top:-10px">
-                            <a href="login.html">
-                                Sie haben bereits einen Account?
-                            </a>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="txt_nachname" class="col-md-3 control-label">Nachname</label>
+                        <div class="col-md-9">
+                            <input id="txt_nachname" name="txt_nachname" placeholder="Nachname" class="form-control bg-dark" required type="text" autocomplete="new-password" onfocus="this.style.color='#d5d6d9'">
                         </div>
-                    </div>  
-
-                    <div class="panel-body" >
-                        <form id="signupform" class="form-horizontal" role="form" method="POST" action="php/signup.php" autocomplete="off">
-                            <div id="signupalert" style="display:none" class="alert alert-danger">
-                                <p>Error:</p>
-                                <span></span>
-                            </div>          
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label for="txt_vorname" class="col-md-3 control-label">Vorname</label>
-                                <div class="col-md-9">
-                                    <input id="txt_vorname" name="txt_vorname" placeholder="Vorname" class="form-control" required type="text" autocomplete="new-password">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label for="txt_nachname" class="col-md-3 control-label">Nachname</label>
-                                <div class="col-md-9">
-                                    <input id="txt_nachname" name="txt_nachname" placeholder="Nachname" class="form-control" required type="text" autocomplete="new-password">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label for="txt_username" class="col-md-3 control-label">Username</label>
-                                <div class="col-md-9">
-                                    <small id="usernameError" style="color:red; position:absolute; bottom:33px; left:205px;"></small>
-                                    <input id="txt_username" name="txt_username" placeholder="Username" class="form-control" required type="text" autocomplete="new-password">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label for="txt_email" class="col-md-3 control-label">Email</label>
-                                <div class="col-md-9">
-                                    <small id="emailError" style="color:red; position:absolute; bottom:33px; left:225px;"></small>
-                                    <input id="txt_email" name="txt_email" placeholder="Email" class="form-control" required type="email" autocomplete="new-password">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label for="txt_straße" class="col-md-3 control-label">Straße</label>
-                                <div class="col-md-9">
-                                    <input id="txt_straße" name="txt_straße" placeholder="Straße" class="form-control" required type="text" autocomplete="new-password">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label for="txt_plz" class="col-md-3 control-label">PLZ</label>
-                                <div class="col-md-9">
-                                    <small id="plzError" style="color:red; position:absolute; bottom:33px; left:200px;"></small>
-                                    <input id="txt_plz" name="txt_plz" placeholder="PLZ" class="form-control" required type="text" autocomplete="new-password">
-                                </div>
-                            </div>
-                            <div class="form-group" style="margin-bottom: 30px;">
-                                <label for="txt_stadt" class="col-md-3 control-label">Stadt</label>
-                                <div class="col-md-9">
-                                    <small id="stadtError" style="color:red; position:absolute; bottom:33px; left:191px;"></small>
-                                    <input id="txt_stadt" name="txt_stadt" placeholder="Stadt" class="form-control" required type="text">
-                                </div>
-                            </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="txt_username" class="col-md-3 control-label" style="max-width:200%;">Username<small id="usernameError" style="color:red;visibility:hidden;">&nbsp;&nbsp;&nbsp;Username bereits vergeben.</small></label>
+                        <div class="col-md-9">
+                            <input id="txt_username" name="txt_username" placeholder="Username" class="form-control bg-dark" required type="text" autocomplete="new-password" onfocus="this.style.color='#d5d6d9'">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="txt_email" class="col-md-3 control-label" style="max-width:200%;">Email<small id="emailError" style="color:red;visibility:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E-Mail bereits vergeben.</small></label>
+                        <div class="col-md-9">
+                            <input id="txt_email" name="txt_email" placeholder="Email" class="form-control bg-dark" required type="email" autocomplete="new-password" onfocus="this.style.color='#d5d6d9'">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="txt_straße" class="col-md-3 control-label">Straße</label>
+                        <div class="col-md-9">
+                            <input id="txt_straße" name="txt_straße" placeholder="Straße" class="form-control bg-dark" required type="text" autocomplete="new-password" onfocus="this.style.color='#d5d6d9'">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="txt_plz" class="col-md-3 control-label" style="max-width:200%">PLZ<small id="plzError" style="color:red;visibility:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ungültige Eingabe.</small></label>
+                        <div class="col-md-9">
+    
+                            <input id="txt_plz" name="txt_plz" placeholder="PLZ" class="form-control bg-dark" required type="text" autocomplete="new-password" onfocus="this.style.color='#d5d6d9'">
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 30px;">
+                        <label for="txt_stadt" class="col-md-3 control-label" style="max-width:200%;">Stadt<small id="stadtError" style="color:red;visibility:hidden;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ungültige Eingabe.</small></label>
+                        <div class="col-md-9">
+                                
+                        <input id="txt_stadt" name="txt_stadt" placeholder="Stadt" class="form-control bg-dark" required type="text" onfocus="this.style.color='#d5d6d9'">
+                                
+                                    
+                                        
+                                    
+                     </div>
+                                
+                </div>
+            </div>
                             
                             
-                            <div class="form-group">                                        
-                                <div class="col-md-offset-3 col-md-9">
-                                    <button id="button1_save" name="button1_save" class="btn btn-success" type="submit">Registrieren</button>
-                                    <button type="reset" id="button2_cancel" name="button2_cancel" class="btn btn-inverse">Abbrechen</button>
-                                </div>
-                            </div>  
-                        </form>
-                    </div> 
-                    <div id="errorMessage" style="color:red; margin:7px;"></div>                   
+            <div class="form-group" style="margin-left:95px;">                                        
+                <div class="col-md-offset-3 col-md-9">
+                    <button id="button1_save" name="button1_save" class="btn btn-primary" type="submit">Registrieren</button>
+                    <button type="reset" id="button2_cancel" name="button2_cancel" class="btn btn-light">Abbrechen</button>
+                </div>
+            </div>  
+                <br>
+            <div style="font-size: 80%; margin-left:110px;">
+                <a href="login.html">
+                    Du hast bereits einen Account?
+                </a>
+            </div>
+        </form>
+                    
+                   
+                                 
                 </div>  
             </div>  
+        </div>
+        <br><br>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+        <div class="d-flex justify-content-center">
+            <img src="images/resourceImages/shark.svg" width="150" height="auto"><br><br>
+        </div>
+        <div class="d-flex justify-content-center">
+            <span style="font-family: 'BioRhyme', serif; font-size:70px; color:white;">&nbsp;GameShark</span>
         </div>
 
         <script type="text/javascript">
@@ -143,7 +152,7 @@
 
                 let email = $('#txt_email').val();
                 $('#txt_email').css('border', '');
-                $('#emailError').html("");
+                $('#emailError').css('visibility', 'hidden');
 
                 $.ajax({
                     method: "post",
@@ -160,7 +169,7 @@
                             emailCheckDb = false;
 
                             $('#txt_email').css('border', 'solid #FF0000');
-                            $('#emailError').html("E-Mail ist bereits registriert.");
+                            $('#emailError').css('visibility', 'visible');
                         }
                     },
                     error: function(daten){
@@ -175,7 +184,7 @@
 
                 let username = $('#txt_username').val();
                 $('#txt_username').css('border', '');
-                $('#usernameError').html("");
+                $('#usernameError').css('visibility', 'hidden');
 
                 $.ajax({
                     method: "post",
@@ -192,7 +201,7 @@
                             usernameCheckDb = false;
 
                             $('#txt_username').css('border', 'solid #FF0000');
-                            $('#usernameError').html("Username ist bereits vergeben.");
+                            $('#usernameError').css('visibility', 'visible');
                         }
                     },
                     error: function(daten){
@@ -206,11 +215,14 @@
                 $('#txt_plz').blur(function(){
 
                     let plz = $('#txt_plz').val();
-                    $('#plzError').html("");
+                    
+                    $('#plzError').css('visibility', 'hidden');
                     $('#txt_plz').css('border', '');
 
                     if(isNaN(plz)){
-                        $('#plzError').html("Bitte eine gültige PLZ eingeben.");
+                        plzCheck = false;
+                        $('#plzError').css('visibility', 'visible');
+
                         $('#txt_plz').css('border', 'solid #FF0000');
                     }else {
                         plzCheck = true;
@@ -222,18 +234,20 @@
                 $('#txt_stadt').blur(function(){
 
                     let stadt = $('#txt_stadt').val();
-                    $('#stadtError').html("");
+              
                     $('#txt_stadt').css('border', '');
+                    $('#stadtError').css('visibility', 'hidden');
 
-                    if(!isNaN(stadt)){
-                        
-                        $('#stadtError').html("Bitte eine gültige Eingabe tätigen.");
+                    
+
+                    if(stadt == ""){
+                        stadtCheck = true;
+                    }else if(!isNaN(stadt)){
+                        stadtCheck = false;
+                        $('#stadtError').css('visibility', 'visible');
                         $('#txt_stadt').css('border', 'solid #FF0000');
                     }else {
-                        console.log('klappt');
-                        console.log(stadtCheck);
-                        stadtCheck = true;
-                        console.log(stadtCheck);
+                        stadtCheck= true;
                     }
                 });
 
@@ -255,8 +269,10 @@
                     }
 
                     if(stadtCheck == false){
-                        messages.push("Bitte gültige Stadt eingeben.");
+                        messages.push('Bitte gültige Stadt eingeben.');
                     }
+
+                   
 
 
                     if(messages.length > 0){
@@ -302,21 +318,8 @@
                 });
             });
 
-            //Funktion um auch den Autofill des Browsers als Change-Event zu registrieren.
-            $.fn.allchange = function (callback){
-                var me = this;
-                var last = "";
-                var infunc = function() {
-                    var text = $(me).val();
-                    if(text != last){
-                        last = text;
-                        callback();
-                    }
-                    setTimeout(infunc, 100);
-                }
-                setTimeout(infunc, 100);
-            }
 
           </script>
+
     </body>
 </htlm>

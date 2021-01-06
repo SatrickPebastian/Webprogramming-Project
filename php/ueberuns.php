@@ -174,7 +174,7 @@
             <br>
           <br>
           <h2>Leidenschaft</h2>
-          <p>Trotz allen Herausforderungen finden wir immer wieder Freude an unserer Arbeit und lassen diese in unseren Service einfließen.</p>
+          <p>Trotz allen Herausforderungen finden wir immer wieder Freude an der Arbeit und lassen diese in unseren Service einfließen.</p>
         
         </div><!-- /.col-lg-4 -->
       </div><!-- /.row -->
@@ -198,7 +198,7 @@
               <p>Studentin der Wirtschaftsinformatik<br>im 3. Semester</p>
             </div>
             <div class="col-lg-4">
-            <img src="../images/aboutus/Patrick3.jpg" alt="Patrick" width="212" height="279"  style="border-width:2px !important;" class="border border-dark shadow-lg rounded">
+            <img src="../images/aboutus/Patrick4.jpg" alt="Patrick" width="197" height="279"  style="border-width:2px !important;" class="border border-dark shadow-lg rounded">
               <br>
               <br>
               <h4>Patrick Stopper</h4>

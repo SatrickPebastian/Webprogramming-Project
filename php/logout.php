@@ -15,6 +15,7 @@ session_start();
     <link href="../Bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <title>Logout</title>
 
+
     <link rel="icon" href="../images/resourceImages/hai23.png">
 
     <!-- Bootstrap v4 -->

@@ -244,7 +244,7 @@
       <?php endwhile; ?>
     </div>
     <!-- News Ende -->
-  
+  <br><br>
   
 
 </main>

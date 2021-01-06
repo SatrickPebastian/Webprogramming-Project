@@ -141,12 +141,7 @@
               <button type="button" class="btn btn-primary m-2" onclick="editMode()" id="editButton">Bearbeiten</button>
               <button class="btn btn-success m-2" onclick="oldMode()" id="saveButton" name="saveButton" type="submit" hidden>Speichern</button>
             </div>
-          
 
-          
-            <div class="p2">
-              <button class="btn btn-danger m-2" type="button">Passwort ändern</button>
-            </div>
           </div>
         </form>
       </div>
@@ -160,16 +155,16 @@
           
       <ul class="navbar-nav mx-auto">
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../impressum.html"><small>Impressum</small> <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="../impressum.php"><small>Impressum</small> <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../datenschutzerklärung.html"><small>Datenschutzerklärung</small></a>
+          <a class="nav-link" href="../datenschutzerklärung.php"><small>Datenschutzerklärung</small></a>
         </li>
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../agb.html"><small>AGB</small></a>
+          <a class="nav-link" href="../agb.php"><small>AGB</small></a>
         </li>
         <li class="nav-item mr-5 ml-5">
-          <a class="nav-link" href="../hilfe.html"><small>Hilfe</small></a>
+          <a class="nav-link" href="../hilfe.php"><small>Hilfe</small></a>
         </li>      
       </ul>
   
@@ -227,6 +222,9 @@
           });
       });
     });
+
+    
+    
     
   </script>
 

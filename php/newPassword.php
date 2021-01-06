@@ -50,9 +50,7 @@
 
 </head>
 <body>
-    
-<header>
-</header>
+  
 <main>
     <div class="jumbotron">
         <section class="jumbotron text-center">

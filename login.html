@@ -3,10 +3,22 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="javaScript/jquery-2.1.4.min.js"></script>
+        
         <title>Login</title>
+
+        <!-- Bootstrap v4 -->
+       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+       <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
+        <link rel="stylesheet" href="css/background.css">
+        <link rel="stylesheet" href="css/login.css">
 
         <link rel="icon" href="images/resourceImages/hai23.png">
 
@@ -15,6 +27,9 @@
 
         <!-- SHA512 ajax  -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha512/0.8.0/sha512.js"></script>
+
+         <!-- Google Fonts -->
+       <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@700&family=Cabin&display=swap" rel="stylesheet">
 
         <script type="text/javascript">
             $(document).ready(function(){
@@ -37,61 +52,49 @@
         </script>
 
     </head>
-    <body> 
-        <div class="container">    
-            <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
-                <div class="panel panel-info" >
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            Login
-                        </div>
+    <body > 
+                
+        <section id="accueil">
+
+            <div class="triangle_rose"></div>
+            <div class="triangle_vert"></div>
+       <br><br>
+            <div class="login-container text-c animated flipInX">
+                    <div class="d-flex justify-content-center">
+                        <img src="images/resourceImages/shark.svg" width="100" height="auto"><br><br>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <span style="font-family: 'BioRhyme', serif; font-size:50px; color:white;">&nbsp;GameShark</span>
+                    </div>
                         
-                    </div>     
-                    <div style="padding-top:30px" class="panel-body" >
-                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12">
-                        </div> 
-                        <form method="POST" action="php/login.php" id="loginform" class="form-horizontal" role="form" onsubmit="return hashPw();">      
-                            <div style="margin-bottom: 25px" class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-user">
-                                    </i>
-                                </span>
-                                <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="Username">     
+                        <br> <br> <br> <br> <br> <br>
+                        <h3 class="text-whitesmoke">Login</h3>
+                        
+                    <div class="container-content" style="margin-left:20px;">
+                        
+                        <form method="POST" action="php/login.php" id="loginform" class="form-horizontal" role="form" onsubmit="return hashPw();">
+                            <div class="form-group">
+                                
+                                <input autocomplete="off" type="text" id="login-username" class="form-control" placeholder="Username" required="" name="username" value="">
                                 <input type="hidden" id="userResolutionHeight" name="userResolutionHeight" value="">
-                                <input type="hidden" id="userResolutionWidth" name="userResolutionWidth" value="">                                   
-                            </div> 
-                            <div style="margin-bottom: 25px" class="input-group">
-                                <span class="input-group-addon">
-                                    <i class="glyphicon glyphicon-lock">
-                                    </i>
-                                </span>
-                                <input id="login-password" type="password" class="form-control" name="password" placeholder="Passwort">
-                                <input type="hidden" id="hashedPassword" name="hashedPassword">
-                            </div> 
-                            
-                            <div style="margin-top:10px" class="form-group">
-                                <!-- Button -->
-                                <div class="col-sm-12">
-                                    <button type="submit" class="btn btn-success" id="loginButton">
-                                        Login  
-                                    </button>
-                                </div>
+                                <input type="hidden" id="userResolutionWidth" name="userResolutionWidth" value="">   
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12">
-                                    <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
-                                        Sie haben noch keinen Account? 
-                                        <a href="signup.html">
-                                            Registrieren Sie sich hier
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>    
-                        </form>     
-                    </div>                     
-                </div>  
-            </div>  
-        </div>
+                                <input autocomplete="off" id="login-password" type="password" class="form-control" name="password" placeholder="Passwort" >
+                                <input type="hidden" id="hashedPassword" name="hashedPassword">
+                            </div>
+                            <button type="submit" class="form-button btn btn-primary margin-b w-100 button-1" id="loginButton">Login</button>
+            
+                            <br>
+                            <p class="text-whitesmoke text-center"><small>Sie haben noch keinen Account?</small></p>
+                            <a class="text-darkyellow" href="signup.html"><small>Hier registrieren</small></a>
+                        </form>
+                       
+                    </div>
+                </div>
+
+                
+    
       
     </body>
 </html>

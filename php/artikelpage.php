@@ -110,7 +110,12 @@
 
 
   <main>
-          <br><br>
+  <section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="jumbotron-heading display-4">Produkte</h1>
+     </div>
+  </section>
+          
       <section class="container" id="products">
         <div class="row">
           <?php while($row = $result->fetch_assoc()):?>
