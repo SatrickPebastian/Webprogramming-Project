@@ -46,9 +46,14 @@
     $userMail = $row['email'];
     $userWholeName = $row['firstname'].' '.$row['lastname'];
 
+    $extraCost = "";
+    if($versandOption == "Express"){
+        $extraCost = " (+4,90€) ";
+    }
+
 
     //Inhalt der E-Mail
-    $body = "Vielen Dank für Ihre Bestellung bei GameShark. <br>Ihre Bestellung: <br><br>".$newOrderNames."<br><br>Preis: ".$newOrderSum." €<br><br>Lieferung per ".$newOrderOption." Versand<br><br><br> Ihre Bestellung wird an folgende Adresse versandt: <br>".$row['street']."<br> ".$row['plz']." ".$row['stadt'].""; 
+    $body = "Vielen Dank für Ihre Bestellung bei GameShark. <br>Ihre Bestellung: <br><br>".$newOrderNames."<br><br>Preis: ".$newOrderSum." €<br><br>Lieferung per ".$newOrderOption." Versand ".$extraCost."<br><br><br> Ihre Bestellung wird an folgende Adresse versandt: <br>".$row['street']."<br> ".$row['plz']." ".$row['stadt'].""; 
 
 
     require_once "PHPMailer/PHPMailer.php";
